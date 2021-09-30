@@ -6,6 +6,7 @@ using CQRS.Core.Application;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using IMediator = CQRS.Core.Application.IMediator;
 using Mediator = MediatR.Mediator;
 
 namespace CQRS.Core.Bootstrap
@@ -23,7 +24,7 @@ namespace CQRS.Core.Bootstrap
 
         private static IServiceCollection RegistrarApplication(this IServiceCollection services, CoreSettings settings)
         {
-            services.AddScoped<Application.Interfaces.IMediator, Application.Mediator>();
+            services.AddScoped<IMediator, Application.Mediator>();
 
             if (settings.ConfigurarMediator)
             {
@@ -32,20 +33,18 @@ namespace CQRS.Core.Bootstrap
 
                 services.RegistrarMediatorHandlers(settings.NomeDoApplicationAssembly);
 
-                if (settings.ConfigurarPipelineBehaviorDoMediator)
+                if (settings.ConfigurarFailFastPipelineBehavior)
                 {
-                    services.RegistrarPipelineBehaviorsDoMediator(settings.NomeDoApplicationAssembly);
+                    services.RegistrarFailFastPipeline(settings.NomeDoApplicationAssembly);
                 }
             }
 
             return services;
         }
 
-        private static IServiceCollection RegistrarMediatorHandlers(
-            this IServiceCollection services,
-            string nomeDoApplicationAssembly)
+        private static IServiceCollection RegistrarMediatorHandlers(this IServiceCollection services, string applicationAssembly)
         {
-            var assembly = AppDomain.CurrentDomain.Load(nomeDoApplicationAssembly);
+            var assembly = AppDomain.CurrentDomain.Load(applicationAssembly);
 
             var classesDaApplication = assembly.ExportedTypes
                 .Select(t => t.GetTypeInfo())
@@ -72,11 +71,9 @@ namespace CQRS.Core.Bootstrap
             return services;
         }
 
-        private static IServiceCollection RegistrarPipelineBehaviorsDoMediator(
-            this IServiceCollection services,
-            string nomeDoApplicationAssembly)
+        private static IServiceCollection RegistrarFailFastPipeline(this IServiceCollection services, string applicationAssembly)
         {
-            services.RegistrarValidators(nomeDoApplicationAssembly);
+            services.RegistrarValidators(applicationAssembly);
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastRequestBehavior<,>));
 

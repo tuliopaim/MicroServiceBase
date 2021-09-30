@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Application.Interfaces;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;

@@ -2,7 +2,7 @@
 using CQRS.API.Requests;
 using CQRS.Application.Commands.NovaPessoaCommand;
 using CQRS.Core.API;
-using CQRS.Core.Application.Interfaces;
+using CQRS.Core.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CQRS.API.Controllers

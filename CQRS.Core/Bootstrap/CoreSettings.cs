@@ -25,7 +25,10 @@ namespace CQRS.Core.Bootstrap
         /// </summary>
         public Type TipoDoStartup { get; set; }
 
-        public bool ConfigurarPipelineBehaviorDoMediator { get; set; } = true;
+        /// <summary>
+        /// Configurar o Fail Fast Pipeline Behavior, para validar commands antes de chamar o Handler
+        /// </summary>
+        public bool ConfigurarFailFastPipelineBehavior { get; set; } = true;
 
     }
 }

@@ -1,5 +1,4 @@
-﻿using CQRS.Core.Application.Interfaces;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace CQRS.Core.Application
 {

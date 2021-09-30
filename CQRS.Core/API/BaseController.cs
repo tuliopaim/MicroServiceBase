@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using CQRS.Core.Application.Interfaces;
+using CQRS.Core.Application;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

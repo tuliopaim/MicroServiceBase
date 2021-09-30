@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 
-namespace CQRS.Core.Application.Interfaces
+namespace CQRS.Core.Application
 {
     public interface IMediatorHandler<in TMediatorInput, TMediatorResult> : IRequestHandler<TMediatorInput, TMediatorResult>
         where TMediatorInput : IRequest<TMediatorResult>, IMediatorInput<TMediatorResult>

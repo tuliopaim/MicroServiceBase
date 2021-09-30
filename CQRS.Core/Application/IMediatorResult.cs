@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 
-namespace CQRS.Core.Application.Interfaces
+namespace CQRS.Core.Application
 {
     public interface IMediatorResult
     {

@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Application.Interfaces
+﻿namespace CQRS.Core.Application
 {
     public interface IMediatorValidator
     {

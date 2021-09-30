@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Application.Interfaces;
+using CQRS.Core.Application;
 
 namespace CQRS.Application.Commands.NovaPessoaCommand
 {

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CQRS.Core.Application;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Mediator = MediatR.Mediator;
 
 namespace CQRS.Core.Bootstrap
 {
@@ -28,6 +31,11 @@ namespace CQRS.Core.Bootstrap
                 services.AddScoped<IMediator, Mediator>();
 
                 services.RegistrarMediatorHandlers(settings.NomeDoApplicationAssembly);
+            }
+
+            if (settings.ConfigurarPipelineBehaviorDoMediator)
+            {
+
             }
 
             return services;
@@ -64,5 +72,25 @@ namespace CQRS.Core.Bootstrap
             return services;
         }
 
+        private static IServiceCollection RegistrarPipelineBehaviorsDoMediator(
+            this IServiceCollection services,
+            string nomeDoApplicationAssembly)
+        {
+            services.RegistrarValidators(nomeDoApplicationAssembly);
+
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastRequestBehavior<,>));
+
+            return services;
+        }
+
+        private static void RegistrarValidators(this IServiceCollection services, string nomeDoApplicationAssembly)
+        {
+            var assembly = AppDomain.CurrentDomain.Load(nomeDoApplicationAssembly);
+
+            foreach (var validator in AssemblyScanner.FindValidatorsInAssembly(assembly))
+            {
+                services.AddScoped(validator.InterfaceType, validator.ValidatorType);
+            }
+        }
     }
 }

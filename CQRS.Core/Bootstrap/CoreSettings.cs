@@ -25,5 +25,7 @@ namespace CQRS.Core.Bootstrap
         /// </summary>
         public Type TipoDoStartup { get; set; }
 
+        public bool ConfigurarPipelineBehaviorDoMediator { get; set; } = true;
+
     }
 }

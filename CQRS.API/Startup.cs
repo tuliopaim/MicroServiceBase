@@ -11,21 +11,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CQRS.Core.Bootstrap;
 
 namespace CQRS.API
 {
     public class Startup
     {
+        private readonly CoreSettings _coreSettings;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            _coreSettings = new CoreSettings
+            {
+                Configuration = configuration,
+                NomeDoApplicationAssembly = "CQRS.Application",
+                TipoDoStartup = typeof(Startup)
+            };
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
+            services.RegistrarCore(_coreSettings);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -34,7 +44,6 @@ namespace CQRS.API
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

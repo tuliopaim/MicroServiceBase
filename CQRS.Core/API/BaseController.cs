@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Dynamic;
 using System.Linq;
 using System.Net;
-using System.Net.Mime;
 using CQRS.Core.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

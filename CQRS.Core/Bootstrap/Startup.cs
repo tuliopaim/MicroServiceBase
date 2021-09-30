@@ -31,11 +31,11 @@ namespace CQRS.Core.Bootstrap
                 services.AddScoped<IMediator, Mediator>();
 
                 services.RegistrarMediatorHandlers(settings.NomeDoApplicationAssembly);
-            }
 
-            if (settings.ConfigurarPipelineBehaviorDoMediator)
-            {
-
+                if (settings.ConfigurarPipelineBehaviorDoMediator)
+                {
+                    services.RegistrarPipelineBehaviorsDoMediator(settings.NomeDoApplicationAssembly);
+                }
             }
 
             return services;

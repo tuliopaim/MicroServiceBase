@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using CQRS.API.Requests;
 using CQRS.Application.Commands.NovaPessoaCommand;
-using CQRS.Core.Application;
+using CQRS.Core.API;
 using CQRS.Core.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CQRS.API.Controllers
 {
     [Route("/v1/pessoa")]
-    public class PessoaController : Controller
+    public class PessoaController : BaseController
     {
         private readonly IMediator _mediator;
 
@@ -24,7 +24,7 @@ namespace CQRS.API.Controllers
 
             var result = await _mediator.Send(command);
 
-            return Ok();
+            return HandleMediatorResult(result, $"/v1/acordos/{result.Id}");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using CQRS.Core.Application.Interfaces;
@@ -9,10 +10,12 @@ namespace CQRS.Application.Commands.NovaPessoaCommand
     {
         public Task<NovaPessoaCommandResult> Handle(NovaPessoaCommandInput command, CancellationToken cancellationToken)
         {
-            return Task.FromResult(new NovaPessoaCommandResult
+            var result = new NovaPessoaCommandResult
             {
                 Id = Guid.NewGuid()
-            });
+            }.WithHttpStatusCode(HttpStatusCode.Created);
+
+            return Task.FromResult(result as NovaPessoaCommandResult);
         }
     }
 }

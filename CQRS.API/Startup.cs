@@ -10,25 +10,21 @@ namespace CQRS.API
 {
     public class Startup
     {
-        private readonly CoreSettings _coreSettings;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            _coreSettings = new CoreSettings
-            {
-                Configuration = configuration,
-                NomeDoApplicationAssembly = "CQRS.Application",
-                TipoDoStartup = typeof(Startup)
-            };
         }
 
         public IConfiguration Configuration { get; }
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.RegistrarCore(_coreSettings);
+            services.RegistrarCore(new CoreSettings
+            {
+                Configuration = Configuration,
+                NomeDoApplicationAssembly = "CQRS.Application",
+                TipoDoStartup = typeof(Startup)
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

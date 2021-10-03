@@ -6,7 +6,7 @@ using CQRS.Core.Application;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using IMediator = CQRS.Core.Application.IMediator;
+using IMediator = MediatR.IMediator;
 using Mediator = MediatR.Mediator;
 
 namespace CQRS.Core.Bootstrap
@@ -16,7 +16,7 @@ namespace CQRS.Core.Bootstrap
         public static IServiceCollection RegistrarCore(this IServiceCollection services, CoreSettings settings)
         {
             services
-                .AddSingleton(x => settings)
+                .AddSingleton(settings)
                 .RegistrarApplication(settings);
 
             return services;
@@ -30,6 +30,7 @@ namespace CQRS.Core.Bootstrap
             {
                 services.AddMediatR(settings.TipoDoStartup);
                 services.AddScoped<IMediator, Mediator>();
+                services.AddScoped<Application.IMediator, Application.Mediator>();
 
                 services.RegistrarMediatorHandlers(settings.NomeDoApplicationAssembly);
 

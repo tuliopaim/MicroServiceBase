@@ -24,12 +24,10 @@ namespace CQRS.Core.Bootstrap
 
         private static IServiceCollection RegistrarApplication(this IServiceCollection services, CoreSettings settings)
         {
-            services.AddScoped<IMediator, Application.Mediator>();
-
             if (settings.ConfigurarMediator)
             {
                 services.AddMediatR(settings.TipoDoStartup);
-                services.AddScoped<IMediator, Mediator>();
+
                 services.AddScoped<Application.IMediator, Application.Mediator>();
 
                 services.RegistrarMediatorHandlers(settings.NomeDoApplicationAssembly);
@@ -68,7 +66,7 @@ namespace CQRS.Core.Bootstrap
                     services.AddTransient(interfaceDoHandler.AsType(), tipo.AsType());
                 }
             }
-            
+
             return services;
         }
 

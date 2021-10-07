@@ -12,7 +12,7 @@ namespace CQRS.Application.Commands.NovaPessoaCommand
                 .MaximumLength(40);
 
             RuleFor(x => x.Idade)
-                .GreaterThanOrEqualTo((ushort)18);
+                .GreaterThanOrEqualTo((byte)18);
         }
     }
 }

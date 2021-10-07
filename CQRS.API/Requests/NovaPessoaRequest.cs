@@ -3,6 +3,6 @@
     public class NovaPessoaRequest
     {
         public string Nome { get; set; }
-        public ushort Idade { get; set; }
+        public byte Idade { get; set; }
     }
 }

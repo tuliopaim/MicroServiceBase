@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CQRS.Core.Bootstrap;
+using CQRS.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CQRS.API
 {
@@ -26,6 +28,9 @@ namespace CQRS.API
                 NomeDoApplicationAssembly = typeof(IApplicationAssemblyMarker).Assembly.GetName().Name,
                 TipoDoStartup = typeof(Startup)
             });
+
+            services.AddDbContext<AppDbContext>(opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString("Default")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

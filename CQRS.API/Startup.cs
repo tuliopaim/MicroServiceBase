@@ -1,3 +1,4 @@
+using CQRS.Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,7 @@ namespace CQRS.API
             services.RegistrarCore(new CoreSettings
             {
                 Configuration = Configuration,
-                NomeDoApplicationAssembly = "CQRS.Application",
+                NomeDoApplicationAssembly = typeof(IApplicationAssemblyMarker).Assembly.GetName().Name,
                 TipoDoStartup = typeof(Startup)
             });
 

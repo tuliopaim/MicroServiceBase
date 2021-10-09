@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using CQRS.Core.Bootstrap;
+using CQRS.Domain.Repositories;
 using CQRS.Infrastructure.Context;
+using CQRS.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace CQRS.API
@@ -34,6 +36,8 @@ namespace CQRS.API
             });
 
             services.AddDbContext<AppDbContext>();
+
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

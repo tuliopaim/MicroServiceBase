@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CQRS.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211007214026_Initial")]
+    [Migration("20211009195426_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,8 +24,16 @@ namespace CQRS.Infrastructure.Migrations
             modelBuilder.Entity("CQRS.Domain.Entities.Pessoa", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("Id");
+
+                    b.Property<DateTime?>("DataAlteracao")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("DataAlteracao");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("DataCriacao");
 
                     b.Property<byte>("Idade")
                         .HasColumnType("smallint");
@@ -36,7 +44,7 @@ namespace CQRS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoas");
+                    b.ToTable("Pessoa");
                 });
 #pragma warning restore 612, 618
         }

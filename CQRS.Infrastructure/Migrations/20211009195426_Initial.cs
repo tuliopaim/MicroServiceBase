@@ -8,23 +8,25 @@ namespace CQRS.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Pessoas",
+                name: "Pessoa",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(200)", nullable: false),
-                    Idade = table.Column<byte>(type: "smallint", nullable: false)
+                    Idade = table.Column<byte>(type: "smallint", nullable: false),
+                    DataCriacao = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    DataAlteracao = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pessoas", x => x.Id);
+                    table.PrimaryKey("PK_Pessoa", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pessoas");
+                name: "Pessoa");
         }
     }
 }

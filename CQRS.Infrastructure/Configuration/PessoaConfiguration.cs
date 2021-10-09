@@ -1,20 +1,21 @@
-﻿using CQRS.Domain.Entities;
+﻿using CQRS.Core.Infrastructure;
+using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CQRS.Infrastructure.Configuration
 {
-    public class PessoaConfiguration : IEntityTypeConfiguration<Pessoa>
+    public class PessoaConfiguration : AuditableEntityMap<Pessoa>
     {
-        public void Configure(EntityTypeBuilder<Pessoa> builder)
+        public override void Configure(EntityTypeBuilder<Pessoa> builder)
         {
-            builder.HasKey(x => x.Id);
-
             builder.Property(x => x.Nome)
                 .HasColumnType("VARCHAR(200)")
                 .IsRequired();
 
             builder.Property(x => x.Idade).IsRequired();
+
+            base.Configure(builder);
         }
     }
 }

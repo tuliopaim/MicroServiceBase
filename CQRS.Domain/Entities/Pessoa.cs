@@ -2,7 +2,7 @@
 
 namespace CQRS.Domain.Entities
 {
-    public class Pessoa : Entity
+    public class Pessoa : AuditableEntity
     {
         public Pessoa(string nome, byte idade)
         {

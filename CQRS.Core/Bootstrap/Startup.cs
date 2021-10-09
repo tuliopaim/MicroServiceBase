@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CQRS.Core.Application;
+using CQRS.Core.CrossCutting;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IMediator = MediatR.IMediator;
-using Mediator = MediatR.Mediator;
+using Environment = CQRS.Core.CrossCutting.Environment;
 
 namespace CQRS.Core.Bootstrap
 {
@@ -17,7 +19,8 @@ namespace CQRS.Core.Bootstrap
         {
             services
                 .AddSingleton(settings)
-                .RegistrarApplication(settings);
+                .RegistrarApplication(settings)
+                .RegistrarCrossCutting(settings);
 
             return services;
         }
@@ -30,18 +33,18 @@ namespace CQRS.Core.Bootstrap
 
                 services.AddScoped<Application.IMediator, Application.Mediator>();
 
-                services.RegistrarMediatorHandlers(settings.NomeDoApplicationAssembly);
+                services.RegistrarMediatorHandlers(settings.NomeDoAssemblyDoApplication());
 
                 if (settings.ConfigurarFailFastPipelineBehavior)
                 {
-                    services.RegistrarFailFastPipeline(settings.NomeDoApplicationAssembly);
+                    services.RegistrarFailFastPipeline(settings.NomeDoAssemblyDoApplication());
                 }
             }
 
             return services;
         }
 
-        private static IServiceCollection RegistrarMediatorHandlers(this IServiceCollection services, string applicationAssembly)
+        private static void RegistrarMediatorHandlers(this IServiceCollection services, string applicationAssembly)
         {
             var assembly = AppDomain.CurrentDomain.Load(applicationAssembly);
 
@@ -66,17 +69,13 @@ namespace CQRS.Core.Bootstrap
                     services.AddTransient(interfaceDoHandler.AsType(), tipo.AsType());
                 }
             }
-
-            return services;
         }
 
-        private static IServiceCollection RegistrarFailFastPipeline(this IServiceCollection services, string applicationAssembly)
+        private static void RegistrarFailFastPipeline(this IServiceCollection services, string applicationAssembly)
         {
             services.RegistrarValidators(applicationAssembly);
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastRequestBehavior<,>));
-
-            return services;
         }
 
         private static void RegistrarValidators(this IServiceCollection services, string nomeDoApplicationAssembly)
@@ -88,5 +87,32 @@ namespace CQRS.Core.Bootstrap
                 services.AddScoped(validator.InterfaceType, validator.ValidatorType);
             }
         }
+
+        private static IServiceCollection RegistrarCrossCutting(this IServiceCollection services, CoreSettings settings)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            if (settings.ConfigureIEnvironment)
+            {
+                if (settings.HostEnvironment == null)
+                    throw new ArgumentException(nameof(settings.HostEnvironment));
+
+                if (settings.Configuration == null)
+                    throw new ArgumentException(nameof(settings.Configuration));
+
+                var environmentName = settings.HostEnvironment.EnvironmentName;
+
+                var parameters = settings
+                    .Configuration
+                    .AsEnumerable()
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                var environment = new Environment(environmentName, parameters);
+                services.AddSingleton<IEnvironment>(environment);
+            }
+
+            return services;
+        }
+
     }
 }

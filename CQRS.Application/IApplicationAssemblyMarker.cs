@@ -1,8 +1,6 @@
-﻿using CQRS.Core.CrossCutting;
-
-namespace CQRS.Application
+﻿namespace CQRS.Application
 {
-    public interface IApplicationAssemblyMarker : IAssemblyMarker
+    public interface IApplicationAssemblyMarker
     {
         
     }

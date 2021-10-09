@@ -13,8 +13,11 @@ namespace CQRS.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _environment;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
+            _environment = environment;
             Configuration = configuration;
         }
 
@@ -24,13 +27,13 @@ namespace CQRS.API
         {
             services.RegistrarCore(new CoreSettings
             {
+                HostEnvironment = _environment,
                 Configuration = Configuration,
-                NomeDoApplicationAssembly = typeof(IApplicationAssemblyMarker).Assembly.GetName().Name,
+                TipoDoApplicationMarker = typeof(IApplicationAssemblyMarker),
                 TipoDoStartup = typeof(Startup)
             });
 
-            services.AddDbContext<AppDbContext>(opt =>
-                opt.UseNpgsql(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<AppDbContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

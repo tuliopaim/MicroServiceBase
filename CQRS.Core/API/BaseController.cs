@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace CQRS.Core.API
 {
-    public class BaseController
+    public class BaseController : ControllerBase
     {
         protected static IActionResult HandleMediatorResult(IMediatorResult mediatorResult, string location = null)
         { 

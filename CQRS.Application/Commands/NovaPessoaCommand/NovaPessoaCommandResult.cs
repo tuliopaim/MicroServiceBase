@@ -5,6 +5,11 @@ namespace CQRS.Application.Commands.NovaPessoaCommand
 {
     public class NovaPessoaCommandResult : CommandResult
     {
-        public Guid Id { get; set; }
+        public NovaPessoaCommandResult(Guid id)
+        {
+            Id = id;
+        }
+        
+        public Guid Id { get; }
     }
 }

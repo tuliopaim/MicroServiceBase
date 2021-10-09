@@ -53,6 +53,7 @@ namespace CQRS.Core.API
             var resultDictionary = mediatorResult.GetType().GetProperties()
                 .Where(property => !propriedadesIgnoradas.Contains(property.Name))
                 .ToDictionary(property => property.Name, property => property.GetValue(mediatorResult));
+
             return resultDictionary;
         }
 

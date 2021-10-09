@@ -1,12 +1,14 @@
 ﻿using System.Reflection;
+using CQRS.Core.CrossCutting;
+using CQRS.Core.Infrastructure;
 using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CQRS.Infrastructure.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : EfDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(IEnvironment enviroment) : base(enviroment)
         {
         }
 

@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.CrossCutting
+﻿namespace CQRS.Core.Bootstrap
 {
     public interface IEnvironment
     {

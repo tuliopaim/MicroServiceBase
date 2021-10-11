@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CQRS.Core.Application;
-using CQRS.Core.CrossCutting;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Environment = CQRS.Core.CrossCutting.Environment;
+using Environment = CQRS.Core.Bootstrap.Environment;
 
 namespace CQRS.Core.Bootstrap
 {

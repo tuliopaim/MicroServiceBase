@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CQRS.Core.CrossCutting
+namespace CQRS.Core.Bootstrap
 {
     public class Environment : IEnvironment
     {

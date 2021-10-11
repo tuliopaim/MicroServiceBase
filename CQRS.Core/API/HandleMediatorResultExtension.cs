@@ -9,7 +9,7 @@ namespace CQRS.Core.API
 {
     public static class HandleMediatorResultExtension
     {
-        public static IActionResult HandleSemReflection(this IMediatorResult mediatorResult)
+        public static IActionResult HandleMediatorResult(this IMediatorResult mediatorResult)
         {
             if (!mediatorResult.IsValid())
             {
@@ -64,7 +64,7 @@ namespace CQRS.Core.API
             };  
         }
         
-        private static Dictionary<string, object?> MontarDicionarioDeRetorno(IMediatorResult mediatorResult)
+        private static Dictionary<string, object> MontarDicionarioDeRetorno(IMediatorResult mediatorResult)
         {
             var propriedadesIgnoradas = new List<string>
             {

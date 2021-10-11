@@ -1,7 +1,7 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using CQRS.Application.Events.PessoaCriadaEvent;
 using CQRS.Core.Application;
 using CQRS.Domain.Entities;
 using CQRS.Domain.Repositories;
@@ -11,10 +11,12 @@ namespace CQRS.Application.Commands.NovaPessoaCommand
     public class NovaPessoaCommandHandler : ICommandHandler<NovaPessoaCommandInput, NovaPessoaCommandResult>
     {
         private readonly IPessoaRepository _pessoaRepository;
+        private readonly IMediator _mediator;
 
-        public NovaPessoaCommandHandler(IPessoaRepository pessoaRepository)
+        public NovaPessoaCommandHandler(IPessoaRepository pessoaRepository, IMediator mediator)
         {
             _pessoaRepository = pessoaRepository;
+            _mediator = mediator;
         }
 
         public async Task<NovaPessoaCommandResult> Handle(NovaPessoaCommandInput command, CancellationToken cancellationToken)
@@ -24,6 +26,10 @@ namespace CQRS.Application.Commands.NovaPessoaCommand
             _pessoaRepository.Add(pessoa);
 
             await _pessoaRepository.UnitOfWork.CommitAsync(cancellationToken);
+
+            var novaPessoaEvent = new PessoaCriadaEventInput(pessoa.Id);
+
+            await _mediator.Publish(novaPessoaEvent, cancellationToken);
 
             var result = new NovaPessoaCommandResult(pessoa.Id).WithHttpStatusCode(HttpStatusCode.Created);
             

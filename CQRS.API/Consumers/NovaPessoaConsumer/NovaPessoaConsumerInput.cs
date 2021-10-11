@@ -2,15 +2,15 @@
 using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
 
-namespace CQRS.Application.Events.PessoaCriadaEvent
+namespace CQRS.API.Consumers.NovaPessoaConsumer
 {
-    public class PessoaCriadaEventInput : EventInput, IKafkaEvent
+    public class NovaPessoaConsumerInput : IKafkaEvent
     {
-        public PessoaCriadaEventInput(Guid pessoaId)
+        public NovaPessoaConsumerInput(Guid pessoaId)
         {
             PessoaId = pessoaId;
         }
 
         public Guid PessoaId { get; private set; }
     }
-}
+}   

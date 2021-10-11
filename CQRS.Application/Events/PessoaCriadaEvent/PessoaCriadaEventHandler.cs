@@ -1,24 +1,23 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using CQRS.Core.Application;
-using Microsoft.Extensions.Logging;
+using CQRS.Core.Infrastructure.Kafka;
+using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace CQRS.Application.Events.PessoaCriadaEvent
 {
     public class PessoaCriadaEventHandler : IEventHandler<PessoaCriadaEventInput>
     {
-        private readonly ILogger _logger;
+        private readonly IKafkaBroker _broker;
 
-        public PessoaCriadaEventHandler(ILogger logger)
+        public PessoaCriadaEventHandler(IKafkaBroker broker)
         {
-            _logger = logger;
+            _broker = broker;
         }
 
-        public Task Handle(PessoaCriadaEventInput @event, CancellationToken cancellationToken)
+        public async Task Handle(PessoaCriadaEventInput @event, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Evento {nameof(PessoaCriadaEventHandler)} disparado!");
-
-            return Task.CompletedTask;
+            await _broker.PublishAsync(KafkaTopics.NovaPessoaTopic, PessoaEventTypes.PessoaCriada, @event, cancellationToken);
         }
     }
 }

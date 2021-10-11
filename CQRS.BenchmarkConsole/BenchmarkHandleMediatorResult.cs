@@ -46,7 +46,7 @@ namespace CQRS.BenchmarkConsole
         {
             foreach (var resultado in _listaDeResultados)
             {
-                _ = resultado.HandleSemReflection();
+                _ = resultado.HandleMediatorResult();
             }
         }
 
@@ -60,7 +60,7 @@ namespace CQRS.BenchmarkConsole
         public void Handle1MediatorResultSemReflecion()
         {
 
-            _ = _resultado.HandleSemReflection();
+            _ = _resultado.HandleMediatorResult();
         }
 
         protected class ClasseDeResultado : MediatorResult

@@ -47,5 +47,9 @@ namespace CQRS.Core.Bootstrap
         /// </summary>
         public bool ConfigureIEnvironment { get; set; } = true;
 
+        /// <summary>
+        /// Configura e instancia o Broker do Kafka 
+        /// </summary>
+        public bool ConfigurarKafkaBroker { get; set; } = true;
     }
 }

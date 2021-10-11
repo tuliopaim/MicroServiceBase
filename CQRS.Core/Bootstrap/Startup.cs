@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CQRS.Core.Application;
+using CQRS.Core.Application.Kafka;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Environment = CQRS.Core.Bootstrap.Environment;
 
 namespace CQRS.Core.Bootstrap
 {
@@ -38,6 +38,11 @@ namespace CQRS.Core.Bootstrap
                 {
                     services.RegistrarFailFastPipeline(settings.NomeDoAssemblyDoApplication());
                 }
+            }
+
+            if (settings.ConfigurarKafkaBroker)
+            {
+                services.AddSingleton<IKafkaBroker, KafkaBroker>();
             }
 
             return services;

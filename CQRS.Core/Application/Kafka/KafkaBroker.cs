@@ -10,7 +10,7 @@ using CQRS.Core.Bootstrap;
 
 namespace CQRS.Core.Application.Kafka
 {
-    public class KafkaBroker
+    public class KafkaBroker : IKafkaBroker
     {
         private readonly IProducer<string, string> _producer;
         private readonly ConsumerConfig _consumerConfig;
@@ -36,16 +36,16 @@ namespace CQRS.Core.Application.Kafka
                 AutoOffsetReset = AutoOffsetReset.Latest
             };
         }
-        
+
         public async Task<Guid> PublishAsync<TEvent>(
-            KafkaTopics topic, 
+            KafkaTopics topic,
             int eventType,
-            TEvent @event, 
+            TEvent @event,
             CancellationToken cancellationToken) where TEvent : class, IKafkaEvent
         {
             var messageId = Guid.NewGuid();
             var message = new PlatformMessage(eventType, JsonSerializer.Serialize(@event));
-            
+
             await _producer.ProduceAsync(topic.ToString(), new Message<string, string>
             {
                 Key = messageId.ToString(),
@@ -63,9 +63,9 @@ namespace CQRS.Core.Application.Kafka
         public IConsumer<string, string> GetConsumer(IEnumerable<KafkaTopics> topics)
         {
             var consumer = new ConsumerBuilder<string, string>(_consumerConfig).Build();
-            
+
             consumer.Subscribe(topics.Select(p => p.ToString()));
-            
+
             return consumer;
         }
     }

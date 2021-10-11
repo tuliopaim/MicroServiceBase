@@ -1,10 +1,10 @@
-﻿using Confluent.Kafka;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Confluent.Kafka;
 
-namespace CQRS.Core.Application.Kafka
+namespace CQRS.Core.Infrastructure.Kafka
 {
     public interface IKafkaBroker
     {

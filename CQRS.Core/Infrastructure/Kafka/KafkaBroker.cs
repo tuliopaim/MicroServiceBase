@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Confluent.Kafka;
 using CQRS.Core.Bootstrap;
 
-namespace CQRS.Core.Application.Kafka
+namespace CQRS.Core.Infrastructure.Kafka
 {
     public class KafkaBroker : IKafkaBroker
     {

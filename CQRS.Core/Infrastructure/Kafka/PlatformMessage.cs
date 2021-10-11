@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Application.Kafka
+﻿namespace CQRS.Core.Infrastructure.Kafka
 {
     public class PlatformMessage
     {

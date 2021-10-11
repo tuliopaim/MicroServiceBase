@@ -9,7 +9,6 @@ using CQRS.Core.Bootstrap;
 using CQRS.Domain.Repositories;
 using CQRS.Infrastructure.Context;
 using CQRS.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace CQRS.API
 {
@@ -39,7 +38,10 @@ namespace CQRS.API
 
             services.AddScoped<IPessoaRepository, PessoaRepository>();
 
-            services.AddControllers();
+            services
+                .AddControllers();
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CQRS.API", Version = "v1" });

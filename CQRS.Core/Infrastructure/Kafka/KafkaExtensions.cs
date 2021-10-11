@@ -6,16 +6,16 @@ namespace CQRS.Core.Infrastructure.Kafka
 {
     public static class KafkaExtensions
     {
-        public static PlatformMessage GetMessage(
+        public static PlatformMessage<TEventType> GetMessage<TEventType>(
             this IConsumer<string, string> consumer,
             CancellationToken cancellationToken)
         {
             var consumerResult = consumer.Consume(cancellationToken);
 
-            return JsonSerializer.Deserialize<PlatformMessage>(consumerResult.Message.Value);
+            return JsonSerializer.Deserialize<PlatformMessage<TEventType>>(consumerResult.Message.Value);
         }
 
-        public static TEvent GetEvent<TEvent>(this PlatformMessage platformMessage)
+        public static TEvent GetEvent<TEvent, TEventType>(this PlatformMessage<TEventType> platformMessage)
             => JsonSerializer.Deserialize<TEvent>(platformMessage.Data);
     }
 }

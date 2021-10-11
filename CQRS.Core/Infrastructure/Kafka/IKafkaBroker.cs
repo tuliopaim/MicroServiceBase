@@ -10,9 +10,9 @@ namespace CQRS.Core.Infrastructure.Kafka
     {
         IConsumer<string, string> GetConsumer(IEnumerable<KafkaTopics> topics);
         IConsumer<string, string> GetConsumer(KafkaTopics topic);
-        Task<Guid> PublishAsync<TEvent>(
+        Task<Guid> PublishAsync<TEvent, TEventType>(
             KafkaTopics topic, 
-            KafkaEventTypes eventType,
+            TEventType eventType,
             TEvent @event, 
             CancellationToken cancellationToken) 
             where TEvent : class, IKafkaEvent;

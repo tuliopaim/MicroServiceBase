@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 using CQRS.Core.Bootstrap;
+using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace CQRS.Core.Infrastructure.Kafka
 {
@@ -37,14 +38,14 @@ namespace CQRS.Core.Infrastructure.Kafka
             };
         }
 
-        public async Task<Guid> PublishAsync<TEvent>(
+        public async Task<Guid> PublishAsync<TEvent, TEventType>(
             KafkaTopics topic,
-            KafkaEventTypes eventType,
+            TEventType eventType,
             TEvent @event,
             CancellationToken cancellationToken) where TEvent : class, IKafkaEvent
         {
             var messageId = Guid.NewGuid();
-            var message = new PlatformMessage(eventType, JsonSerializer.Serialize(@event));
+            var message = new PlatformMessage<TEventType>(eventType, JsonSerializer.Serialize(@event));
 
             await _producer.ProduceAsync(topic.ToString(), new Message<string, string>
             {

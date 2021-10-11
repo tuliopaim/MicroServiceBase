@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
+using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace CQRS.Application.Events.PessoaCriadaEvent
 {
@@ -16,7 +17,7 @@ namespace CQRS.Application.Events.PessoaCriadaEvent
 
         public async Task Handle(PessoaCriadaEventInput @event, CancellationToken cancellationToken)
         {
-            await _broker.PublishAsync(KafkaTopics.NovaPessoaTopic, KafkaEventTypes.PessoaCriada, @event, cancellationToken);
+            await _broker.PublishAsync(KafkaTopics.NovaPessoaTopic, PessoaEventTypes.PessoaCriada, @event, cancellationToken);
         }
     }
 }

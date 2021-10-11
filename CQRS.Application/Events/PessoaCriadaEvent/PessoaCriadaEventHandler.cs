@@ -16,7 +16,7 @@ namespace CQRS.Application.Events.PessoaCriadaEvent
 
         public async Task Handle(PessoaCriadaEventInput @event, CancellationToken cancellationToken)
         {
-            await _broker.PublishAsync(KafkaTopics.NovaPessoaTopic, (int)KafkaEventTypes.PessoaCriada, @event, cancellationToken);
+            await _broker.PublishAsync(KafkaTopics.NovaPessoaTopic, KafkaEventTypes.PessoaCriada, @event, cancellationToken);
         }
     }
 }

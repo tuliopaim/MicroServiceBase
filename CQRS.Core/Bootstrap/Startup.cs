@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Confluent.Kafka;
+using CQRS.Core.API;
 using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
@@ -18,9 +20,30 @@ namespace CQRS.Core.Bootstrap
         {
             services
                 .AddSingleton(settings)
+                .RegistrarApi(settings)
                 .RegistrarApplication(settings)
                 .RegistrarCrossCutting(settings);
 
+            return services;
+        }
+
+        private static IServiceCollection RegistrarApi(this IServiceCollection services, CoreSettings settings)
+        {
+            services.AddHostedService<RunSubscribersService>();
+
+            var consumersDoAssembly = settings.TipoDoStartup.Assembly
+                .ExportedTypes
+                .Select(t => t.GetTypeInfo())
+                .Where(t => t.IsClass && !t.IsAbstract && t.IsAssignableTo(typeof(IConsumerHandler)))
+                .ToList();
+
+            if (!consumersDoAssembly.Any()) return services;
+
+            foreach (var consumerDoAssembly in consumersDoAssembly)
+            {
+                services.AddSingleton(consumerDoAssembly.AsType());
+            }
+            
             return services;
         }
 

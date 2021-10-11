@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace CQRS.Core.Application
 {
@@ -25,8 +26,9 @@ namespace CQRS.Core.Application
             return !Errors.Any();
         }
 
+        [JsonIgnore]
         public HttpStatusCode? HttpStatusCode { get; private set; }
-
+        
         public IEnumerable<string> Errors => _errors;
     }
 }

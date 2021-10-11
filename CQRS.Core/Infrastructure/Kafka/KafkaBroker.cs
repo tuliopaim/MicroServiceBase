@@ -39,7 +39,7 @@ namespace CQRS.Core.Infrastructure.Kafka
 
         public async Task<Guid> PublishAsync<TEvent>(
             KafkaTopics topic,
-            int eventType,
+            KafkaEventTypes eventType,
             TEvent @event,
             CancellationToken cancellationToken) where TEvent : class, IKafkaEvent
         {
@@ -49,7 +49,7 @@ namespace CQRS.Core.Infrastructure.Kafka
             await _producer.ProduceAsync(topic.ToString(), new Message<string, string>
             {
                 Key = messageId.ToString(),
-                Value = JsonSerializer.Serialize(new PlatformMessage(eventType, JsonSerializer.Serialize(@event)))
+                Value = JsonSerializer.Serialize(message)
             }, cancellationToken);
 
             return messageId;

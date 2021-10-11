@@ -2,14 +2,18 @@
 {
     public class PlatformMessage
     {
-        public PlatformMessage(int eventType, string serializedEvent)
+        public PlatformMessage()
+        {
+        }
+
+        public PlatformMessage(KafkaEventTypes eventType, string serializedEvent)
         {
             EventType = eventType;
             Data = serializedEvent;
         }
 
-        public int EventType { get; }
+        public KafkaEventTypes EventType { get; set; }
 
-        public string Data { get; }
+        public string Data { get; set; }
     }
 }

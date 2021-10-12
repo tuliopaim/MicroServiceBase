@@ -31,33 +31,17 @@ namespace CQRS.BenchmarkConsole
                 });
             }
         }
-
-        [Benchmark(Baseline = true)]
-        public void Handle500MediatorResultsComReflecion()
-        {
-            foreach (var resultado in _listaDeResultados)
-            {
-                _ = resultado.HandleComReflection();
-            }
-        }
-
         [Benchmark]
-        public void Handle500MediatorResultsSemReflecion()
+        public void Handle500MediatorResults()
         {
             foreach (var resultado in _listaDeResultados)
             {
                 _ = resultado.HandleMediatorResult();
             }
         }
-
+        
         [Benchmark]
-        public void Handle1MediatorResultComReflecion()
-        {
-            _ = _resultado.HandleComReflection();
-        }
-
-        [Benchmark]
-        public void Handle1MediatorResultSemReflecion()
+        public void Handle1MediatorResult()
         {
 
             _ = _resultado.HandleMediatorResult();

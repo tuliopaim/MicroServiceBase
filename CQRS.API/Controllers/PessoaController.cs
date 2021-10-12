@@ -24,7 +24,7 @@ namespace CQRS.API.Controllers
 
             var result = await _mediator.Send(command);
 
-            return HandleMediatorResult(result, $"/v1/acordos/{result.Id}");
+            return HandleMediatorResult(result);
         }
     }
 }

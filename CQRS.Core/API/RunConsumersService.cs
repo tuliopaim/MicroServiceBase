@@ -12,12 +12,12 @@ using Microsoft.Extensions.Hosting;
 namespace CQRS.Core.API
 {
     [ExcludeFromCodeCoverage]
-    public class RunSubscribersService : BackgroundService
+    public class RunConsumersService : BackgroundService
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly List<Type> _consumersHandlersTypes;
 
-        public RunSubscribersService(
+        public RunConsumersService(
             IServiceProvider serviceProvider, 
             CoreSettings settings)
         {

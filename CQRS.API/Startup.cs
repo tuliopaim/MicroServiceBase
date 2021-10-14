@@ -38,9 +38,7 @@ namespace CQRS.API
 
             services.AddScoped<IPessoaRepository, PessoaRepository>();
 
-            services
-                .AddControllers();
-
+            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {

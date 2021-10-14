@@ -29,7 +29,7 @@ namespace CQRS.Core.Bootstrap
 
         private static IServiceCollection RegistrarApi(this IServiceCollection services, CoreSettings settings)
         {
-            services.AddHostedService<RunSubscribersService>();
+            services.AddHostedService<RunConsumersService>();
 
             var consumersDoAssembly = settings.TipoDoStartup.Assembly
                 .ExportedTypes
@@ -55,11 +55,11 @@ namespace CQRS.Core.Bootstrap
 
                 services.AddScoped<Application.IMediator, Application.Mediator>();
 
-                services.RegistrarMediatorHandlers(settings.NomeDoAssemblyDoApplication());
+                services.RegistrarMediatorHandlers(settings);
 
                 if (settings.ConfigurarFailFastPipelineBehavior)
                 {
-                    services.RegistrarFailFastPipeline(settings.NomeDoAssemblyDoApplication());
+                    services.RegistrarFailFastPipeline(settings);
                 }
             }
 
@@ -71,9 +71,9 @@ namespace CQRS.Core.Bootstrap
             return services;
         }
 
-        private static void RegistrarMediatorHandlers(this IServiceCollection services, string applicationAssembly)
+        private static void RegistrarMediatorHandlers(this IServiceCollection services, CoreSettings settings)
         {
-            var assembly = AppDomain.CurrentDomain.Load(applicationAssembly);
+            var assembly = settings.TipoDoApplicationMarker.Assembly;
 
             var classesDaApplication = assembly.ExportedTypes
                 .Select(t => t.GetTypeInfo())
@@ -98,23 +98,22 @@ namespace CQRS.Core.Bootstrap
             }
         }
 
-        private static void RegistrarFailFastPipeline(this IServiceCollection services, string applicationAssembly)
+        private static void RegistrarFailFastPipeline(this IServiceCollection services, CoreSettings settings)
         {
-            services.RegistrarValidators(applicationAssembly);
+            services.RegistrarValidators(settings);
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastRequestBehavior<,>));
         }
 
-        private static void RegistrarValidators(this IServiceCollection services, string nomeDoApplicationAssembly)
+        private static void RegistrarValidators(this IServiceCollection services, CoreSettings settings)
         {
-            var assembly = AppDomain.CurrentDomain.Load(nomeDoApplicationAssembly);
+            var assembly = settings.TipoDoApplicationMarker.Assembly;
 
             foreach (var validator in AssemblyScanner.FindValidatorsInAssembly(assembly))
             {
                 services.AddScoped(validator.InterfaceType, validator.ValidatorType);
             }
         }
-
         private static IServiceCollection RegistrarCrossCutting(this IServiceCollection services, CoreSettings settings)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -140,6 +139,5 @@ namespace CQRS.Core.Bootstrap
 
             return services;
         }
-
     }
 }

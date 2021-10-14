@@ -22,11 +22,6 @@ namespace CQRS.Core.Bootstrap
         public Type TipoDoApplicationMarker{ get; set; }
         
         /// <summary>
-        /// Nome do Assembly do TipoDoApplicationMarker
-        /// </summary>
-        public string NomeDoAssemblyDoApplication() => TipoDoApplicationMarker.Assembly.GetName().Name;
-
-        /// <summary>
         /// Tipo da classe do startup do serviço.
         /// </summary>
         public Type TipoDoStartup { get; set; }

@@ -2,14 +2,14 @@
 
 namespace CQRS.Core.Domain
 {
-    public class Entity : IEntity
+    public abstract class Entity : IEntity
     {
-        public Entity()
+        protected Entity()
         {
             Id = Guid.NewGuid();
         }
 
-        public Entity(Guid id)
+        protected Entity(Guid id)
         {
             Id = id;
         }

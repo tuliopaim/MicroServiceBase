@@ -4,7 +4,7 @@ using MediatR;
 
 namespace CQRS.Core.Application
 {
-    public interface ICommandHandler<in TCommandInput, TCommandResult> : IRequestHandler<TCommandInput, TCommandResult>
+    public interface ICommandHandler<in TCommandInput, TCommandResult> : IMediatorHandler<TCommandInput, TCommandResult>
         where TCommandInput : IRequest<TCommandResult>, IMediatorInput<TCommandResult>
         where TCommandResult : IMediatorResult
     {

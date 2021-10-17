@@ -4,8 +4,7 @@ using MediatR;
 
 namespace CQRS.Core.Application
 {
-    public interface IQueryHandler<in TQueryInput, TQueryResult>
-        : IMediatorHandler<TQueryInput, TQueryResult>
+    public interface IQueryHandler<in TQueryInput, TQueryResult> : IMediatorHandler<TQueryInput, TQueryResult>
         where TQueryInput : IRequest<TQueryResult>, IMediatorInput<TQueryResult>
         where TQueryResult : IMediatorResult
     {

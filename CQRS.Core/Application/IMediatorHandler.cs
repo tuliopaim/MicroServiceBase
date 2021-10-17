@@ -8,6 +8,6 @@ namespace CQRS.Core.Application
         where TMediatorInput : IRequest<TMediatorResult>, IMediatorInput<TMediatorResult>
         where TMediatorResult : IMediatorResult
     {
-        new Task<IMediatorResult> Handle(TMediatorInput request, CancellationToken cancellationToken);
+        new Task<TMediatorResult> Handle(TMediatorInput request, CancellationToken cancellationToken);
     }
 }

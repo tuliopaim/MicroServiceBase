@@ -114,7 +114,8 @@ namespace CQRS.Core.Bootstrap
                 services.AddScoped(validator.InterfaceType, validator.ValidatorType);
             }
         }
-        private static IServiceCollection RegistrarCrossCutting(this IServiceCollection services, CoreSettings settings)
+       
+       private static IServiceCollection RegistrarCrossCutting(this IServiceCollection services, CoreSettings settings)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

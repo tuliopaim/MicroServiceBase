@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using CQRS.API.Requests;
 using CQRS.Application.Commands.NovaPessoaCommand;
+using CQRS.Application.Queries;
 using CQRS.Core.API;
 using CQRS.Core.Application;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +19,20 @@ namespace CQRS.API.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Obter(ObterPessoasQueryInput input, CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(input, cancellationToken);
+
+            return HandleMediatorResult(result);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Criar([FromBody] NovaPessoaRequest request)
+        public async Task<IActionResult> Criar([FromBody] NovaPessoaRequest request, CancellationToken cancellationToken)
         {
             var command = new NovaPessoaCommandInput(request.Nome, request.Idade);
 
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(command, cancellationToken);
 
             return HandleMediatorResult(result);
         }

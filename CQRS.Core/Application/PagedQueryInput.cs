@@ -3,7 +3,7 @@
 namespace CQRS.Core.Application
 {
     public class PagedQueryInput<TQueryResult> 
-        : MediatorInput<TQueryResult> where TQueryResult : QueryResult
+        : QueryInput<TQueryResult> where TQueryResult : QueryResult
     {
         [FromQuery]
         public int PageSize { get; set; }

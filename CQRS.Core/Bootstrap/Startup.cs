@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CQRS.Core.API;
+using CQRS.Core.API.Hateoas;
 using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
@@ -32,7 +33,12 @@ namespace CQRS.Core.Bootstrap
             {
                 RegisterConsumers(services, settings);
             }
-            
+
+            if (settings.ConfigurarHateoasHelper)
+            {
+                services.AddScoped<IHateoasHelper, HateoasHelper>();
+            }
+
             return services;
         }
 

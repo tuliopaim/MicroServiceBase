@@ -53,5 +53,10 @@ namespace CQRS.Core.Bootstrap
         /// Caso aconteça algum erro não tratado a task é disparada novamente
         /// </summary>
         public bool ConfigurarConsumerHandlers { get; set; } = true;
+        
+        /// <summary>
+        /// Injetar IHateoasHelper
+        /// </summary>
+        public bool ConfigurarHateoasHelper { get; set; } = true;
     }
 }

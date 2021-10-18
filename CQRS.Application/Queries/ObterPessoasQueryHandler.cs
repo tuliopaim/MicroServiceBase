@@ -6,7 +6,7 @@ using CQRS.Domain.Repositories;
 
 namespace CQRS.Application.Queries
 {
-    public class ObterPessoasQueryHandler : IQueryHandler<ObterPessoasQueryInput, ObterPessoasQueryResult>
+    public class ObterPessoasQueryHandler : IQueryHandler<ObterPessoasQueryInput, PagedQueryResult<ObterPessoasQueryResultItem>>
     {
         private readonly IPessoaRepository _pessoaRepository;
 
@@ -15,7 +15,7 @@ namespace CQRS.Application.Queries
             _pessoaRepository = pessoaRepository;
         }
 
-        public async Task<ObterPessoasQueryResult> Handle(ObterPessoasQueryInput query, CancellationToken cancellationToken)
+        public async Task<PagedQueryResult<ObterPessoasQueryResultItem>> Handle(ObterPessoasQueryInput query, CancellationToken cancellationToken)
         {
             var pessoasQuery = _pessoaRepository.GetAsNoTracking();
 
@@ -31,19 +31,7 @@ namespace CQRS.Application.Queries
                     Idade = p.Idade,
                 });
 
-            var paginatedResponse = await 
-                resultQuery.PaginateAsync(query.PageNumber, query.PageSize, cancellationToken);
-
-            return new ObterPessoasQueryResult
-            {
-                Result = paginatedResponse.Items,
-                Pagination = new QueryPaginationResult
-                {
-                    Number = paginatedResponse.Number,
-                    Size = paginatedResponse.Size,
-                    TotalElements = paginatedResponse.TotalElements,
-                }
-            };
+            return await resultQuery.PaginateAsync(query.PageNumber, query.PageSize, cancellationToken);
         }
     }
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Confluent.Kafka;
 using CQRS.Core.API;
+using CQRS.Core.API.Hateoas;
 using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
@@ -29,6 +29,21 @@ namespace CQRS.Core.Bootstrap
 
         private static IServiceCollection RegistrarApi(this IServiceCollection services, CoreSettings settings)
         {
+            if (settings.ConfigurarConsumerHandlers)
+            {
+                RegisterConsumers(services, settings);
+            }
+
+            if (settings.ConfigurarHateoasHelper)
+            {
+                services.AddScoped<IHateoasHelper, HateoasHelper>();
+            }
+
+            return services;
+        }
+
+        private static void RegisterConsumers(IServiceCollection services, CoreSettings settings)
+        {
             services.AddHostedService<RunConsumersService>();
 
             var consumersDoAssembly = settings.TipoDoStartup.Assembly
@@ -37,14 +52,10 @@ namespace CQRS.Core.Bootstrap
                 .Where(t => t.IsClass && !t.IsAbstract && t.IsAssignableTo(typeof(IConsumerHandler)))
                 .ToList();
 
-            if (!consumersDoAssembly.Any()) return services;
-
             foreach (var consumerDoAssembly in consumersDoAssembly)
             {
                 services.AddSingleton(consumerDoAssembly.AsType());
             }
-            
-            return services;
         }
 
         private static IServiceCollection RegistrarApplication(this IServiceCollection services, CoreSettings settings)

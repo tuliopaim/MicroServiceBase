@@ -46,5 +46,17 @@ namespace CQRS.Core.Bootstrap
         /// Configura e instancia o Broker do Kafka 
         /// </summary>
         public bool ConfigurarKafkaBroker { get; set; } = true;
+
+        /// <summary>
+        /// Injeta todas as classes que implementam IConsumerHandler como Singleton
+        /// e dispara em Tasks separadas o Handle() de cada uma.
+        /// Caso aconteça algum erro não tratado a task é disparada novamente
+        /// </summary>
+        public bool ConfigurarConsumerHandlers { get; set; } = true;
+        
+        /// <summary>
+        /// Injetar IHateoasHelper
+        /// </summary>
+        public bool ConfigurarHateoasHelper { get; set; } = true;
     }
 }

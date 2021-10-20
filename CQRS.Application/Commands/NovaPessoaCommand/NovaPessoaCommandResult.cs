@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Commands;
 
 namespace CQRS.Application.Commands.NovaPessoaCommand
 {

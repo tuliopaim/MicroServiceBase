@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Text.Json.Serialization;
 
-namespace CQRS.Core.Application
+namespace CQRS.Core.Application.Mediator
 {
     public class MediatorResult : IMediatorResult
     {
@@ -28,7 +28,7 @@ namespace CQRS.Core.Application
 
         [JsonIgnore]
         public HttpStatusCode? HttpStatusCode { get; private set; }
-        
+
         public IEnumerable<string> Errors => _errors;
     }
 }

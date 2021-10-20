@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using CQRS.Application.Events.PessoaCriadaEvent;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Commands;
 using CQRS.Domain.Entities;
 using CQRS.Domain.Repositories;
 

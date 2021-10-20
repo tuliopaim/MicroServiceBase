@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Application;
+﻿using CQRS.Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CQRS.Core.API

@@ -1,7 +1,7 @@
-﻿namespace CQRS.Core.Application
+﻿namespace CQRS.Core.Application.Queries
 {
     public interface IPagedQueryResultItem
     {
-        
+
     }
 }

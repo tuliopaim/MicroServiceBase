@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CQRS.Core.Application.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace CQRS.Core.Application

@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Application;
+﻿using CQRS.Core.Application.Events;
 using FluentValidation;
 
 namespace CQRS.Application.Events.PessoaCriadaEvent

@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Application;
+﻿using CQRS.Core.Application.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CQRS.Application.Queries

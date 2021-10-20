@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Queries;
 
 namespace CQRS.Core.API.Hateoas
 {

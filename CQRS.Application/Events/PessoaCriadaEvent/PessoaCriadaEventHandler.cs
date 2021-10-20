@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Events;
 using CQRS.Core.Infrastructure.Kafka;
 using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 

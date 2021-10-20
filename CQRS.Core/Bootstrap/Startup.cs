@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using CQRS.Core.API;
 using CQRS.Core.API.Hateoas;
-using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
 using MediatR;
@@ -64,7 +63,7 @@ namespace CQRS.Core.Bootstrap
             {
                 services.AddMediatR(settings.TipoDoStartup);
 
-                services.AddScoped<Application.IMediator, Application.Mediator>();
+                services.AddScoped<Application.Mediator.Mediator.IMediator, Application.Mediator.Mediator>();
 
                 services.RegistrarMediatorHandlers(settings);
 

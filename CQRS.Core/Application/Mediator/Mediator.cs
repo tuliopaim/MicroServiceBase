@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using IMediator = CQRS.Core.Application.IMediator;
+using IMediator = CQRS.Core.Application.Mediator.Mediator.IMediator;
 
-namespace CQRS.Core.Application
+namespace CQRS.Core.Application.Mediator
 {
     public class Mediator : MediatR.Mediator, IMediator
     {

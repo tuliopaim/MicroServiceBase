@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CQRS.Core.Application
+namespace CQRS.Core.Application.Queries
 {
-    public class PagedQueryInput<TQueryResult> 
+    public class PagedQueryInput<TQueryResult>
         : QueryInput<TQueryResult> where TQueryResult : QueryResult
     {
         [FromQuery]

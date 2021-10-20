@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace CQRS.Core.Application
+namespace CQRS.Core.Application.Queries
 {
     public interface IQueryPaginationResult
     {
@@ -14,19 +14,19 @@ namespace CQRS.Core.Application
 
         [JsonIgnore]
         public int FirstPage => 0;
-        
+
         [JsonIgnore]
         public int LastPage => TotalPages == 0 ? 0 : TotalPages - 1;
-        
+
         [JsonIgnore]
         public bool HasPrevPage => Number >= 1;
-        
+
         [JsonIgnore]
         public bool HasNextPage => Number < LastPage;
-        
+
         [JsonIgnore]
         public int PrevPage => !HasPrevPage ? FirstPage : Number - 1;
-        
+
         [JsonIgnore]
         public int NextPage => !HasNextPage ? LastPage : Number + 1;
     }

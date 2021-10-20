@@ -9,13 +9,13 @@ using Newtonsoft.Json;
 
 namespace CQRS.Core.Application.Mediator
 {
-    public class FailFastRequestBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class FailFastPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IMediatorInput<TResponse>
         where TResponse : IMediatorResult
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public FailFastRequestBehavior(IEnumerable<IValidator<TRequest>> validators)
+        public FailFastPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
             _validators = validators;
         }
@@ -38,14 +38,14 @@ namespace CQRS.Core.Application.Mediator
 
         private static Task<TResponse> Erros(IEnumerable<ValidationFailure> falhas)
         {
-            var response = new MediatorResult();
+            var result = new MediatorResult();
 
             foreach (var falha in falhas)
             {
-                response.AddError(falha.ErrorMessage);
+                result.AddError(falha.ErrorMessage);
             }
 
-            var responseSerializado = JsonConvert.SerializeObject(response);
+            var responseSerializado = JsonConvert.SerializeObject(result);
             var responseTipado = JsonConvert.DeserializeObject<TResponse>(responseSerializado);
 
             return Task.FromResult(responseTipado);

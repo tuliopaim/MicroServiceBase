@@ -30,7 +30,7 @@ namespace CQRS.API
             {
                 HostEnvironment = _environment,
                 Configuration = Configuration,
-                TipoDoApplicationMarker = typeof(IApplicationAssemblyMarker),
+                TipoDaCamadaDeApplication = typeof(IApplicationAssemblyMarker),
                 TipoDoStartup = typeof(Startup)
             });
 

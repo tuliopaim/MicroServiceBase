@@ -25,7 +25,7 @@ namespace Auditoria.API
             {
                 Configuration = _configuration,
                 HostEnvironment = _hostEnvironment,
-                TipoDaApplicationLayer = typeof(Startup),
+                TipoDaCamadaDeApplication = typeof(Startup),
                 TipoDoStartup = typeof(Startup),
             });
 

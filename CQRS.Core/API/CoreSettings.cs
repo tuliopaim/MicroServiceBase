@@ -19,7 +19,7 @@ namespace CQRS.Core.API
         /// <summary>
         /// Nome do assembly do projeto de aplicação, utilizado para injetar as dependências
         /// </summary>
-        public Type TipoDoApplicationMarker { get; set; }
+        public Type TipoDaCamadaDeApplication { get; set; }
 
         /// <summary>
         /// Tipo da classe do startup do serviço.

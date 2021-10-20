@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 using CQRS.Core.API;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Mediator;
 
 namespace CQRS.BenchmarkConsole
 {

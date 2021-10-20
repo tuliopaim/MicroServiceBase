@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

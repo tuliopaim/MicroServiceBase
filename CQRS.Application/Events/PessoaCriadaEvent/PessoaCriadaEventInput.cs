@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Core.Application;
+using CQRS.Core.Application.Mediator;
 using CQRS.Core.Infrastructure.Kafka;
 
 namespace CQRS.Application.Events.PessoaCriadaEvent

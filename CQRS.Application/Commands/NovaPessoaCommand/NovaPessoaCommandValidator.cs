@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Application;
+﻿using CQRS.Core.Application.Commands;
 using FluentValidation;
 
 namespace CQRS.Application.Commands.NovaPessoaCommand

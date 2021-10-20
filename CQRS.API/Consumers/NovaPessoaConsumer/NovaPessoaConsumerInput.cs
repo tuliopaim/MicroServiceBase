@@ -1,5 +1,4 @@
 ﻿using System;
-using CQRS.Core.Application;
 using CQRS.Core.Infrastructure.Kafka;
 
 namespace CQRS.API.Consumers.NovaPessoaConsumer

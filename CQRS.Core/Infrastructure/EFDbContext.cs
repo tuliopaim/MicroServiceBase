@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Bootstrap;
+using CQRS.Core.API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace CQRS.Core.Infrastructure  
+namespace CQRS.Core.Infrastructure
 {
     public class EfDbContext : DbContext, IUnitOfWork
     {

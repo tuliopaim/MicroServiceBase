@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Application;
+﻿using CQRS.Core.Application.Queries;
 
 namespace CQRS.Application.Queries
 {

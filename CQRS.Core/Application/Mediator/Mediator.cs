@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using IMediator = CQRS.Core.Application.Mediator.Mediator.IMediator;
 
 namespace CQRS.Core.Application.Mediator
 {

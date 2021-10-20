@@ -5,6 +5,7 @@ using CQRS.Application.Commands.NovaPessoaCommand;
 using CQRS.Application.Queries;
 using CQRS.Core.API;
 using CQRS.Core.API.Hateoas;
+using CQRS.Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CQRS.API.Controllers

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using CQRS.Core.Bootstrap;
 using CQRS.Domain.Repositories;
 using CQRS.Infrastructure.Context;
 using CQRS.Infrastructure.Repositories;

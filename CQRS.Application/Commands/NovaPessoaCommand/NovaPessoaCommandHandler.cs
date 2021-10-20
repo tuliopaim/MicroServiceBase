@@ -1,8 +1,10 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using CQRS.Application.Events.PessoaCriadaEvent;
 using CQRS.Core.Application.Commands;
+using CQRS.Core.Application.Mediator;
 using CQRS.Domain.Entities;
 using CQRS.Domain.Repositories;
 

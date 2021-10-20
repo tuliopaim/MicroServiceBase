@@ -25,6 +25,11 @@ namespace CQRS.Core.API
         /// Tipo da classe do startup do serviço.
         /// </summary>
         public Type TipoDoStartup { get; set; }
+                
+        /// <summary>
+        /// Configurar o Exception Pipeline Behavior, para tratar exceptions que ocorram no Handler
+        /// </summary>
+        public bool ConfigurarExceptionPipelineBehavior { get; set; } = true;
 
         /// <summary>
         /// Configurar o Fail Fast Pipeline Behavior, para validar commands antes de chamar o Handler
@@ -58,5 +63,6 @@ namespace CQRS.Core.API
         /// Injetar IHateoasHelper
         /// </summary>
         public bool ConfigurarHateoasHelper { get; set; } = true;
+
     }
 }

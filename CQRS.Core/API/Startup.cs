@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CQRS.Core.API.Hateoas;
+using CQRS.Core.Application.Mediator;
 using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
 using MediatR;
@@ -62,9 +63,14 @@ namespace CQRS.Core.API
             {
                 services.AddMediatR(settings.TipoDoStartup);
 
-                services.AddScoped<Application.Mediator.Mediator.IMediator, Application.Mediator.Mediator>();
+                services.AddScoped<Application.Mediator.IMediator, Application.Mediator.Mediator>();
 
                 services.RegistrarMediatorHandlers(settings);
+                
+                if (settings.ConfigurarExceptionPipelineBehavior)
+                {
+                    services.RegistrarExceptionPipelineBehavior();
+                }
 
                 if (settings.ConfigurarFailFastPipelineBehavior)
                 {
@@ -106,12 +112,17 @@ namespace CQRS.Core.API
                 }
             }
         }
+        
+        private static void RegistrarExceptionPipelineBehavior(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionPipelineBehavior<,>));
+        }
 
         private static void RegistrarFailFastPipeline(this IServiceCollection services, CoreSettings settings)
         {
             services.RegistrarValidators(settings);
 
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastRequestBehavior<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastPipelineBehavior<,>));
         }
 
         private static void RegistrarValidators(this IServiceCollection services, CoreSettings settings)

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31815.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.API", "CQRS.API\CQRS.API.csproj", "{7347035D-BAFD-4468-BD63-5B3F8BD9BAE6}"
 EndProject
@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API - CQRS", "API - CQRS", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.BenchmarkConsole", "CQRS.BenchmarkConsole\CQRS.BenchmarkConsole.csproj", "{63A6DDD4-A82D-43CC-B4FF-0D941BD46C77}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API - Consumer", "API - Consumer", "{661F5709-63CA-4661-A468-21414BC11221}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API - Auditoria", "API - Auditoria", "{661F5709-63CA-4661-A468-21414BC11221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer.API", "Consumer.API\Consumer.API.csproj", "{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auditoria.API", "Consumer.API\Auditoria.API.csproj", "{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

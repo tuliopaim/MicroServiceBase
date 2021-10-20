@@ -15,15 +15,8 @@ namespace CQRS.Core.Infrastructure
         }
 
         public IUnitOfWork UnitOfWork => _context;
-
-        public IQueryable<TEntity> Get()
-        {
-            var query = _context
-                .Set<TEntity>()
-                .AsQueryable();
-
-            return query;
-        }
+                
+        public IQueryable<TEntity> Get() => _context.Set<TEntity>().AsQueryable();
 
         public IQueryable<TEntity> GetAsNoTracking() => Get().AsNoTrackingWithIdentityResolution();
 

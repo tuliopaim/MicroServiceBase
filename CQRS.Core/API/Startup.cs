@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CQRS.Core.API;
 using CQRS.Core.API.Hateoas;
 using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
@@ -11,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CQRS.Core.Bootstrap
+namespace CQRS.Core.API
 {
     public static class Startup
     {
@@ -124,8 +123,8 @@ namespace CQRS.Core.Bootstrap
                 services.AddScoped(validator.InterfaceType, validator.ValidatorType);
             }
         }
-       
-       private static IServiceCollection RegistrarCrossCutting(this IServiceCollection services, CoreSettings settings)
+
+        private static IServiceCollection RegistrarCrossCutting(this IServiceCollection services, CoreSettings settings)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

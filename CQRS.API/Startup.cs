@@ -9,6 +9,7 @@ using CQRS.Core.Bootstrap;
 using CQRS.Domain.Repositories;
 using CQRS.Infrastructure.Context;
 using CQRS.Infrastructure.Repositories;
+using CQRS.Core.API;
 
 namespace CQRS.API
 {

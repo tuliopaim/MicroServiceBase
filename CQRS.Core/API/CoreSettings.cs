@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace CQRS.Core.Bootstrap
+namespace CQRS.Core.API
 {
     public class CoreSettings
     {
@@ -10,7 +10,7 @@ namespace CQRS.Core.Bootstrap
         /// Interface IConfiguration
         /// </summary>
         public IConfiguration Configuration { get; set; }
-        
+
         /// <summary>
         /// Configurar ou não o Mediator
         /// </summary>
@@ -19,8 +19,8 @@ namespace CQRS.Core.Bootstrap
         /// <summary>
         /// Nome do assembly do projeto de aplicação, utilizado para injetar as dependências
         /// </summary>
-        public Type TipoDoApplicationMarker{ get; set; }
-        
+        public Type TipoDoApplicationMarker { get; set; }
+
         /// <summary>
         /// Tipo da classe do startup do serviço.
         /// </summary>
@@ -30,12 +30,12 @@ namespace CQRS.Core.Bootstrap
         /// Configurar o Fail Fast Pipeline Behavior, para validar commands antes de chamar o Handler
         /// </summary>
         public bool ConfigurarFailFastPipelineBehavior { get; set; } = true;
-        
+
         /// <summary>
         /// Interface IHostEnvironment, utilizada para a correta configuração da interface IEnvironment
         /// </summary>
         public IHostEnvironment HostEnvironment { get; set; }
-        
+
         /// <summary>
         /// Configura a injeção da interface IEnvironment
         /// Depende da configuração correta da propriedade IHostEnvironment e IConfiguration
@@ -53,7 +53,7 @@ namespace CQRS.Core.Bootstrap
         /// Caso aconteça algum erro não tratado a task é disparada novamente
         /// </summary>
         public bool ConfigurarConsumerHandlers { get; set; } = true;
-        
+
         /// <summary>
         /// Injetar IHateoasHelper
         /// </summary>

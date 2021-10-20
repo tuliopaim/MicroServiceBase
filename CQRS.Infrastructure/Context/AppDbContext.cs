@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using CQRS.Core.Bootstrap;
+using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
 using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;

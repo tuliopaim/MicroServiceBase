@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CQRS.Core.Bootstrap
+namespace CQRS.Core.API
 {
     public class Environment : IEnvironment
     {
         private readonly Dictionary<string, string> _parameters;
-        
+
         private const string DevelopmentEnvironmentName = "Development";
 
         public Environment(string name, Dictionary<string, string> parameters)

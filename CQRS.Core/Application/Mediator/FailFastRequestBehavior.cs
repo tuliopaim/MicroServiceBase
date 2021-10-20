@@ -7,7 +7,7 @@ using FluentValidation.Results;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace CQRS.Core.Application.Mediator.Mediator
+namespace CQRS.Core.Application.Mediator
 {
     public class FailFastRequestBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IMediatorInput<TResponse>

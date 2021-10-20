@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Application.Mediator.Mediator
+﻿namespace CQRS.Core.Application.Mediator
 {
     public interface IMediator : MediatR.IMediator
     {

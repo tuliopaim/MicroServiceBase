@@ -1,3 +1,4 @@
+using Auditoria.API.Infrasctructure.Context;
 using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,8 @@ namespace Auditoria.API
                 TipoDaCamadaDeApplication = typeof(Startup),
                 TipoDoStartup = typeof(Startup),
             });
+
+            services.AddDbContext<AuditoriaDbContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

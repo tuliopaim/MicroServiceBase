@@ -25,7 +25,7 @@ namespace CQRS.Core.Infrastructure
             return query;
         }
 
-        public IQueryable<TEntity> GetAsNoTracking() => Get().AsNoTracking();
+        public IQueryable<TEntity> GetAsNoTracking() => Get().AsNoTrackingWithIdentityResolution();
 
         public void Add(TEntity entity) => _context.Add(entity);
 

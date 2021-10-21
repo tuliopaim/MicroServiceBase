@@ -70,7 +70,7 @@ namespace CQRS.Core.Infrastructure
         {
             var valorAntigo = propriedadesAntigas[property.Metadata];
 
-            return valorAntigo.ToString() == property.CurrentValue.ToString();
+            return valorAntigo?.ToString() == property.CurrentValue?.ToString();
         }
 
         private static string ObterValorAntigo(NovaAuditoriaDto auditoria, PropertyValues propriedadesAntigas, PropertyEntry property)

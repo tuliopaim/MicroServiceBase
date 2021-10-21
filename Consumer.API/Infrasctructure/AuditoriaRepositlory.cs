@@ -1,5 +1,4 @@
 ﻿using AuditoriaAPI.Domain;
-using AuditoriaAPI.Infrasctructure.Context;
 using CQRS.Core.Infrastructure;
 
 namespace AuditoriaAPI.Infrasctructure

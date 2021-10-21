@@ -1,5 +1,4 @@
 using AuditoriaAPI.Infrasctructure;
-using AuditoriaAPI.Infrasctructure.Context;
 using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

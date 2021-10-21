@@ -1,11 +1,11 @@
-﻿using CQRS.Core.API;
+﻿using System.Reflection;
+using AuditoriaAPI.Domain;
+using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
 using CQRS.Core.Infrastructure.Kafka;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using AuditoriaAPI.Domain;
 
-namespace AuditoriaAPI.Infrasctructure.Context
+namespace AuditoriaAPI.Infrasctructure
 {
     public class AuditoriaDbContext : EfDbContext
     {

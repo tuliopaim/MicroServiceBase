@@ -1,5 +1,4 @@
-﻿using CQRS.Core.Application.Mediator;
-using CQRS.Core.Infrastructure.Kafka;
+﻿using CQRS.Core.Infrastructure.Kafka;
 using System.Collections.Generic;
 
 namespace CQRS.Core.Infrastructure.Auditoria

@@ -1,3 +1,4 @@
+using AuditoriaAPI.Infrasctructure;
 using AuditoriaAPI.Infrasctructure.Context;
 using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace AuditoriaAPI
             });
 
             services.AddDbContext<AuditoriaDbContext>();
+
+            services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

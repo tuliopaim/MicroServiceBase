@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.BenchmarkConsole", "CQ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API - Auditoria", "API - Auditoria", "{661F5709-63CA-4661-A468-21414BC11221}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auditoria.API", "Consumer.API\Auditoria.API.csproj", "{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuditoriaAPI", "Consumer.API\AuditoriaAPI.csproj", "{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

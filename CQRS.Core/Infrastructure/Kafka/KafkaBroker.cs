@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 using CQRS.Core.API;
-using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace CQRS.Core.Infrastructure.Kafka
 {

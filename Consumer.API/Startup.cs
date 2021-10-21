@@ -1,4 +1,4 @@
-using Auditoria.API.Infrasctructure.Context;
+using AuditoriaAPI.Infrasctructure.Context;
 using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace Auditoria.API
+namespace AuditoriaAPI
 {
     public class Startup
     {

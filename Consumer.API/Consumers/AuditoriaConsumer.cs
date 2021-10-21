@@ -5,7 +5,7 @@ using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Auditoria.API.Consumers
+namespace AuditoriaAPI.Consumers
 {
     public class AuditoriaConsumer : IConsumerHandler
     {
@@ -23,7 +23,7 @@ namespace Auditoria.API.Consumers
             {
                 var message = _consumer.GetMessage<PessoaEventTypes>(cancellationToken);
 
-                
+
 
             }
         }

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Auditoria.API
+namespace AuditoriaAPI
 {
     public class Program
     {

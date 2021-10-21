@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Infrastructure
+﻿namespace CQRS.Core.Infrastructure.Auditoria
 {
     public class NovaAuditoriaPropriedadeDto
     {

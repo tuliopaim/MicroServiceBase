@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace CQRS.Core.Infrastructure
+namespace CQRS.Core.Infrastructure.Auditoria
 {
 
     public class NovaAuditoriaDto
-    {   
+    {
         public EntityState TipoAuditoria { get; set; }
 
         public Guid? IdEntidade { get; set; }
@@ -15,7 +15,7 @@ namespace CQRS.Core.Infrastructure
 
         public string NomeTabela { get; set; }
 
-        public ICollection<NovaAuditoriaPropriedadeDto> Propriedades { get; set; } 
+        public ICollection<NovaAuditoriaPropriedadeDto> Propriedades { get; set; }
             = new List<NovaAuditoriaPropriedadeDto>();
 
         public bool EhAdicionado => TipoAuditoria == EntityState.Added;

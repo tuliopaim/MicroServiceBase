@@ -1,14 +1,15 @@
-﻿using AuditoriaAPI.Domain;
-using CQRS.Core.API;
+﻿using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
+using CQRS.Core.Infrastructure.Kafka;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using AuditoriaAPI.Domain;
 
 namespace AuditoriaAPI.Infrasctructure.Context
 {
     public class AuditoriaDbContext : EfDbContext
     {
-        public AuditoriaDbContext(IEnvironment environment) : base(environment)
+        public AuditoriaDbContext(IEnvironment environment, IKafkaBroker kafkaBroker) : base(environment, kafkaBroker)
         {
         }
 

@@ -1,9 +1,10 @@
 ﻿using CQRS.Core.Application.Mediator;
+using CQRS.Core.Infrastructure.Kafka;
 using System.Collections.Generic;
 
-namespace CQRS.Core.Infrastructure
+namespace CQRS.Core.Infrastructure.Auditoria
 {
-    public class AuditoriaEvent : EventInput
+    public class AuditoriaEvent : IKafkaEvent
     {
         public AuditoriaEvent(IEnumerable<NovaAuditoriaDto> auditorias)
         {

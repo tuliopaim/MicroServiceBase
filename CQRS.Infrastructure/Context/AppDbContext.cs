@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
+using CQRS.Core.Infrastructure.Kafka;
 using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +9,7 @@ namespace CQRS.Infrastructure.Context
 {
     public class AppDbContext : EfDbContext
     {
-        public AppDbContext(IEnvironment enviroment) : base(enviroment)
+        public AppDbContext(IEnvironment enviroment, IKafkaBroker kafkaBroker) : base(enviroment, kafkaBroker)
         {
         }
 

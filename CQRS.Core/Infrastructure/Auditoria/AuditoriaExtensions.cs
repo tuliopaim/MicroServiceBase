@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Linq;
+using CQRS.Core.Domain;
 
-namespace CQRS.Core.Infrastructure
+namespace CQRS.Core.Infrastructure.Auditoria
 {
     public static class AuditoriaExtensions
     {
@@ -14,7 +15,8 @@ namespace CQRS.Core.Infrastructure
                 .Where(e => e.State
                     is EntityState.Added
                     or EntityState.Modified
-                    or EntityState.Deleted)
+                    or EntityState.Deleted &&
+                    e.Entity is not (IAuditoria or IAuditoriaPropriedade))
                 .Select(MapearParaAuditoria)
                 .ToList();
 
@@ -65,7 +67,7 @@ namespace CQRS.Core.Infrastructure
                 });
             }
         }
-        
+
         private static bool ValorDaPropriedadeNaoMudou(PropertyEntry property, PropertyValues propriedadesAntigas)
         {
             var valorAntigo = propriedadesAntigas[property.Metadata];
@@ -79,7 +81,7 @@ namespace CQRS.Core.Infrastructure
                 ? propriedadesAntigas[property.Metadata]?.ToString()
                 : null;
         }
-        
+
         private static string ObterValorNovo(NovaAuditoriaDto auditoria, PropertyEntry property)
         {
             return !auditoria.EhDeletado
@@ -93,7 +95,7 @@ namespace CQRS.Core.Infrastructure
                 entityEntry.Metadata.GetTableName(), entityEntry.Metadata.GetSchema());
 
             var nomePropriedade = property.Metadata.GetColumnName(storeObject);
-         
+
             return nomePropriedade;
         }
 

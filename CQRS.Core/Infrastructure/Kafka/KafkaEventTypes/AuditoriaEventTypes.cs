@@ -2,8 +2,6 @@
 {
     public enum AuditoriaEventTypes
     {
-        EntidadeAdicionada = 0,
-        EntidadeEditada = 1,
-        EntidadeRemovida = 2,
+        NovaAuditoria = 0,
     }
 }

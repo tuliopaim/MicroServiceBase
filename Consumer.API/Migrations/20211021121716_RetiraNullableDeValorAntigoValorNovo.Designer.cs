@@ -3,15 +3,17 @@ using System;
 using AuditoriaAPI.Infrasctructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AuditoriaAPI.Migrations
 {
     [DbContext(typeof(AuditoriaDbContext))]
-    partial class AuditoriaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211021121716_RetiraNullableDeValorAntigoValorNovo")]
+    partial class RetiraNullableDeValorAntigoValorNovo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

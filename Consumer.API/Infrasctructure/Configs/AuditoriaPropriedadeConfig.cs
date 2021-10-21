@@ -2,6 +2,7 @@
 using CQRS.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using CQRS.Core.Domain;
 
 namespace AuditoriaAPI.Infrasctructure.Configs
 {
@@ -18,14 +19,12 @@ namespace AuditoriaAPI.Infrasctructure.Configs
             builder.Property(x => x.NomeDaColuna)
                 .HasColumnType("varchar(200)")
                 .IsRequired();
-                        
+
             builder.Property(x => x.ValorAntigo)
-                .HasColumnType("text")
-                .IsRequired();
-            
+                .HasColumnType("text");
+
             builder.Property(x => x.ValorNovo)
-                .HasColumnType("text")
-                .IsRequired();
+                .HasColumnType("text");
         }
         }
 }

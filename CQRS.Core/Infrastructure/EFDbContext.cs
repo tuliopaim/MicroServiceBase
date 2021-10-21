@@ -10,14 +10,14 @@ namespace CQRS.Core.Infrastructure
     public class EfDbContext : DbContext, IUnitOfWork
     {
         private readonly IEnvironment _environment;
-        
+
         private const string ConnectionStringKey = "ConnectionStrings:DefaultConnection";
 
         public EfDbContext(IEnvironment environment)
         {
             _environment = environment;
         }
-        
+
         public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
         {
             foreach (var entry in ChangeTracker.Entries())
@@ -26,23 +26,37 @@ namespace CQRS.Core.Infrastructure
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                    {
-                        FillAddedAuditableProperties(entry);
-                        
-                        break;
-                    }
+                        {
+                            FillAddedAuditableProperties(entry);
+
+                            break;
+                        }
                     case EntityState.Modified:
-                    {
-                        FillModifiedAuditableProperties(entry);
-                        
-                        break;
-                    }
+                        {
+                            FillModifiedAuditableProperties(entry);
+
+                            break;
+                        }
                 }
             }
 
             return await SaveChangesAsync(cancellationToken);
         }
-        
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var auditoriaEvent = ChangeTracker.ObterEventoDeAuditoria();
+
+            var linhasAfetadas = await base.SaveChangesAsync(cancellationToken);
+            if (linhasAfetadas > 0)
+            {
+                //disparar evento
+
+            }
+
+            return linhasAfetadas;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (_environment == null) return;
@@ -51,7 +65,7 @@ namespace CQRS.Core.Infrastructure
 
             optionsBuilder.UseNpgsql(connectionString, opt => opt.EnableRetryOnFailure());
         }
-        
+
         private static void FillAddedAuditableProperties(EntityEntry entry)
         {
             if (entry.Entity.GetType().GetProperty("DataCriacao") != null)

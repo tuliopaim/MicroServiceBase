@@ -7,8 +7,12 @@ namespace CQRS.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "CQRS");
+
             migrationBuilder.CreateTable(
                 name: "Pessoa",
+                schema: "CQRS",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -26,7 +30,8 @@ namespace CQRS.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pessoa");
+                name: "Pessoa",
+                schema: "CQRS");
         }
     }
 }

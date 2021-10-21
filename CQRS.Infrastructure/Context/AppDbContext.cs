@@ -18,6 +18,8 @@ namespace CQRS.Infrastructure.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.HasDefaultSchema("CQRS");
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }

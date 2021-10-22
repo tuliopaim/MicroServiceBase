@@ -17,14 +17,14 @@ namespace CQRS.Core.API
         public bool ConfigurarMediator { get; set; } = true;
 
         /// <summary>
-        /// Nome do assembly do projeto de aplicação, utilizado para injetar as dependências
-        /// </summary>
-        public Type TipoDaCamadaDeApplication { get; set; }
-
-        /// <summary>
         /// Tipo da classe do startup do serviço.
         /// </summary>
         public Type TipoDoStartup { get; set; }
+
+        /// <summary>
+        /// Nome do assembly do projeto de aplicação, utilizado para injetar as dependências
+        /// </summary>
+        public Type TipoDaCamadaDeApplication { get; set; }
                 
         /// <summary>
         /// Configurar o Exception Pipeline Behavior, para tratar exceptions que ocorram no Handler

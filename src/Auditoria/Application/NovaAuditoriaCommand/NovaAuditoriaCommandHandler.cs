@@ -1,11 +1,11 @@
-﻿using AuditoriaAPI.Infrasctructure;
-using CQRS.Core.Application.Commands;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AuditoriaAPI.Domain;
+using Auditoria.API.Domain;
+using Auditoria.API.Infrasctructure;
+using CQRS.Core.Application.Commands;
 
-namespace AuditoriaAPI.Application.NovaAuditoriaCommand
+namespace Auditoria.API.Application.NovaAuditoriaCommand
 {
     public class NovaAuditoriaCommandHandler : ICommandHandler<NovaAuditoriaCommandInput, NovaAuditoriaCommandResult>
     {
@@ -20,7 +20,7 @@ namespace AuditoriaAPI.Application.NovaAuditoriaCommand
         {
             foreach (var auditoriaCommand in command.Auditorias)
             {
-                var auditoria = new Auditoria
+                var auditoria = new Domain.Auditoria
                 {
                     IdEntidade = auditoriaCommand.IdEntidade,
                     NomeEntidade = auditoriaCommand.NomeEntidade,

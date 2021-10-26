@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CQRS.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuditoriaAPI.Domain
+namespace Auditoria.API.Domain
 {
     public class Auditoria : AuditableEntity, IAuditoria
     {

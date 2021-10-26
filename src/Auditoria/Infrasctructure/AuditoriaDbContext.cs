@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
-using AuditoriaAPI.Domain;
+using Auditoria.API.Domain;
 using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
 using CQRS.Core.Infrastructure.Kafka;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuditoriaAPI.Infrasctructure
+namespace Auditoria.API.Infrasctructure
 {
     public class AuditoriaDbContext : EfDbContext
     {
@@ -13,7 +13,7 @@ namespace AuditoriaAPI.Infrasctructure
         {
         }
 
-        public DbSet<Auditoria> Auditoria { get; set; }
+        public DbSet<Domain.Auditoria> Auditoria { get; set; }
         public DbSet<AuditoriaPropriedade> AuditoriaPropriedades { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

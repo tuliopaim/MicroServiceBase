@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuditoriaAPI.Application.NovaAuditoriaCommand
+namespace Auditoria.API.Application.NovaAuditoriaCommand
 {
     public class NovaAuditoriaCommandInputItem
     {

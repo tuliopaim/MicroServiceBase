@@ -1,13 +1,12 @@
-﻿using AuditoriaAPI.Domain;
-using CQRS.Core.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using CQRS.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AuditoriaAPI.Infrasctructure.Configs
+namespace Auditoria.API.Infrasctructure.Configs
 {
-    public class AuditoriaConfig : AuditableEntityMap<Auditoria>
+    public class AuditoriaConfig : AuditableEntityMap<Domain.Auditoria>
     {
-        public override void Configure(EntityTypeBuilder<Auditoria> builder)
+        public override void Configure(EntityTypeBuilder<Domain.Auditoria> builder)
         {
             base.Configure(builder);
 

@@ -1,9 +1,8 @@
-﻿using AuditoriaAPI.Domain;
-using CQRS.Core.Infrastructure;
+﻿using CQRS.Core.Infrastructure;
 
-namespace AuditoriaAPI.Infrasctructure
+namespace Auditoria.API.Infrasctructure
 {
-    public class AuditoriaRepository : GenericRepository<Auditoria>, IAuditoriaRepository
+    public class AuditoriaRepository : GenericRepository<Domain.Auditoria>, IAuditoriaRepository
     {
         public AuditoriaRepository(AuditoriaDbContext context) : base(context)
         {

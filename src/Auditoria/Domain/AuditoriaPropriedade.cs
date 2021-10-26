@@ -1,7 +1,7 @@
 ﻿using System;
 using CQRS.Core.Domain;
 
-namespace AuditoriaAPI.Domain
+namespace Auditoria.API.Domain
 {
     public class AuditoriaPropriedade : AuditableEntity, IAuditoriaPropriedade
     {

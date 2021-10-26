@@ -1,18 +1,18 @@
-﻿using Confluent.Kafka;
+﻿using System;
+using System.Linq;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
+using Auditoria.API.Application.NovaAuditoriaCommand;
+using Confluent.Kafka;
 using CQRS.Core.API;
 using CQRS.Core.Application.Mediator;
 using CQRS.Core.Infrastructure.Auditoria;
 using CQRS.Core.Infrastructure.Kafka;
 using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using AuditoriaAPI.Application.NovaAuditoriaCommand;
 
-namespace AuditoriaAPI.Consumers
+namespace Auditoria.API.Consumers
 {
     public class AuditoriaConsumer : IConsumerHandler
     {

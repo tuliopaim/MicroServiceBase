@@ -1,9 +1,9 @@
-﻿using AuditoriaAPI.Domain;
+﻿using Auditoria.API.Domain;
 using CQRS.Core.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AuditoriaAPI.Infrasctructure.Configs
+namespace Auditoria.API.Infrasctructure.Configs
 {
     public class AuditoriaPropriedadeConfig : AuditableEntityMap<AuditoriaPropriedade>
     {

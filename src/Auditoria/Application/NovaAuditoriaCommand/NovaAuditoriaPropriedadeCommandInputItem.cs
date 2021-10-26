@@ -1,4 +1,4 @@
-﻿namespace AuditoriaAPI.Application.NovaAuditoriaCommand
+﻿namespace Auditoria.API.Application.NovaAuditoriaCommand
 {
     public class NovaAuditoriaPropriedadeCommandInputItem
     {

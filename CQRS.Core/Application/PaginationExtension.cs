@@ -10,12 +10,13 @@ namespace CQRS.Core.Application
     {
         public static async Task<PagedQueryResult<TResultItem>> PaginateAsync<TResultItem>(
             this IQueryable<TResultItem> query,
-            int pageNumber,
-            int pageSize,
-            CancellationToken cancellationToken)
+            int pageNumber = 0,
+            int pageSize = 10,
+            CancellationToken cancellationToken = new())
             where TResultItem : IPagedQueryResultItem
         {
             pageNumber = (pageNumber < 0) ? 0 : pageNumber;
+            pageSize = pageSize < 1 ? 10 : pageSize;
 
             var totalElements = await query.CountAsync(cancellationToken);
 
@@ -31,7 +32,7 @@ namespace CQRS.Core.Application
                 Pagination = new QueryPaginationResult
                 {
                     Number = pageNumber,
-                    Size = pageSize,
+                    Size = items.Count,
                     TotalElements = totalElements
                 }
             };

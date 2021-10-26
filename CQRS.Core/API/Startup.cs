@@ -88,7 +88,7 @@ namespace CQRS.Core.API
 
         private static void RegistrarMediatorHandlers(this IServiceCollection services, CoreSettings settings)
         {
-            var assembly = settings.TipoDoApplicationMarker.Assembly;
+            var assembly = settings.TipoDaCamadaDeApplication.Assembly;
 
             var classesDaApplication = assembly.ExportedTypes
                 .Select(t => t.GetTypeInfo())
@@ -127,7 +127,7 @@ namespace CQRS.Core.API
 
         private static void RegistrarValidators(this IServiceCollection services, CoreSettings settings)
         {
-            var assembly = settings.TipoDoApplicationMarker.Assembly;
+            var assembly = settings.TipoDaCamadaDeApplication.Assembly;
 
             foreach (var validator in AssemblyScanner.FindValidatorsInAssembly(assembly))
             {

@@ -1,48 +1,43 @@
-using CQRS.Application;
+using AuditoriaAPI.Infrasctructure;
+using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using CQRS.Domain.Repositories;
-using CQRS.Infrastructure.Context;
-using CQRS.Infrastructure.Repositories;
-using CQRS.Core.API;
 
-namespace CQRS.API
+namespace AuditoriaAPI
 {
     public class Startup
     {
-        private readonly IWebHostEnvironment _environment;
+        private readonly IHostEnvironment _hostEnvironment;
+        public readonly IConfiguration _configuration;
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
+        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
-            _environment = environment;
-            Configuration = configuration;
+            _configuration = configuration;
+            _hostEnvironment = hostEnvironment;
         }
 
-        public IConfiguration Configuration { get; }
-        
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegistrarCore(new CoreSettings
             {
-                HostEnvironment = _environment,
-                Configuration = Configuration,
-                TipoDaCamadaDeApplication = typeof(IApplicationAssemblyMarker),
-                TipoDoStartup = typeof(Startup)
+                Configuration = _configuration,
+                HostEnvironment = _hostEnvironment,
+                TipoDaCamadaDeApplication = typeof(Startup),
+                TipoDoStartup = typeof(Startup),
             });
 
-            services.AddDbContext<AppDbContext>();
+            services.AddDbContext<AuditoriaDbContext>();
 
-            services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
 
             services.AddControllers();
-
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CQRS.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Consumer.API", Version = "v1" });
             });
         }
 
@@ -52,7 +47,7 @@ namespace CQRS.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CQRS.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Consumer.API v1"));
             }
 
             app.UseHttpsRedirection();

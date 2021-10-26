@@ -28,8 +28,10 @@ namespace CQRS.Application.Queries
             var resultQuery = pessoasQuery
                 .Select(p => new ObterPessoasQueryResultItem
                 {
+                    Id = p.Id,
                     Nome = p.Nome,
                     Idade = p.Idade,
+                    DataCriacao = p.DataCriacao,
                 });
 
             return await resultQuery.PaginateAsync(query.PageNumber, query.PageSize, cancellationToken);

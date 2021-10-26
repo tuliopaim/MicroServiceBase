@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31815.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.API", "CQRS.API\CQRS.API.csproj", "{7347035D-BAFD-4468-BD63-5B3F8BD9BAE6}"
 EndProject
@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API - CQRS", "API - CQRS", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.BenchmarkConsole", "CQRS.BenchmarkConsole\CQRS.BenchmarkConsole.csproj", "{63A6DDD4-A82D-43CC-B4FF-0D941BD46C77}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kafka - Consumer", "Kafka - Consumer", "{661F5709-63CA-4661-A468-21414BC11221}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API - Auditoria", "API - Auditoria", "{661F5709-63CA-4661-A468-21414BC11221}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kafka - Producer", "Kafka - Producer", "{A00A5E4F-780B-4A50-A946-2D8FB839A2BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuditoriaAPI", "Consumer.API\AuditoriaAPI.csproj", "{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +57,10 @@ Global
 		{63A6DDD4-A82D-43CC-B4FF-0D941BD46C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A6DDD4-A82D-43CC-B4FF-0D941BD46C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A6DDD4-A82D-43CC-B4FF-0D941BD46C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C7E659-3296-4EB2-AA1D-83D26A10AD25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,7 +75,7 @@ Global
 		{81231277-2838-4922-B132-A769108E02C7} = {0261F744-9D1D-4774-B80E-0CE9BF8D91CF}
 		{63A6DDD4-A82D-43CC-B4FF-0D941BD46C77} = {6C6B313B-80D2-44D2-B4E6-A4178A4EE5FE}
 		{661F5709-63CA-4661-A468-21414BC11221} = {0261F744-9D1D-4774-B80E-0CE9BF8D91CF}
-		{A00A5E4F-780B-4A50-A946-2D8FB839A2BD} = {0261F744-9D1D-4774-B80E-0CE9BF8D91CF}
+		{F3C7E659-3296-4EB2-AA1D-83D26A10AD25} = {661F5709-63CA-4661-A468-21414BC11221}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDEE870D-C5D7-435F-9030-2026EABC6EA8}

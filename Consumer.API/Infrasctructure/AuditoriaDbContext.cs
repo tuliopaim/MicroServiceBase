@@ -1,25 +1,26 @@
 ﻿using System.Reflection;
+using AuditoriaAPI.Domain;
 using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
 using CQRS.Core.Infrastructure.Kafka;
-using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CQRS.Infrastructure.Context
+namespace AuditoriaAPI.Infrasctructure
 {
-    public class AppDbContext : EfDbContext
+    public class AuditoriaDbContext : EfDbContext
     {
-        public AppDbContext(IEnvironment enviroment, IKafkaBroker kafkaBroker) : base(enviroment, kafkaBroker)
+        public AuditoriaDbContext(IEnvironment environment, IKafkaBroker kafkaBroker) : base(environment, kafkaBroker)
         {
         }
 
-        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Auditoria> Auditoria { get; set; }
+        public DbSet<AuditoriaPropriedade> AuditoriaPropriedades { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("CQRS");
+            modelBuilder.HasDefaultSchema("Auditoria");
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

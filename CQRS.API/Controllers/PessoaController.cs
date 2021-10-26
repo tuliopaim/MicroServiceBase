@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using CQRS.API.Requests;
+using CQRS.Application.Commands.EditarPessoaCommand;
 using CQRS.Application.Commands.NovaPessoaCommand;
 using CQRS.Application.Queries;
 using CQRS.Core.API;
@@ -41,6 +42,16 @@ namespace CQRS.API.Controllers
         public async Task<IActionResult> Criar([FromBody] NovaPessoaRequest request, CancellationToken cancellationToken)
         {
             var command = new NovaPessoaCommandInput(request.Nome, request.Idade);
+
+            var result = await _mediator.Send(command, cancellationToken);
+            
+            return HandleMediatorResult(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Editar([FromBody] EditarPessoaRequest request, CancellationToken cancellationToken)
+        {
+            var command = new EditarPessoaCommandInput(request.PessoaId, request.NovaIdade);
 
             var result = await _mediator.Send(command, cancellationToken);
             

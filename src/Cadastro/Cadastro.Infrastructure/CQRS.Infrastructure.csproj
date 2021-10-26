@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="..\..\Core\CQRS.Core\CQRS.Core.csproj" />
-    <ProjectReference Include="..\CQRS.Domain\CQRS.Domain.csproj" />
+    <ProjectReference Include="..\..\CQRS.Core\CQRS.Core.csproj" />
+    <ProjectReference Include="..\Cadastro.Domain\CQRS.Domain.csproj" />
   </ItemGroup>
 
 </Project>

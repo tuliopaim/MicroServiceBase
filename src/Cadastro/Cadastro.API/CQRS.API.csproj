@@ -17,9 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\CQRS.Core\CQRS.Core.csproj" />
-    <ProjectReference Include="..\CQRS.Application\CQRS.Application.csproj" />
-    <ProjectReference Include="..\CQRS.Infrastructure\CQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\CQRS.Core\CQRS.Core.csproj" />
+    <ProjectReference Include="..\Cadastro.Application\CQRS.Application.csproj" />
+    <ProjectReference Include="..\Cadastro.Domain\CQRS.Domain.csproj" />
+    <ProjectReference Include="..\Cadastro.Infrastructure\CQRS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

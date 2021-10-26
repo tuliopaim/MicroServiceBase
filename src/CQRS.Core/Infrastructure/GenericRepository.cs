@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using CQRS.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +23,6 @@ namespace CQRS.Core.Infrastructure
 
         public void Update(TEntity entity) => _context.Entry(entity).State = EntityState.Modified;
 
-        public void Remove(Guid id) => _context.Remove(id);
+        public void Remove(TEntity entity) => _context.Remove(entity);
     }
 }

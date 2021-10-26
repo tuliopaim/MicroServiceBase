@@ -5,7 +5,7 @@ using BenchmarkDotNet.Order;
 using CQRS.Core.API;
 using CQRS.Core.Application.Mediator;
 
-namespace CQRS.BenchmarkConsole
+namespace BenchmarkConsole
 {
     [MemoryDiagnoser]
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]

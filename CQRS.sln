@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auditoria", "Auditoria", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auditoria.API", "src\Auditoria\Auditoria.API.csproj", "{64E9FEE9-2F7D-42DC-94DD-27163A0FD8EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.BenchmarkConsole", "src\BenchmarkConsole\CQRS.BenchmarkConsole.csproj", "{2FE159DA-C9B2-460E-B642-93A1B779D245}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkConsole", "src\BenchmarkConsole\BenchmarkConsole.csproj", "{2FE159DA-C9B2-460E-B642-93A1B779D245}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Core", "src\CQRS.Core\CQRS.Core.csproj", "{3D8B94EE-A5DB-4907-90E0-590DB94982D0}"
 EndProject

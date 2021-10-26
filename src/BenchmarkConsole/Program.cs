@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 
-namespace CQRS.BenchmarkConsole
+namespace BenchmarkConsole
 {
     internal class Program
     {

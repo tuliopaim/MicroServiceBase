@@ -1,7 +1,7 @@
-﻿using CQRS.Core.Application.Commands;
-using System;
+﻿using System;
+using CQRS.Core.Application.Commands;
 
-namespace CQRS.Application.Commands.EditarPessoaCommand
+namespace Cadastro.Application.Commands.EditarPessoaCommand
 {
     public class EditarPessoaCommandInput : CommandInput<EditarPessoaCommandResult>
     {        

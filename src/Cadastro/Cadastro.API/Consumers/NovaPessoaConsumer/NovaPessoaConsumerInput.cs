@@ -1,7 +1,7 @@
 ﻿using System;
 using CQRS.Core.Infrastructure.Kafka;
 
-namespace CQRS.API.Consumers.NovaPessoaConsumer
+namespace Cadastro.API.Consumers.NovaPessoaConsumer
 {
     public class NovaPessoaConsumerInput : IKafkaEvent
     {

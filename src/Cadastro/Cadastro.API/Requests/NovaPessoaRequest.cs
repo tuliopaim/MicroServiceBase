@@ -1,4 +1,4 @@
-﻿namespace CQRS.API.Requests
+﻿namespace Cadastro.API.Requests
 {
     public class NovaPessoaRequest
     {

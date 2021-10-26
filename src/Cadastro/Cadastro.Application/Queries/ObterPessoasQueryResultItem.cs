@@ -1,7 +1,7 @@
-﻿using CQRS.Core.Application.Queries;
-using System;
+﻿using System;
+using CQRS.Core.Application.Queries;
 
-namespace CQRS.Application.Queries
+namespace Cadastro.Application.Queries
 {
     public class ObterPessoasQueryResultItem : IPagedQueryResultItem
     {

@@ -1,7 +1,7 @@
 ﻿using CQRS.Core.Application.Queries;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CQRS.Application.Queries
+namespace Cadastro.Application.Queries
 {
     public class ObterPessoasQueryInput : PagedQueryInput<PagedQueryResult<ObterPessoasQueryResultItem>>
     {

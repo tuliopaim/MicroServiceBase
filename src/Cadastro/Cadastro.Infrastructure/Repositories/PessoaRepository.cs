@@ -1,12 +1,12 @@
-﻿using CQRS.Core.Infrastructure;
-using CQRS.Domain.Entities;
-using CQRS.Domain.Repositories;
-using CQRS.Infrastructure.Context;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Cadastro.Domain.Entities;
+using Cadastro.Domain.Repositories;
+using Cadastro.Infrastructure.Context;
+using CQRS.Core.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
-namespace CQRS.Infrastructure.Repositories
+namespace Cadastro.Infrastructure.Repositories
 {
     public class PessoaRepository : GenericRepository<Pessoa>, IPessoaRepository
     {

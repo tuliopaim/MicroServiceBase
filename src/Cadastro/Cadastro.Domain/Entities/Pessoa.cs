@@ -1,6 +1,6 @@
 ﻿using CQRS.Core.Domain;
 
-namespace CQRS.Domain.Entities
+namespace Cadastro.Domain.Entities
 {
     public class Pessoa : AuditableEntity
     {

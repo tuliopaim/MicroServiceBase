@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Cadastro.Domain.Repositories;
 using CQRS.Core.Application;
 using CQRS.Core.Application.Queries;
-using CQRS.Domain.Repositories;
 
-namespace CQRS.Application.Queries
+namespace Cadastro.Application.Queries
 {
     public class ObterPessoasQueryHandler : IQueryHandler<ObterPessoasQueryInput, PagedQueryResult<ObterPessoasQueryResultItem>>
     {

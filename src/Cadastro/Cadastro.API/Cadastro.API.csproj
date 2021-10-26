@@ -18,9 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\CQRS.Core\CQRS.Core.csproj" />
-    <ProjectReference Include="..\Cadastro.Application\CQRS.Application.csproj" />
-    <ProjectReference Include="..\Cadastro.Domain\CQRS.Domain.csproj" />
-    <ProjectReference Include="..\Cadastro.Infrastructure\CQRS.Infrastructure.csproj" />
+    <ProjectReference Include="..\Cadastro.Application\Cadastro.Application.csproj" />
+    <ProjectReference Include="..\Cadastro.Domain\Cadastro.Domain.csproj" />
+    <ProjectReference Include="..\Cadastro.Infrastructure\Cadastro.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

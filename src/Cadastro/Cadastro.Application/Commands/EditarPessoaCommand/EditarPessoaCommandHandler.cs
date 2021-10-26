@@ -1,10 +1,10 @@
-﻿using CQRS.Core.Application.Commands;
-using CQRS.Domain.Repositories;
-using System.Net;
+﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Cadastro.Domain.Repositories;
+using CQRS.Core.Application.Commands;
 
-namespace CQRS.Application.Commands.EditarPessoaCommand
+namespace Cadastro.Application.Commands.EditarPessoaCommand
 {
     public class EditarPessoaCommandHandler : ICommandHandler<EditarPessoaCommandInput, EditarPessoaCommandResult>
     {

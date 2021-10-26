@@ -1,16 +1,16 @@
-using CQRS.Application;
+using Cadastro.Application;
+using Cadastro.Domain.Repositories;
+using Cadastro.Infrastructure.Context;
+using Cadastro.Infrastructure.Repositories;
+using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using CQRS.Domain.Repositories;
-using CQRS.Infrastructure.Context;
-using CQRS.Infrastructure.Repositories;
-using CQRS.Core.API;
 
-namespace CQRS.API
+namespace Cadastro.API
 {
     public class Startup
     {

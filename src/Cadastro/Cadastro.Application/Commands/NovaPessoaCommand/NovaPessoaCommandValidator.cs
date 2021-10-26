@@ -1,7 +1,7 @@
 ﻿using CQRS.Core.Application.Commands;
 using FluentValidation;
 
-namespace CQRS.Application.Commands.NovaPessoaCommand
+namespace Cadastro.Application.Commands.NovaPessoaCommand
 {
     public class NovaPessoaCommandValidator : CommandInputValidator<NovaPessoaCommandInput>
     {

@@ -1,9 +1,9 @@
-﻿using CQRS.Core.Infrastructure;
-using CQRS.Domain.Entities;
+﻿using Cadastro.Domain.Entities;
+using CQRS.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CQRS.Infrastructure.Configuration
+namespace Cadastro.Infrastructure.Configuration
 {
     public class PessoaConfiguration : AuditableEntityMap<Pessoa>
     {

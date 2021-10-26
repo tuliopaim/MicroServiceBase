@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
+using Cadastro.Domain.Entities;
 using CQRS.Core.API;
 using CQRS.Core.Infrastructure;
 using CQRS.Core.Infrastructure.Kafka;
-using CQRS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CQRS.Infrastructure.Context
+namespace Cadastro.Infrastructure.Context
 {
     public class AppDbContext : EfDbContext
     {

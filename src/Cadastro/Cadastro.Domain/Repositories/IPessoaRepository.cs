@@ -1,9 +1,9 @@
-﻿using CQRS.Core.Infrastructure;
-using CQRS.Domain.Entities;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Cadastro.Domain.Entities;
+using CQRS.Core.Infrastructure;
 
-namespace CQRS.Domain.Repositories
+namespace Cadastro.Domain.Repositories
 {
     public interface IPessoaRepository : IGenericRepository<Pessoa>
     {

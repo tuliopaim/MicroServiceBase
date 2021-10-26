@@ -1,7 +1,7 @@
 ﻿using System;
 using CQRS.Core.Application.Commands;
 
-namespace CQRS.Application.Commands.NovaPessoaCommand
+namespace Cadastro.Application.Commands.NovaPessoaCommand
 {
     public class NovaPessoaCommandResult : CommandResult
     {

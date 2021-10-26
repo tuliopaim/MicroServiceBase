@@ -1,13 +1,13 @@
 ﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Application.Events.PessoaCriadaEvent;
+using Cadastro.Application.Events.PessoaCriadaEvent;
+using Cadastro.Domain.Entities;
+using Cadastro.Domain.Repositories;
 using CQRS.Core.Application.Commands;
 using CQRS.Core.Application.Mediator;
-using CQRS.Domain.Entities;
-using CQRS.Domain.Repositories;
 
-namespace CQRS.Application.Commands.NovaPessoaCommand
+namespace Cadastro.Application.Commands.NovaPessoaCommand
 {
     public class NovaPessoaCommandHandler : ICommandHandler<NovaPessoaCommandInput, NovaPessoaCommandResult>
     {

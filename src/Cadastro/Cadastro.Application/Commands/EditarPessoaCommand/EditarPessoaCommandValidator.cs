@@ -1,7 +1,7 @@
 ﻿using CQRS.Core.Application.Commands;
 using FluentValidation;
 
-namespace CQRS.Application.Commands.EditarPessoaCommand
+namespace Cadastro.Application.Commands.EditarPessoaCommand
 {
     public class EditarPessoaCommandValidator : CommandInputValidator<EditarPessoaCommandInput>
     {

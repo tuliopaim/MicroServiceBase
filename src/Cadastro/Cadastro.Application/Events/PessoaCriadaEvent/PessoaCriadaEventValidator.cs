@@ -1,7 +1,7 @@
 ﻿using CQRS.Core.Application.Events;
 using FluentValidation;
 
-namespace CQRS.Application.Events.PessoaCriadaEvent
+namespace Cadastro.Application.Events.PessoaCriadaEvent
 {
     public class PessoaCriadaEventValidator : EventInputValidator<PessoaCriadaEventInput>
     {

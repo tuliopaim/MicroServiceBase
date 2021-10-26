@@ -1,15 +1,15 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using CQRS.API.Requests;
-using CQRS.Application.Commands.EditarPessoaCommand;
-using CQRS.Application.Commands.NovaPessoaCommand;
-using CQRS.Application.Queries;
+using Cadastro.API.Requests;
+using Cadastro.Application.Commands.EditarPessoaCommand;
+using Cadastro.Application.Commands.NovaPessoaCommand;
+using Cadastro.Application.Queries;
 using CQRS.Core.API;
 using CQRS.Core.API.Hateoas;
 using CQRS.Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CQRS.API.Controllers
+namespace Cadastro.API.Controllers
 {
     [Route("/v1/pessoa")]
     public class PessoaController : BaseController

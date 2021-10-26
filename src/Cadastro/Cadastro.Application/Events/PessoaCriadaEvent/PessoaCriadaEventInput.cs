@@ -2,7 +2,7 @@
 using CQRS.Core.Application.Mediator;
 using CQRS.Core.Infrastructure.Kafka;
 
-namespace CQRS.Application.Events.PessoaCriadaEvent
+namespace Cadastro.Application.Events.PessoaCriadaEvent
 {
     public class PessoaCriadaEventInput : EventInput, IKafkaEvent
     {

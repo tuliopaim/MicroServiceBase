@@ -1,4 +1,4 @@
-﻿namespace CQRS.Application
+﻿namespace Cadastro.Application
 {
     public interface IApplicationAssemblyMarker
     {

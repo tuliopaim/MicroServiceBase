@@ -4,7 +4,7 @@ using CQRS.Core.Application.Events;
 using CQRS.Core.Infrastructure.Kafka;
 using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 
-namespace CQRS.Application.Events.PessoaCriadaEvent
+namespace Cadastro.Application.Events.PessoaCriadaEvent
 {
     public class PessoaCriadaEventHandler : IEventHandler<PessoaCriadaEventInput>
     {

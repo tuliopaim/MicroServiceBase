@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5DC8F80F-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{25964BD5-F49D-4B2B-B893-9402AB759FF3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CQRS", "CQRS", "{6A42CE0C-BC26-42B6-8A86-DD6D2AE81DA2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cadastro", "Cadastro", "{6A42CE0C-BC26-42B6-8A86-DD6D2AE81DA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BenchmarkConsole", "BenchmarkConsole", "{BB2672A3-25F7-4FC5-90C1-EFB899F0A95F}"
 EndProject
@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.BenchmarkConsole", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Core", "src\CQRS.Core\CQRS.Core.csproj", "{3D8B94EE-A5DB-4907-90E0-590DB94982D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.API", "src\Cadastro\Cadastro.API\CQRS.API.csproj", "{3F0BE970-22A0-41BA-8CAB-005B930D306E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.API", "src\Cadastro\Cadastro.API\Cadastro.API.csproj", "{3F0BE970-22A0-41BA-8CAB-005B930D306E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Application", "src\Cadastro\Cadastro.Application\CQRS.Application.csproj", "{B5DFA119-488B-4946-A67D-1ED32C74F909}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Application", "src\Cadastro\Cadastro.Application\Cadastro.Application.csproj", "{B5DFA119-488B-4946-A67D-1ED32C74F909}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Domain", "src\Cadastro\Cadastro.Domain\CQRS.Domain.csproj", "{6B247C25-ED78-4E59-9F5A-4B9E25F395AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Domain", "src\Cadastro\Cadastro.Domain\Cadastro.Domain.csproj", "{6B247C25-ED78-4E59-9F5A-4B9E25F395AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Infrastructure", "src\Cadastro\Cadastro.Infrastructure\CQRS.Infrastructure.csproj", "{0A2D16A5-A93C-4894-AE7C-9DF655A261C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.Infrastructure", "src\Cadastro\Cadastro.Infrastructure\Cadastro.Infrastructure.csproj", "{0A2D16A5-A93C-4894-AE7C-9DF655A261C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

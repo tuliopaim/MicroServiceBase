@@ -6,7 +6,7 @@ using CQRS.Core.API;
 using CQRS.Core.Infrastructure.Kafka;
 using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 
-namespace CQRS.API.Consumers.NovaPessoaConsumer
+namespace Cadastro.API.Consumers.NovaPessoaConsumer
 {
     public class NovaPessoaConsumer : IConsumerHandler
     {

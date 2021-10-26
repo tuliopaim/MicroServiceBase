@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CQRS.Core\CQRS.Core.csproj" />
+    <ProjectReference Include="..\Cadastro.Domain\Cadastro.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

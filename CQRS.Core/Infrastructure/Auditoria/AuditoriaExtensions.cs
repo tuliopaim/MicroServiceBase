@@ -16,7 +16,7 @@ namespace CQRS.Core.Infrastructure.Auditoria
                     is EntityState.Added
                     or EntityState.Modified
                     or EntityState.Deleted &&
-                    e.Entity is not (IAuditoria or IAuditoriaPropriedade))
+                    e.Entity is Entity and not (IAuditoria or IAuditoriaPropriedade))
                 .Select(MapearParaAuditoria)
                 .ToList();
 

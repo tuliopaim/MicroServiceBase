@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace CQRS.Core.Infrastructure.Auditoria
 {
-
     public class NovaAuditoriaDto
     {
         public EntityState TipoAuditoria { get; set; }
@@ -21,6 +20,5 @@ namespace CQRS.Core.Infrastructure.Auditoria
         public bool EhAdicionado => TipoAuditoria == EntityState.Added;
         public bool EhModificado => TipoAuditoria == EntityState.Modified;
         public bool EhDeletado => TipoAuditoria == EntityState.Deleted;
-
     }
 }

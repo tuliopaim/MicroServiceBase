@@ -10,7 +10,8 @@ namespace Cadastro.Application.Commands.EditarPessoaCommand
     {
         private readonly IPessoaRepository _pessoaRepository;
 
-        public EditarPessoaCommandHandler(IPessoaRepository pessoaRepository)
+        public EditarPessoaCommandHandler(
+            IPessoaRepository pessoaRepository)
         {
             _pessoaRepository = pessoaRepository;
         }
@@ -24,7 +25,7 @@ namespace Cadastro.Application.Commands.EditarPessoaCommand
                 var result = new EditarPessoaCommandResult();
                 result.AddError("Pessoa não encontrada");
 
-                return (EditarPessoaCommandResult) result.WithHttpStatusCode(HttpStatusCode.NotFound); 
+                return null;
             }
 
             pessoa.AlterarIdade(command.NovaIdade);

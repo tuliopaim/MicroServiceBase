@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Cadastro.Application.Events.PessoaCriadaEvent;
 using Cadastro.Domain.Entities;
@@ -32,9 +31,7 @@ namespace Cadastro.Application.Commands.NovaPessoaCommand
 
             await _mediator.Publish(novaPessoaEvent, cancellationToken);
 
-            var result = new NovaPessoaCommandResult(pessoa.Id).WithHttpStatusCode(HttpStatusCode.Created);
-            
-            return result as NovaPessoaCommandResult;
+            return new NovaPessoaCommandResult(pessoa.Id);
         }
     }
 }

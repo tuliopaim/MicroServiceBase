@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CQRS.API": {
+    "Cadastro.API": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

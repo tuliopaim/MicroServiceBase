@@ -10,6 +10,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace CQRS.Core.API
 {
@@ -37,6 +38,20 @@ namespace CQRS.Core.API
             {
                 services.AddScoped<IHateoasHelper, HateoasHelper>();
             }
+
+            services.RegistrarLogging(settings);
+
+            return services;
+        }
+
+        private static IServiceCollection RegistrarLogging(this IServiceCollection services, CoreSettings settings)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(settings.Configuration)
+                .Enrich.FromLogContext()
+                .CreateLogger();
+
+            services.AddLogging(x => x.AddSerilog());
 
             return services;
         }

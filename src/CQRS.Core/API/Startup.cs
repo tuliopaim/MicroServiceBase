@@ -87,6 +87,8 @@ namespace CQRS.Core.API
                     services.RegistrarExceptionPipelineBehavior();
                 }
 
+                services.RegistrarLogPipelineBehavior();
+
                 if (settings.ConfigurarFailFastPipelineBehavior)
                 {
                     services.RegistrarFailFastPipeline(settings);
@@ -131,6 +133,11 @@ namespace CQRS.Core.API
         private static void RegistrarExceptionPipelineBehavior(this IServiceCollection services)
         {
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionPipelineBehavior<,>));
+        }
+        
+        private static void RegistrarLogPipelineBehavior(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LogPipelineBehavior<,>));
         }
 
         private static void RegistrarFailFastPipeline(this IServiceCollection services, CoreSettings settings)

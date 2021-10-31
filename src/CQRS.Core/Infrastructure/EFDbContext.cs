@@ -28,53 +28,17 @@ namespace CQRS.Core.Infrastructure
         {
             foreach (var entry in ChangeTracker.Entries())
             {
-                // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
-                switch (entry.State)
+                if (entry.State is EntityState.Added)
                 {
-                    case EntityState.Added:
-                        {
-                            FillAddedAuditableProperties(entry);
-
-                            break;
-                        }
-                    case EntityState.Modified:
-                        {
-                            FillModifiedAuditableProperties(entry);
-
-                            break;
-                        }
+                    FillAddedAuditableProperties(entry);
+                }
+                else if (entry.State is EntityState.Modified)
+                {
+                    FillModifiedAuditableProperties(entry);
                 }
             }
 
             return await SaveChangesAsync(cancellationToken);
-        }
-
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            var auditoriaEvent = ChangeTracker.ObterEventoDeAuditoria();
-
-            var linhasAfetadas = await base.SaveChangesAsync(cancellationToken);
-
-            if (linhasAfetadas > 0 && auditoriaEvent.Auditorias.Any())
-            {
-                await EnviarMensagemDeAuditoria(auditoriaEvent, cancellationToken);
-            }
-
-            return linhasAfetadas;
-        }
-
-        private async Task EnviarMensagemDeAuditoria(AuditoriaEvent auditoriaEvent, CancellationToken cancellationToken)
-        {
-            await _kafkaBroker.PublishAsync(KafkaTopics.AuditoriaTopic, AuditoriaEventTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (_environment == null) return;
-
-            var connectionString = _environment[ConnectionStringKey];
-
-            optionsBuilder.UseNpgsql(connectionString, opt => opt.EnableRetryOnFailure());
         }
 
         private static void FillAddedAuditableProperties(EntityEntry entry)
@@ -88,5 +52,34 @@ namespace CQRS.Core.Infrastructure
             if (entry.Entity.GetType().GetProperty("DataAlteracao") != null)
                 entry.Property("DataAlteracao").CurrentValue = DateTime.Now;
         }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var auditoriaEvent = ChangeTracker.ObterEventoDeAuditoria();
+
+            var linhasAfetadas = await base.SaveChangesAsync(cancellationToken);
+
+            if (linhasAfetadas > 0 && auditoriaEvent.Auditorias.Any())
+            {
+                await PublicarAuditoria(auditoriaEvent, cancellationToken);
+            }
+
+            return linhasAfetadas;
+        }
+
+        private async Task PublicarAuditoria(AuditoriaEvent auditoriaEvent, CancellationToken cancellationToken)
+        {
+            await _kafkaBroker.PublishAsync(KafkaTopics.AuditoriaTopic, AuditoriaEventTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (_environment == null) return;
+
+            var connectionString = _environment[ConnectionStringKey];
+
+            optionsBuilder.UseNpgsql(connectionString, opt => opt.EnableRetryOnFailure());
+        }
+
     }
 }

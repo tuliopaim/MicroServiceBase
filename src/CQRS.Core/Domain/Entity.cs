@@ -15,5 +15,10 @@ namespace CQRS.Core.Domain
         }
 
         public Guid Id { get; }
+
+        public override string ToString()
+        {
+            return Id.ToString();
+        }
     }
 }

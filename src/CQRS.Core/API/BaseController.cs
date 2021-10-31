@@ -3,11 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CQRS.Core.API
 {
+    [ApiController]
     public class BaseController : ControllerBase
     {
-        protected static IActionResult HandleMediatorResult(IMediatorResult mediatorResult)
+        protected IActionResult HandleMediatorResult(IMediatorResult mediatorResult)
         {
-            return mediatorResult is null ? new BadRequestResult() : mediatorResult.HandleMediatorResult();
+            if (mediatorResult is null)
+            {
+                return NotFound();
+            }
+
+            if (!mediatorResult.IsValid())
+            {
+                return BadRequest(new { mediatorResult.Errors });
+            }
+
+            return Ok(mediatorResult);
         }
     }
 }

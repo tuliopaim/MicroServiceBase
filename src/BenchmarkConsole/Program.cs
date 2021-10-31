@@ -6,7 +6,7 @@ namespace BenchmarkConsole
     {
         private static void Main(string[] args)
         {
-            BenchmarkRunner.Run<BenchmarkHandleMediatorResult>();
+            //BenchmarkRunner.Run<BenchmarkHandleMediatorResult>();
         }
     }
 }

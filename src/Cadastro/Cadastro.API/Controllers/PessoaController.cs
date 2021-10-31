@@ -25,13 +25,13 @@ namespace Cadastro.API.Controllers
             _heateoasHelper = heateoasHelper;
         }
 
-        [HttpGet(Name = nameof(Obter))]
-        public async Task<IActionResult> Obter(ObterPessoasQueryInput input, CancellationToken cancellationToken)
+        [HttpGet(Name = nameof(ObterPessoas))]
+        public async Task<IActionResult> ObterPessoas([FromQuery] ObterPessoasQueryInput input, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(input, cancellationToken);
 
             result.Links = _heateoasHelper.CreatePaginatedHLinks(
-                nameof(Obter), 
+                nameof(ObterPessoas), 
                 input, 
                 result.Pagination);
 

@@ -22,11 +22,11 @@ namespace CQRS.Core.Application.Mediator
         {
             try
             {
-                return await next();                 
+                return await next();
             }
             catch (Exception ex)
             {
-                return ExceptionTratada(ex);        
+                return ExceptionTratada(ex);
             }
         }
 

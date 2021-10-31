@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace CQRS.Core.Application.Mediator
@@ -10,6 +11,13 @@ namespace CQRS.Core.Application.Mediator
         where TRequest : IMediatorInput<TResponse>
         where TResponse : IMediatorResult
     {
+        private readonly ILogger<ExceptionPipelineBehavior<TRequest, TResponse>> _logger;
+
+        public ExceptionPipelineBehavior(ILogger<ExceptionPipelineBehavior<TRequest, TResponse>> logger)
+        {
+            _logger = logger;
+        }
+
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             try
@@ -24,7 +32,7 @@ namespace CQRS.Core.Application.Mediator
 
         private TResponse ExceptionTratada(Exception ex)
         {
-            Console.WriteLine(ex.ToString());
+            _logger.LogError(ex, "{CommandType} - Exception captured!", typeof(TRequest).Name);
 
             var result = new MediatorResult();
 

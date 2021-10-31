@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace CQRS.Core.Application.Mediator
@@ -13,10 +14,14 @@ namespace CQRS.Core.Application.Mediator
         where TRequest : IMediatorInput<TResponse>
         where TResponse : IMediatorResult
     {
+        private readonly ILogger<FailFastPipelineBehavior<TRequest, TResponse>> _logger;
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public FailFastPipelineBehavior(IEnumerable<IValidator<TRequest>> validators)
+        public FailFastPipelineBehavior(
+            ILogger<FailFastPipelineBehavior<TRequest, TResponse>> logger,
+            IEnumerable<IValidator<TRequest>> validators)
         {
+            _logger = logger;
             _validators = validators;
         }
 
@@ -25,30 +30,38 @@ namespace CQRS.Core.Application.Mediator
             CancellationToken cancellationToken,
             RequestHandlerDelegate<TResponse> next)
         {
-            var falhas = _validators
+            var failures = _validators
                 .Select(v => v.Validate(request))
                 .SelectMany(result => result.Errors)
                 .Where(e => e is not null)
                 .ToList();
 
-            return falhas.Any()
-                ? Erros(falhas)
+            _logger.LogDebug("{CommandType} - Validated with {ValidationErrorQuantity} error(s).",
+                typeof(TRequest).Name,
+                failures.Count);
+
+            return failures.Any()
+                ? ReturnError(failures)
                 : next();
         }
 
-        private static Task<TResponse> Erros(IEnumerable<ValidationFailure> falhas)
+        private Task<TResponse> ReturnError(IEnumerable<ValidationFailure> failures)
         {
             var result = new MediatorResult();
 
-            foreach (var falha in falhas)
+            foreach (var fail in failures)
             {
-                result.AddError(falha.ErrorMessage);
+                _logger.LogError("{CommandType} - Validation error: {ValidationError}",
+                    typeof(TRequest).Name, 
+                    fail.ErrorMessage);
+
+                result.AddError(fail.ErrorMessage);
             }
 
-            var responseSerializado = JsonConvert.SerializeObject(result);
-            var responseTipado = JsonConvert.DeserializeObject<TResponse>(responseSerializado);
+            var serializedResult = JsonConvert.SerializeObject(result);
+            var typedResult = JsonConvert.DeserializeObject<TResponse>(serializedResult);
 
-            return Task.FromResult(responseTipado);
+            return Task.FromResult(typedResult);
         }
     }
 }

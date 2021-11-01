@@ -32,7 +32,7 @@ namespace MSBase.Core.Application.Mediator.Pipeline
 
         private TResponse ExceptionTratada(Exception ex)
         {
-            _logger.LogError(ex, "{CommandType} - Exception captured!", typeof(TRequest).Name);
+            _logger.LogError(ex, "{RequestType} - Exception captured!", typeof(TRequest).Name);
 
             var result = new MediatorResult();
 

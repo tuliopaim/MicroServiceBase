@@ -18,11 +18,11 @@ namespace MSBase.Core.Application.Mediator.Pipeline
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
-            _logger.LogDebug("{CommandType} - Entering handler!", typeof(TRequest).Name);
+            _logger.LogDebug("{RequestType} - Entering handler... {@Request}", typeof(TRequest).Name, request);
 
             var result = await next();
 
-            _logger.LogDebug("{CommandType} - Leaving handler!", typeof(TRequest).Name);
+            _logger.LogDebug("{RequestType} - Leaving handler!", typeof(TRequest).Name);
 
             return result;
         }

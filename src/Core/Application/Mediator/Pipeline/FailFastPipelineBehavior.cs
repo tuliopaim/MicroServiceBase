@@ -36,7 +36,7 @@ namespace MSBase.Core.Application.Mediator.Pipeline
                 .Where(e => e is not null)
                 .ToList();
 
-            _logger.LogDebug("{CommandType} - Validated with {ValidationErrorQuantity} error(s).",
+            _logger.LogDebug("{RequestType} - Validated with {ValidationErrorQuantity} error(s).",
                 typeof(TRequest).Name,
                 failures.Count);
 
@@ -51,7 +51,7 @@ namespace MSBase.Core.Application.Mediator.Pipeline
 
             foreach (var fail in failures)
             {
-                _logger.LogError("{CommandType} - Validation error: {ValidationError}",
+                _logger.LogError("{RequestType} - Validation error: {ValidationError}",
                     typeof(TRequest).Name,
                     fail.ErrorMessage);
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Core.Application.Queries;
+using MSBase.Core.Application.Queries;
 
 namespace Cadastro.Application.Queries
 {

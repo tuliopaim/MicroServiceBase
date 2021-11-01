@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Infrastructure.Kafka
+﻿namespace MSBase.Core.Infrastructure.Kafka
 {
     public interface IKafkaEvent
     {

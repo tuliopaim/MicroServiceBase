@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace CQRS.Core.API
+namespace MSBase.Core.API
 {
     public class CoreSettings
     {

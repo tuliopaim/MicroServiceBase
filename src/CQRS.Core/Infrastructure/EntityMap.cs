@@ -1,8 +1,8 @@
-﻿using CQRS.Core.Domain;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MSBase.Core.Domain;
 
-namespace CQRS.Core.Infrastructure
+namespace MSBase.Core.Infrastructure
 {
     public abstract class EntityMap<TEntity> : IEntityTypeConfiguration<TEntity>
         where TEntity : Entity

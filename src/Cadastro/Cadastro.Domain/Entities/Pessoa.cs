@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Domain;
+﻿using MSBase.Core.Domain;
 
 namespace Cadastro.Domain.Entities
 {

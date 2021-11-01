@@ -2,7 +2,6 @@ using Cadastro.Application;
 using Cadastro.Domain.Repositories;
 using Cadastro.Infrastructure.Context;
 using Cadastro.Infrastructure.Repositories;
-using CQRS.Core.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MSBase.Core.API;
 
 namespace Cadastro.API
 {

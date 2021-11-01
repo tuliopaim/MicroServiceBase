@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Cadastro.Domain.Repositories;
-using CQRS.Core.Application.Commands;
+using MSBase.Core.Application.Commands;
 
 namespace Cadastro.Application.Commands.EditarPessoaCommand
 {

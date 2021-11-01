@@ -1,5 +1,5 @@
-﻿using CQRS.Core.Application.Events;
-using FluentValidation;
+﻿using FluentValidation;
+using MSBase.Core.Application.Events;
 
 namespace Cadastro.Application.Events.PessoaCriadaEvent
 {

@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Domain
+﻿namespace MSBase.Core.Domain
 {
     public interface IAuditoriaPropriedade
     {

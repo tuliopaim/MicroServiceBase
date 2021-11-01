@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Core.Application.Commands;
+using MSBase.Core.Application.Commands;
 
 namespace Cadastro.Application.Commands.NovaPessoaCommand
 {

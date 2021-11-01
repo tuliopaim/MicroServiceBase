@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace CQRS.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator.Pipeline
 {
     public class LogPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IMediatorInput<TResponse>

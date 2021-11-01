@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Application.Mediator;
 using MediatR;
+using MSBase.Core.Application.Mediator;
 
-namespace CQRS.Core.Application.Queries
+namespace MSBase.Core.Application.Queries
 {
     public interface IQueryHandler<in TQueryInput, TQueryResult> : IMediatorHandler<TQueryInput, TQueryResult>
         where TQueryInput : IRequest<TQueryResult>, IMediatorInput<TQueryResult>

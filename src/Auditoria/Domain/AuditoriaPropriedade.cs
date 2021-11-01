@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Core.Domain;
+using MSBase.Core.Domain;
 
 namespace Auditoria.API.Domain
 {

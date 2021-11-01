@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CQRS.Core.Application.Queries
+namespace MSBase.Core.Application.Queries
 {
     public class PagedQueryResult<TResultItem> : QueryResult where TResultItem : IPagedQueryResultItem
     {

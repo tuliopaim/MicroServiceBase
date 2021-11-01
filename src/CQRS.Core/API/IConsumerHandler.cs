@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRS.Core.API
+namespace MSBase.Core.API
 {
     public interface IConsumerHandler
     {

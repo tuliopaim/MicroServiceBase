@@ -2,8 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Cadastro.Domain.Repositories;
-using CQRS.Core.Application;
-using CQRS.Core.Application.Queries;
+using MSBase.Core.Application;
+using MSBase.Core.Application.Queries;
 
 namespace Cadastro.Application.Queries
 {

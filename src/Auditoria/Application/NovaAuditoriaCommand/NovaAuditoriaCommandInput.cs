@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CQRS.Core.Application.Commands;
+using MSBase.Core.Application.Commands;
 
 namespace Auditoria.API.Application.NovaAuditoriaCommand
 {

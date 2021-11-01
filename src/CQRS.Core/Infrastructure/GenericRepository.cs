@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using CQRS.Core.Domain;
 using Microsoft.EntityFrameworkCore;
+using MSBase.Core.Domain;
 
-namespace CQRS.Core.Infrastructure
+namespace MSBase.Core.Infrastructure
 {
     public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : Entity
     {

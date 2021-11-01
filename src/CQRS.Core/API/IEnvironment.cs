@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.API
+﻿namespace MSBase.Core.API
 {
     public interface IEnvironment
     {

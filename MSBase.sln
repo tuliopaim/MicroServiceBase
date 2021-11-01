@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auditoria.API", "src\Audito
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkConsole", "src\BenchmarkConsole\BenchmarkConsole.csproj", "{2FE159DA-C9B2-460E-B642-93A1B779D245}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Core", "src\CQRS.Core\CQRS.Core.csproj", "{3D8B94EE-A5DB-4907-90E0-590DB94982D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSBase.Core", "src\CQRS.Core\MSBase.Core.csproj", "{3D8B94EE-A5DB-4907-90E0-590DB94982D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cadastro.API", "src\Cadastro\Cadastro.API\Cadastro.API.csproj", "{3F0BE970-22A0-41BA-8CAB-005B930D306E}"
 EndProject

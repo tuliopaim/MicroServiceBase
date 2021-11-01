@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Cadastro.Application.Events.PessoaCriadaEvent;
 using Cadastro.Domain.Entities;
 using Cadastro.Domain.Repositories;
-using CQRS.Core.Application.Commands;
-using CQRS.Core.Application.Mediator;
+using MSBase.Core.Application.Commands;
+using MSBase.Core.Application.Mediator;
 
 namespace Cadastro.Application.Commands.NovaPessoaCommand
 {

@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
-namespace CQRS.Core.Infrastructure.Auditoria
+namespace MSBase.Core.Infrastructure.Auditoria
 {
     public class NovaAuditoriaDto
     {

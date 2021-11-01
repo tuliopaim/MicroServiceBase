@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text.Json.Serialization;
 
-namespace CQRS.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator
 {
     public class MediatorResult : IMediatorResult
     {

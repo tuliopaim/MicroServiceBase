@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Cadastro.Domain.Entities;
-using CQRS.Core.Infrastructure;
+using MSBase.Core.Infrastructure;
 
 namespace Cadastro.Domain.Repositories
 {

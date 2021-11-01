@@ -1,5 +1,5 @@
-﻿using CQRS.Core.Application.Commands;
-using FluentValidation;
+﻿using FluentValidation;
+using MSBase.Core.Application.Commands;
 
 namespace Cadastro.Application.Commands.NovaPessoaCommand
 {

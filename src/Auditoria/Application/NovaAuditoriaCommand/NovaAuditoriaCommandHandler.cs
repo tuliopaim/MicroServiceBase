@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Auditoria.API.Domain;
 using Auditoria.API.Infrasctructure;
-using CQRS.Core.Application.Commands;
+using MSBase.Core.Application.Commands;
 
 namespace Auditoria.API.Application.NovaAuditoriaCommand
 {

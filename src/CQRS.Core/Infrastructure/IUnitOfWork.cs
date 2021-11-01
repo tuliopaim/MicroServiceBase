@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CQRS.Core.Infrastructure
+namespace MSBase.Core.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {

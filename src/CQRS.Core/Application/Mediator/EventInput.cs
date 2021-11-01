@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace CQRS.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator
 {
     public class EventInput : INotification
     {

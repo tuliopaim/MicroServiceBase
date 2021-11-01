@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Application.Queries;
 using Microsoft.EntityFrameworkCore;
+using MSBase.Core.Application.Queries;
 
-namespace CQRS.Core.Application
+namespace MSBase.Core.Application
 {
     public static class PaginationExtension
     {

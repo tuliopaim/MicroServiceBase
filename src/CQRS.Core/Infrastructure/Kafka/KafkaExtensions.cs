@@ -2,7 +2,7 @@
 using System.Threading;
 using Confluent.Kafka;
 
-namespace CQRS.Core.Infrastructure.Kafka
+namespace MSBase.Core.Infrastructure.Kafka
 {
     public static class KafkaExtensions
     {

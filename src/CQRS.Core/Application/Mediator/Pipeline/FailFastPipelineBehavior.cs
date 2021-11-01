@@ -8,7 +8,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace CQRS.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator.Pipeline
 {
     public class FailFastPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IMediatorInput<TResponse>
@@ -52,7 +52,7 @@ namespace CQRS.Core.Application.Mediator
             foreach (var fail in failures)
             {
                 _logger.LogError("{CommandType} - Validation error: {ValidationError}",
-                    typeof(TRequest).Name, 
+                    typeof(TRequest).Name,
                     fail.ErrorMessage);
 
                 result.AddError(fail.ErrorMessage);

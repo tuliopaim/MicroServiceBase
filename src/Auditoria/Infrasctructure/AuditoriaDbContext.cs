@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using Auditoria.API.Domain;
-using CQRS.Core.API;
-using CQRS.Core.Infrastructure;
-using CQRS.Core.Infrastructure.Kafka;
 using Microsoft.EntityFrameworkCore;
+using MSBase.Core.API;
+using MSBase.Core.Infrastructure;
+using MSBase.Core.Infrastructure.Kafka;
 
 namespace Auditoria.API.Infrasctructure
 {

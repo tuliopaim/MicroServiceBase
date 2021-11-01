@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using CQRS.Core.Domain;
 using Microsoft.EntityFrameworkCore;
+using MSBase.Core.Domain;
 
 namespace Auditoria.API.Domain
 {

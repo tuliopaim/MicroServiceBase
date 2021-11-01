@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CQRS.Core.Domain
+namespace MSBase.Core.Domain
 {
     public abstract class AuditableEntity : Entity, IAuditableEntity
     {

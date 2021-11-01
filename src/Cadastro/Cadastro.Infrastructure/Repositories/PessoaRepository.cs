@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Cadastro.Domain.Entities;
 using Cadastro.Domain.Repositories;
 using Cadastro.Infrastructure.Context;
-using CQRS.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using MSBase.Core.Infrastructure;
 
 namespace Cadastro.Infrastructure.Repositories
 {

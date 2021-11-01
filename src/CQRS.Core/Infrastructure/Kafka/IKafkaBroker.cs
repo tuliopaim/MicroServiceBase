@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 
-namespace CQRS.Core.Infrastructure.Kafka
+namespace MSBase.Core.Infrastructure.Kafka
 {
     public interface IKafkaBroker
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CQRS.Core.API
+namespace MSBase.Core.API
 {
     public class Environment : IEnvironment
     {

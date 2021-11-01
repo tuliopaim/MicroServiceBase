@@ -4,10 +4,10 @@ using Cadastro.API.Requests;
 using Cadastro.Application.Commands.EditarPessoaCommand;
 using Cadastro.Application.Commands.NovaPessoaCommand;
 using Cadastro.Application.Queries;
-using CQRS.Core.API;
-using CQRS.Core.API.Hateoas;
-using CQRS.Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
+using MSBase.Core.API;
+using MSBase.Core.API.Hateoas;
+using MSBase.Core.Application.Mediator;
 
 namespace Cadastro.API.Controllers
 {

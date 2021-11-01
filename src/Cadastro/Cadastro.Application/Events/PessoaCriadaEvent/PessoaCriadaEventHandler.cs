@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.Application.Events;
-using CQRS.Core.Infrastructure.Kafka;
-using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
+using MSBase.Core.Application.Events;
+using MSBase.Core.Infrastructure.Kafka;
+using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace Cadastro.Application.Events.PessoaCriadaEvent
 {

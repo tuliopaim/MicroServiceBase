@@ -1,7 +1,7 @@
-﻿using CQRS.Core.Application.Mediator;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MSBase.Core.Application.Mediator;
 
-namespace CQRS.Core.API
+namespace MSBase.Core.API
 {
     [ApiController]
     public class BaseController : ControllerBase

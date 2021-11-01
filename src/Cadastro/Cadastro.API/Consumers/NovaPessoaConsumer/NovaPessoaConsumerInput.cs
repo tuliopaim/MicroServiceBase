@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Core.Infrastructure.Kafka;
+using MSBase.Core.Infrastructure.Kafka;
 
 namespace Cadastro.API.Consumers.NovaPessoaConsumer
 {

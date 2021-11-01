@@ -1,7 +1,7 @@
-﻿using CQRS.Core.Domain;
-using System.Linq;
+﻿using System.Linq;
+using MSBase.Core.Domain;
 
-namespace CQRS.Core.Infrastructure
+namespace MSBase.Core.Infrastructure
 {
     public interface IGenericRepository<TEntity> where TEntity : Entity
     {

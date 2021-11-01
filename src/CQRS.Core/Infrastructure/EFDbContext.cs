@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRS.Core.API;
-using CQRS.Core.Infrastructure.Auditoria;
-using CQRS.Core.Infrastructure.Kafka;
-using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using MSBase.Core.API;
+using MSBase.Core.Infrastructure.Auditoria;
+using MSBase.Core.Infrastructure.Kafka;
+using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
 
-namespace CQRS.Core.Infrastructure
+namespace MSBase.Core.Infrastructure
 {
     public class EfDbContext : DbContext, IUnitOfWork
     {

@@ -1,7 +1,7 @@
-﻿using CQRS.Core.Infrastructure.Kafka;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MSBase.Core.Infrastructure.Kafka;
 
-namespace CQRS.Core.Infrastructure.Auditoria
+namespace MSBase.Core.Infrastructure.Auditoria
 {
     public class AuditoriaEvent : IKafkaEvent
     {

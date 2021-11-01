@@ -1,6 +1,6 @@
 ﻿using System;
-using CQRS.Core.Application.Mediator;
-using CQRS.Core.Infrastructure.Kafka;
+using MSBase.Core.Application.Mediator;
+using MSBase.Core.Infrastructure.Kafka;
 
 namespace Cadastro.Application.Events.PessoaCriadaEvent
 {

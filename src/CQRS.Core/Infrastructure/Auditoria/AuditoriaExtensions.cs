@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Linq;
-using CQRS.Core.Domain;
+using MSBase.Core.Domain;
 
-namespace CQRS.Core.Infrastructure.Auditoria
+namespace MSBase.Core.Infrastructure.Auditoria
 {
     public static class AuditoriaExtensions
     {

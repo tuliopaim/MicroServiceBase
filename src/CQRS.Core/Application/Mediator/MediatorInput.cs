@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Application.Mediator
+﻿namespace MSBase.Core.Application.Mediator
 {
     public class MediatorInput<TMediatorResult> : IMediatorInput<TMediatorResult> where TMediatorResult : IMediatorResult
     {

@@ -1,6 +1,6 @@
-﻿using CQRS.Core.Infrastructure;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MSBase.Core.Infrastructure;
 
 namespace Auditoria.API.Infrasctructure.Configs
 {

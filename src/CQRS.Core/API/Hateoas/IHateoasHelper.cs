@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
-using CQRS.Core.Application.Queries;
+using MSBase.Core.Application.Queries;
 
-namespace CQRS.Core.API.Hateoas
+namespace MSBase.Core.API.Hateoas
 {
     public interface IHateoasHelper
     {

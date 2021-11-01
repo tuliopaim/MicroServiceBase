@@ -1,6 +1,6 @@
-﻿using CQRS.Core.Application.Mediator;
+﻿using MSBase.Core.Application.Mediator;
 
-namespace CQRS.Core.Application.Commands
+namespace MSBase.Core.Application.Commands
 {
     public class CommandInput<TCommandResult> : MediatorInput<TCommandResult> where TCommandResult : CommandResult
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using CQRS.Core.Application.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using MSBase.Core.Application.Queries;
 
-namespace CQRS.Core.API.Hateoas
+namespace MSBase.Core.API.Hateoas
 {
     public class HateoasHelper : IHateoasHelper
     {

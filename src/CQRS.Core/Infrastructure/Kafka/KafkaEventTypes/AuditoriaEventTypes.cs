@@ -1,4 +1,4 @@
-﻿namespace CQRS.Core.Infrastructure.Kafka.KafkaEventTypes
+﻿namespace MSBase.Core.Infrastructure.Kafka.KafkaEventTypes
 {
     public enum AuditoriaEventTypes
     {

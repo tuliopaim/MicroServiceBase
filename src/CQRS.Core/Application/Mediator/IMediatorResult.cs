@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 
-namespace CQRS.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator
 {
     public interface IMediatorResult
     {

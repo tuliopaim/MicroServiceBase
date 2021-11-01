@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 
-namespace CQRS.Core.Extensions
+namespace MSBase.Core.Extensions
 {
     public static class EnumExtensions
     {

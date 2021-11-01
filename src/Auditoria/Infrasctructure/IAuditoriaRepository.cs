@@ -1,4 +1,4 @@
-﻿using CQRS.Core.Infrastructure;
+﻿using MSBase.Core.Infrastructure;
 
 namespace Auditoria.API.Infrasctructure
 {

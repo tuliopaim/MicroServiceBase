@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
-using CQRS.Core.API;
-using CQRS.Core.Infrastructure.Kafka;
-using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 using Microsoft.Extensions.Logging;
+using MSBase.Core.API;
+using MSBase.Core.Infrastructure.Kafka;
+using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace Cadastro.API.Consumers.NovaPessoaConsumer
 {

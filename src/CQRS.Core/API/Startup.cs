@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CQRS.Core.API.Hateoas;
-using CQRS.Core.Application.Mediator;
-using CQRS.Core.Infrastructure.Kafka;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MSBase.Core.API.Hateoas;
+using MSBase.Core.Application.Mediator.Pipeline;
+using MSBase.Core.Infrastructure.Kafka;
 using Serilog;
 
-namespace CQRS.Core.API
+namespace MSBase.Core.API
 {
     public static class Startup
     {

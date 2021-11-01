@@ -5,12 +5,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Auditoria.API.Application.NovaAuditoriaCommand;
 using Confluent.Kafka;
-using CQRS.Core.API;
-using CQRS.Core.Application.Mediator;
-using CQRS.Core.Infrastructure.Auditoria;
-using CQRS.Core.Infrastructure.Kafka;
-using CQRS.Core.Infrastructure.Kafka.KafkaEventTypes;
 using Microsoft.Extensions.DependencyInjection;
+using MSBase.Core.API;
+using MSBase.Core.Application.Mediator;
+using MSBase.Core.Infrastructure.Auditoria;
+using MSBase.Core.Infrastructure.Kafka;
+using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
 
 namespace Auditoria.API.Consumers
 {

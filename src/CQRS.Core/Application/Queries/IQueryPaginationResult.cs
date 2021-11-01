@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace CQRS.Core.Application.Queries
+namespace MSBase.Core.Application.Queries
 {
     public interface IQueryPaginationResult
     {

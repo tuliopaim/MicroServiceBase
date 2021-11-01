@@ -6,9 +6,9 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Confluent.Kafka;
-using CQRS.Core.API;
+using MSBase.Core.API;
 
-namespace CQRS.Core.Infrastructure.Kafka
+namespace MSBase.Core.Infrastructure.Kafka
 {
     public class KafkaBroker : IKafkaBroker
     {

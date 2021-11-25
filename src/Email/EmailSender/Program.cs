@@ -6,8 +6,6 @@ using FluentEmail.MailKitSmtp;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -19,7 +17,8 @@ builder.Services.AddScoped<IEmailSender, EmailSender.Infrastructure.EmailSender>
 builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
 builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
-    .AddMailKitSender(new SmtpClientOptions{
+    .AddMailKitSender(new SmtpClientOptions
+    {
         User = "084d75abdb31df",
         Password = "2a0cd517212549",
         Port = 2525,
@@ -38,12 +37,8 @@ builder.Services.RegistrarCore(new CoreSettings
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

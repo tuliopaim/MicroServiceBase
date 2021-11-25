@@ -3,7 +3,7 @@
 services:
   
   postgres:
-    container_name: msbase-postgres-prod
+    container_name: msbase-postgres-staging
     image: postgres:latest
     hostname: localhost
     ports:
@@ -12,7 +12,7 @@ services:
         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   zookeeper:
-    container_name: msbase-zookeeper-prod
+    container_name: msbase-zookeeper-staging
     image: confluentinc/cp-zookeeper:latest
     ports:
       - 2181:2181
@@ -21,7 +21,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
   
   kafka:
-    container_name: msbase-kafka-prod
+    container_name: msbase-kafka-staging
     image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
@@ -37,7 +37,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   elasticsearch:
-    container_name: msbase-elasticsearch-prod
+    container_name: msbase-elasticsearch-staging
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.2
     environment:
       - cluster.name=docker-cluster
@@ -52,7 +52,7 @@ services:
       - "9200:9200"
 
   kibana:
-    container_name: msbase-kibana-prod
+    container_name: msbase-kibana-staging
     image: docker.elastic.co/kibana/kibana:7.14.2
     ports:
       - "5601:5601"

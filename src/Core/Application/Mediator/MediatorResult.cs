@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace MSBase.Core.Application.Mediator
+﻿namespace MSBase.Core.Application.Mediator
 {
     public class MediatorResult : IMediatorResult
     {

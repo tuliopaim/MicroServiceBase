@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cadastro.API.Requests
+﻿namespace Cadastro.API.Requests
 {
     public class EditarPessoaRequest
     {

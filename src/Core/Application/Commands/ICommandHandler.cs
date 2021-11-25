@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using MSBase.Core.Application.Mediator;
 
 namespace MSBase.Core.Application.Commands

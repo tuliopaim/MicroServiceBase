@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MSBase.Core.Domain
+﻿namespace MSBase.Core.Domain
 {
     public abstract class AuditableEntity : Entity, IAuditableEntity
     {

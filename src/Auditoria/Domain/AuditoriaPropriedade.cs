@@ -1,5 +1,4 @@
-﻿using System;
-using MSBase.Core.Domain;
+﻿using MSBase.Core.Domain;
 
 namespace Auditoria.API.Domain
 {

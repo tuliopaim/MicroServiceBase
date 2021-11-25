@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using MSBase.Core.Domain;
+﻿using MSBase.Core.Domain;
 
 namespace MSBase.Core.Infrastructure
 {

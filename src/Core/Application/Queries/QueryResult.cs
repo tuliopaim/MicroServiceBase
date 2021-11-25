@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MSBase.Core.API.Hateoas;
+﻿using MSBase.Core.API.Hateoas;
 using MSBase.Core.Application.Mediator;
 
 namespace MSBase.Core.Application.Queries

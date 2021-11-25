@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Cadastro.API.Requests;
+﻿using Cadastro.API.Requests;
 using Cadastro.Application.Commands.EditarPessoaCommand;
 using Cadastro.Application.Commands.NovaPessoaCommand;
 using Cadastro.Application.Queries;

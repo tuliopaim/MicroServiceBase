@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Cadastro.Domain.Entities;
+﻿using Cadastro.Domain.Entities;
 using Cadastro.Domain.Repositories;
 using Cadastro.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;

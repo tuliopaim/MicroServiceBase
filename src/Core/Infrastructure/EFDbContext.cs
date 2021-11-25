@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure.Auditoria;
@@ -69,7 +65,7 @@ namespace MSBase.Core.Infrastructure
 
         private async Task PublicarAuditoria(AuditoriaEvent auditoriaEvent, CancellationToken cancellationToken)
         {
-            await _kafkaBroker.PublishAsync(KafkaTopics.AuditoriaTopic, AuditoriaEventTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
+            await _kafkaBroker.PublishAsync(KafkaTopics.NovaAuditoria, AuditoriaEventTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using MSBase.Core.Application.Queries;
+﻿using MSBase.Core.Application.Queries;
 
 namespace MSBase.Core.API.Hateoas
 {

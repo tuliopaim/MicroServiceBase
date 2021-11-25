@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -32,6 +27,8 @@ namespace MSBase.Core.API
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            if(!_consumersHandlersTypes.Any()) return;
+
             using var scope = _serviceProvider.CreateScope();
             
             var eventConsumersTasks = new Dictionary<IConsumerHandler, Task>();

@@ -1,5 +1,4 @@
-﻿using System;
-using MSBase.Core.Application.Mediator;
+﻿using MSBase.Core.Application.Mediator;
 using MSBase.Core.Infrastructure.Kafka;
 
 namespace Cadastro.Application.Events.PessoaCriadaEvent

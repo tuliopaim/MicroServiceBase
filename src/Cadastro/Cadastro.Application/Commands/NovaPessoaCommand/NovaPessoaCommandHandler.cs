@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Cadastro.Application.Events.PessoaCriadaEvent;
+﻿using Cadastro.Application.Events.PessoaCriadaEvent;
 using Cadastro.Domain.Entities;
 using Cadastro.Domain.Repositories;
 using MSBase.Core.Application.Commands;

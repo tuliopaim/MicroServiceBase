@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MSBase.Core.API
+﻿namespace MSBase.Core.API
 {
     public class Environment : IEnvironment
     {

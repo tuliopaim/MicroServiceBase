@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using System.Threading;
 using Confluent.Kafka;
 
 namespace MSBase.Core.Infrastructure.Kafka

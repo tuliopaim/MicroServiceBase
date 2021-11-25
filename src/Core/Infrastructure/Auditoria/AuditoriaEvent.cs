@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MSBase.Core.Infrastructure.Kafka;
+﻿using MSBase.Core.Infrastructure.Kafka;
 
 namespace MSBase.Core.Infrastructure.Auditoria
 {

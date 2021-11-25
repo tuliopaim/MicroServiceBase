@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-
-namespace MSBase.Core.API
+﻿namespace MSBase.Core.API
 {
     public interface IConsumerHandler
     {

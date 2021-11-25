@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Auditoria.API.Domain;
+﻿using Auditoria.API.Domain;
 using Auditoria.API.Infrasctructure;
 using MSBase.Core.Application.Commands;
 

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Auditoria.API.Application.NovaAuditoriaCommand;
 using Confluent.Kafka;
-using Microsoft.Extensions.DependencyInjection;
 using MSBase.Core.API;
 using MSBase.Core.Application.Mediator;
 using MSBase.Core.Infrastructure.Auditoria;
@@ -21,7 +16,7 @@ namespace Auditoria.API.Consumers
 
         public AuditoriaConsumer(IKafkaBroker kafkaBroker, IServiceProvider serviceProvider)
         {
-            _consumer = kafkaBroker.GetConsumer(KafkaTopics.AuditoriaTopic);
+            _consumer = kafkaBroker.GetConsumer(KafkaTopics.NovaAuditoria);
             this._serviceProvider = serviceProvider;
         }
 

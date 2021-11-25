@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Confluent.Kafka;
-using Microsoft.Extensions.Logging;
+﻿using Confluent.Kafka;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure.Kafka;
 using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
@@ -16,7 +12,7 @@ namespace Cadastro.API.Consumers.NovaPessoaConsumer
 
         public NovaPessoaConsumer(IKafkaBroker kafkaBroker, ILogger<NovaPessoaConsumer> logger)
         {
-            _consumer = kafkaBroker.GetConsumer(KafkaTopics.NovaPessoaTopic);
+            _consumer = kafkaBroker.GetConsumer(KafkaTopics.NovaPessoa);
             _logger = logger;
         }
 

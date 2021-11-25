@@ -19,7 +19,7 @@ namespace Cadastro.Application.Commands.NovaPessoaCommand
 
         public async Task<NovaPessoaCommandResult> Handle(NovaPessoaCommandInput command, CancellationToken cancellationToken)
         {
-            var pessoa = new Pessoa(command.Nome, command.Idade);
+            var pessoa = new Pessoa(command.Nome, command.Email, command.Idade);
 
             _pessoaRepository.Add(pessoa);
 

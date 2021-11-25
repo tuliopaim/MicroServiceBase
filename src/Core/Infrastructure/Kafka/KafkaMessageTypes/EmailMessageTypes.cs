@@ -1,6 +1,6 @@
 ﻿namespace Core.Infrastructure.Kafka.KafkaMessageTypes
 {
-    public enum EmailsMessageTypes
+    public enum EmailMessageTypes
     {
         EmailPessoaCadastradaComSucesso = 0
     }

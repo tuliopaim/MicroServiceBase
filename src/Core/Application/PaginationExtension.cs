@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Core.Application.Queries;
 using Microsoft.EntityFrameworkCore;
-using MSBase.Core.Application.Queries;
 
-namespace MSBase.Core.Application
+namespace Core.Application
 {
     public static class PaginationExtension
     {
@@ -15,12 +12,12 @@ namespace MSBase.Core.Application
             CancellationToken cancellationToken = new())
             where TResultItem : IPagedQueryResultItem
         {
-            pageNumber = (pageNumber < 0) ? 0 : pageNumber;
+            pageNumber = pageNumber < 0 ? 0 : pageNumber;
             pageSize = pageSize < 1 ? 10 : pageSize;
 
             var totalElements = await query.CountAsync(cancellationToken);
 
-            var startRow = (pageNumber) * pageSize;
+            var startRow = pageNumber * pageSize;
             var items = await query
                 .Skip(startRow)
                 .Take(pageSize)

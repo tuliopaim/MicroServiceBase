@@ -1,8 +1,5 @@
-﻿using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Cadastro.Domain.Repositories;
-using MSBase.Core.Application.Commands;
+﻿using Cadastro.Domain.Repositories;
+using Core.Application.Commands;
 
 namespace Cadastro.Application.Commands.EditarPessoaCommand
 {

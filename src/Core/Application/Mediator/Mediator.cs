@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MSBase.Core.Application.Mediator
+namespace Core.Application.Mediator
 {
     public class Mediator : MediatR.Mediator, IMediator
     {

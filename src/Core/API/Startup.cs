@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
+using Core.API.Hateoas;
+using Core.Application.Mediator.Pipeline;
+using Core.Infrastructure.Kafka;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MSBase.Core.API.Hateoas;
-using MSBase.Core.Application.Mediator.Pipeline;
-using MSBase.Core.Infrastructure.Kafka;
 using Serilog;
 
-namespace MSBase.Core.API
+namespace Core.API
 {
     public static class Startup
     {
@@ -81,7 +78,7 @@ namespace MSBase.Core.API
                 services.AddScoped<Application.Mediator.IMediator, Application.Mediator.Mediator>();
 
                 services.RegistrarMediatorHandlers(settings);
-                
+
                 if (settings.ConfigurarExceptionPipelineBehavior)
                 {
                     services.RegistrarExceptionPipelineBehavior();
@@ -129,12 +126,12 @@ namespace MSBase.Core.API
                 }
             }
         }
-        
+
         private static void RegistrarExceptionPipelineBehavior(this IServiceCollection services)
         {
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionPipelineBehavior<,>));
         }
-        
+
         private static void RegistrarLogPipelineBehavior(this IServiceCollection services)
         {
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LogPipelineBehavior<,>));

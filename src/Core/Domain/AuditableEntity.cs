@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MSBase.Core.Domain
+﻿namespace Core.Domain
 {
     public abstract class AuditableEntity : Entity, IAuditableEntity
     {
@@ -11,8 +9,8 @@ namespace MSBase.Core.Domain
         protected AuditableEntity(Guid id) : base(id)
         {
         }
-        
+
         public DateTime DataCriacao { get; }
         public DateTime? DataAlteracao { get; }
     }
-}           
+}

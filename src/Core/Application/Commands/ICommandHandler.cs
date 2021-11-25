@@ -1,9 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using Core.Application.Mediator;
 using MediatR;
-using MSBase.Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Commands
+namespace Core.Application.Commands
 {
     public interface ICommandHandler<in TCommandInput, TCommandResult> : IMediatorHandler<TCommandInput, TCommandResult>
         where TCommandInput : IRequest<TCommandResult>, IMediatorInput<TCommandResult>

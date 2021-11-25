@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Application.Queries
+﻿namespace Core.Application.Queries
 {
     public class QueryPaginationResult : IQueryPaginationResult
     {

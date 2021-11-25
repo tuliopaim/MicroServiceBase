@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using Confluent.Kafka;
-using MSBase.Core.API;
+using Core.API;
 
-namespace MSBase.Core.Infrastructure.Kafka
+namespace Core.Infrastructure.Kafka
 {
     public class KafkaBroker : IKafkaBroker
     {
@@ -37,19 +32,19 @@ namespace MSBase.Core.Infrastructure.Kafka
             };
         }
 
-        public async Task<Guid> PublishAsync<TEvent, TEventType>(
+        public async Task<Guid> PublishAsync<TMessage, TMessageType>(
             KafkaTopics topic,
-            TEventType eventType,
-            TEvent @event,
-            CancellationToken cancellationToken) where TEvent : class, IKafkaEvent
+            TMessageType messageType,
+            TMessage message,
+            CancellationToken cancellationToken) where TMessage : class, IKafkaMessage
         {
             var messageId = Guid.NewGuid();
-            var message = new PlatformMessage<TEventType>(eventType, JsonSerializer.Serialize(@event));
+            var plataformMessage = new PlatformMessage<TMessageType>(messageType, JsonSerializer.Serialize(message));
 
             await _producer.ProduceAsync(topic.ToString(), new Message<string, string>
             {
                 Key = messageId.ToString(),
-                Value = JsonSerializer.Serialize(message)
+                Value = JsonSerializer.Serialize(plataformMessage)
             }, cancellationToken);
 
             return messageId;

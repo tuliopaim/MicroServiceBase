@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using MSBase.Core.Application.Commands;
+﻿using Core.Application.Commands;
+using FluentValidation;
 
 namespace Cadastro.Application.Commands.EditarPessoaCommand
 {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using Core.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
-using MSBase.Core.Domain;
 
-namespace MSBase.Core.Infrastructure.Auditoria
+namespace Core.Infrastructure.Auditoria
 {
     public static class AuditoriaExtensions
     {
-        public static AuditoriaEvent ObterEventoDeAuditoria(this ChangeTracker changeTracker)
+        public static AuditoriaMessage ObterEventoDeAuditoria(this ChangeTracker changeTracker)
         {
             var auditorias = changeTracker.Entries()
                 .Where(e => e.State
@@ -20,7 +18,7 @@ namespace MSBase.Core.Infrastructure.Auditoria
                 .Select(MapearParaAuditoria)
                 .ToList();
 
-            return new AuditoriaEvent(auditorias);
+            return new AuditoriaMessage(auditorias);
         }
 
         public static NovaAuditoriaDto MapearParaAuditoria(EntityEntry entityEntry)

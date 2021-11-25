@@ -1,15 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Core.API;
+using Core.Infrastructure.Auditoria;
+using Core.Infrastructure.Kafka;
+using Core.Infrastructure.Kafka.KafkaMessageTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using MSBase.Core.API;
-using MSBase.Core.Infrastructure.Auditoria;
-using MSBase.Core.Infrastructure.Kafka;
-using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
 
-namespace MSBase.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public class EfDbContext : DbContext, IUnitOfWork
     {
@@ -67,9 +63,9 @@ namespace MSBase.Core.Infrastructure
             return linhasAfetadas;
         }
 
-        private async Task PublicarAuditoria(AuditoriaEvent auditoriaEvent, CancellationToken cancellationToken)
+        private async Task PublicarAuditoria(AuditoriaMessage auditoriaEvent, CancellationToken cancellationToken)
         {
-            await _kafkaBroker.PublishAsync(KafkaTopics.AuditoriaTopic, AuditoriaEventTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
+            await _kafkaBroker.PublishAsync(KafkaTopics.NovaAuditoria, AuditoriaMessageTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MSBase.Core.Domain
+﻿namespace Core.Domain
 {
     public abstract class Entity : IEntity
     {

@@ -1,6 +1,4 @@
-﻿using BenchmarkDotNet.Running;
-
-namespace BenchmarkConsole
+﻿namespace BenchmarkConsole
 {
     internal class Program
     {

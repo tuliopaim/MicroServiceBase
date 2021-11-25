@@ -1,5 +1,4 @@
-﻿using System;
-using MSBase.Core.Application.Commands;
+﻿using Core.Application.Commands;
 
 namespace Cadastro.Application.Commands.NovaPessoaCommand
 {

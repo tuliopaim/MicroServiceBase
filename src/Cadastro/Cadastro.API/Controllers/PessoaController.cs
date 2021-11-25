@@ -1,13 +1,11 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Cadastro.API.Requests;
+﻿using Cadastro.API.Requests;
 using Cadastro.Application.Commands.EditarPessoaCommand;
 using Cadastro.Application.Commands.NovaPessoaCommand;
 using Cadastro.Application.Queries;
+using Core.API;
+using Core.API.Hateoas;
+using Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.API;
-using MSBase.Core.API.Hateoas;
-using MSBase.Core.Application.Mediator;
 
 namespace Cadastro.API.Controllers
 {
@@ -41,7 +39,7 @@ namespace Cadastro.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Criar([FromBody] NovaPessoaRequest request, CancellationToken cancellationToken)
         {
-            var command = new NovaPessoaCommandInput(request.Nome, request.Idade);
+            var command = new NovaPessoaCommandInput(request.Nome, request.Email, request.Idade);
 
             var result = await _mediator.Send(command, cancellationToken);
             

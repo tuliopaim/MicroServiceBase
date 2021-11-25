@@ -1,6 +1,6 @@
-﻿using MSBase.Core.Application.Mediator;
+﻿using Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Queries
+namespace Core.Application.Queries
 {
     public class QueryInput<TQueryResult> : MediatorInput<TQueryResult>
         where TQueryResult : QueryResult

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MSBase.Core.Domain
+﻿namespace Core.Domain
 {
     public interface IEntity
     {

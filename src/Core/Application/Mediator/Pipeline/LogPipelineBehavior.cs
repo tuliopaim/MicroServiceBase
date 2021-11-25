@@ -1,9 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace MSBase.Core.Application.Mediator.Pipeline
+namespace Core.Application.Mediator.Pipeline
 {
     public class LogPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IMediatorInput<TResponse>

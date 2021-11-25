@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using MSBase.Core.API.Hateoas;
-using MSBase.Core.Application.Mediator;
+﻿using Core.API.Hateoas;
+using Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Queries
+namespace Core.Application.Queries
 {
     public class QueryResult : MediatorResult
     {

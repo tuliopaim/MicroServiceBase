@@ -1,16 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Auditoria.API.Application.NovaAuditoriaCommand;
 using Confluent.Kafka;
-using Microsoft.Extensions.DependencyInjection;
-using MSBase.Core.API;
-using MSBase.Core.Application.Mediator;
-using MSBase.Core.Infrastructure.Auditoria;
-using MSBase.Core.Infrastructure.Kafka;
-using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
+using Core.API;
+using Core.Application.Mediator;
+using Core.Infrastructure.Auditoria;
+using Core.Infrastructure.Kafka;
+using Core.Infrastructure.Kafka.KafkaMessageTypes;
 
 namespace Auditoria.API.Consumers
 {
@@ -21,7 +16,7 @@ namespace Auditoria.API.Consumers
 
         public AuditoriaConsumer(IKafkaBroker kafkaBroker, IServiceProvider serviceProvider)
         {
-            _consumer = kafkaBroker.GetConsumer(KafkaTopics.AuditoriaTopic);
+            _consumer = kafkaBroker.GetConsumer(KafkaTopics.NovaAuditoria);
             this._serviceProvider = serviceProvider;
         }
 
@@ -29,21 +24,21 @@ namespace Auditoria.API.Consumers
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                var message = _consumer.GetMessage<AuditoriaEventTypes>(cancellationToken);
+                var platformMessage = _consumer.GetMessage<AuditoriaMessageTypes>(cancellationToken);
 
                 using var scope = _serviceProvider.CreateScope();
 
                 var mediator = scope.ServiceProvider.GetService<IMediator>();
 
-                var @event = JsonSerializer.Deserialize<AuditoriaEvent>(message.Data);
+                var message = JsonSerializer.Deserialize<AuditoriaMessage>(platformMessage.Data);
 
-                var command = MapearParaCommand(@event);
+                var command = MapearParaCommand(message);
                 
                 var result = await mediator!.Send(command, cancellationToken);
             }
         }
 
-        private static NovaAuditoriaCommandInput MapearParaCommand(AuditoriaEvent @event)
+        private static NovaAuditoriaCommandInput MapearParaCommand(AuditoriaMessage @event)
         {
             return new NovaAuditoriaCommandInput
             {

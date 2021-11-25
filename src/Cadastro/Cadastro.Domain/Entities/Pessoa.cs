@@ -1,16 +1,18 @@
-﻿using MSBase.Core.Domain;
+﻿using Core.Domain;
 
 namespace Cadastro.Domain.Entities
 {
     public class Pessoa : AuditableEntity
     {
-        public Pessoa(string nome, byte idade)
+        public Pessoa(string nome, string email, byte idade)
         {
             Nome = nome;
+            Email = email;
             Idade = idade;
         }
 
         public string Nome { get; private set; }
+        public string Email { get; private set; }
         public byte Idade { get; private set; }
 
         public void AlterarNome(string novoNome)

@@ -1,5 +1,4 @@
-﻿using System;
-using MSBase.Core.Application.Queries;
+﻿using Core.Application.Queries;
 
 namespace Cadastro.Application.Queries
 {

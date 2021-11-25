@@ -1,7 +1,7 @@
 ﻿using Cadastro.Domain.Entities;
+using Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MSBase.Core.Infrastructure;
 
 namespace Cadastro.Infrastructure.Configuration
 {
@@ -11,6 +11,10 @@ namespace Cadastro.Infrastructure.Configuration
         {
             builder.Property(x => x.Nome)
                 .HasColumnType("VARCHAR(200)")
+                .IsRequired();
+
+            builder.Property(x => x.Email)
+                .HasColumnType("VARCHAR(100)")
                 .IsRequired();
 
             builder.Property(x => x.Idade).IsRequired();

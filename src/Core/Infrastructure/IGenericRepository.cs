@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using MSBase.Core.Domain;
+﻿using Core.Domain;
 
-namespace MSBase.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public interface IGenericRepository<TEntity> where TEntity : Entity
     {

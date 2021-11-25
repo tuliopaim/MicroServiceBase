@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
+#nullable disable
+
 namespace CQRS.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
@@ -16,23 +18,28 @@ namespace CQRS.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("CQRS")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.11")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("CQRS.Domain.Entities.Pessoa", b =>
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Cadastro.Domain.Entities.Pessoa", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
                         .HasColumnName("Id");
 
                     b.Property<DateTime?>("DataAlteracao")
-                        .HasColumnType("timestamp without time zone")
+                        .HasColumnType("date")
                         .HasColumnName("DataAlteracao");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("timestamp without time zone")
+                        .HasColumnType("date")
                         .HasColumnName("DataCriacao");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<byte>("Idade")
                         .HasColumnType("smallint");
@@ -43,7 +50,7 @@ namespace CQRS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoa");
+                    b.ToTable("Pessoa", "CQRS");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Cadastro.Domain.Entities;
-using MSBase.Core.Infrastructure;
+﻿using Cadastro.Domain.Entities;
+using Core.Infrastructure;
 
 namespace Cadastro.Domain.Repositories
 {

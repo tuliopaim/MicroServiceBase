@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MSBase.Core.Domain;
 
-namespace MSBase.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public abstract class AuditableEntityMap<TEntity> : EntityMap<TEntity> where TEntity : AuditableEntity
     {
@@ -11,12 +11,14 @@ namespace MSBase.Core.Infrastructure
             builder
                 .Property(x => x.DataCriacao)
                 .HasColumnName("DataCriacao")
+                .HasColumnType("date")
                 .IsRequired();
 
             builder
                 .Property(x => x.DataAlteracao)
+                .HasColumnType("date")
                 .HasColumnName("DataAlteracao");
-            
+
             base.Configure(builder);
         }
     }

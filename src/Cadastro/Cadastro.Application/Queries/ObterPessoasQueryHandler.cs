@@ -1,9 +1,6 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Cadastro.Domain.Repositories;
-using MSBase.Core.Application;
-using MSBase.Core.Application.Queries;
+﻿using Cadastro.Domain.Repositories;
+using Core.Application;
+using Core.Application.Queries;
 
 namespace Cadastro.Application.Queries
 {

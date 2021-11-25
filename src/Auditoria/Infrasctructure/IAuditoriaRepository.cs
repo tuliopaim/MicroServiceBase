@@ -1,4 +1,4 @@
-﻿using MSBase.Core.Infrastructure;
+﻿using Core.Infrastructure;
 
 namespace Auditoria.API.Infrasctructure
 {

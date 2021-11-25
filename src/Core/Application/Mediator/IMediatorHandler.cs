@@ -1,8 +1,6 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
-namespace MSBase.Core.Application.Mediator
+namespace Core.Application.Mediator
 {
     public interface IMediatorHandler<in TMediatorInput, TMediatorResult> : IRequestHandler<TMediatorInput, TMediatorResult>
         where TMediatorInput : IRequest<TMediatorResult>, IMediatorInput<TMediatorResult>

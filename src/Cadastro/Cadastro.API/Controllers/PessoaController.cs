@@ -39,7 +39,7 @@ namespace Cadastro.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Criar([FromBody] NovaPessoaRequest request, CancellationToken cancellationToken)
         {
-            var command = new NovaPessoaCommandInput(request.Nome, request.Idade);
+            var command = new NovaPessoaCommandInput(request.Nome, request.Email, request.Idade);
 
             var result = await _mediator.Send(command, cancellationToken);
             

@@ -12,7 +12,7 @@ COPY ["Email/EmailSender.Templates/EmailSender.Templates.csproj", "Email/EmailSe
 COPY ["Core/Core.csproj", "Core/"]
 RUN dotnet restore "Email/EmailSender.API/EmailSender.API.csproj"
 COPY . .
-WORKDIR "/Email/EmailSender.API"
+WORKDIR "Email/EmailSender.API"
 RUN dotnet build "EmailSender.API.csproj" -c Release -o /app/build
 
 FROM build AS publish

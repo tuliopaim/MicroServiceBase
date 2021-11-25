@@ -7,7 +7,7 @@ namespace Core.Infrastructure.Auditoria
 {
     public static class AuditoriaExtensions
     {
-        public static AuditoriaEvent ObterEventoDeAuditoria(this ChangeTracker changeTracker)
+        public static AuditoriaMessage ObterEventoDeAuditoria(this ChangeTracker changeTracker)
         {
             var auditorias = changeTracker.Entries()
                 .Where(e => e.State
@@ -18,7 +18,7 @@ namespace Core.Infrastructure.Auditoria
                 .Select(MapearParaAuditoria)
                 .ToList();
 
-            return new AuditoriaEvent(auditorias);
+            return new AuditoriaMessage(auditorias);
         }
 
         public static NovaAuditoriaDto MapearParaAuditoria(EntityEntry entityEntry)

@@ -3,7 +3,6 @@
     public enum KafkaTopics
     {
         NovaAuditoria = 0,
-        NovaPessoa = 1,
-        NovoEmail = 2,
+        NovoEmail = 1,
     }
 }

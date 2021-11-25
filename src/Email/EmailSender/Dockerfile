@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["src/Email/EmailSender/EmailSender.csproj", "src/Email/EmailSender/"]
-RUN dotnet restore "src/Email/EmailSender/EmailSender.csproj"
+COPY ["Email/EmailSender/EmailSender.csproj", "Email/EmailSender/"]
+RUN dotnet restore "Email/EmailSender/EmailSender.csproj"
 COPY . .
-WORKDIR "/src/src/Email/EmailSender"
+WORKDIR "Email/EmailSender"
 RUN dotnet build "EmailSender.csproj" -c Release -o /app/build
 
 FROM build AS publish

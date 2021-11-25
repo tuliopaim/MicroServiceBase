@@ -1,7 +1,7 @@
-﻿using EmailSender.Infrastructure;
+﻿using EmailSender.API.Infrastructure;
 using EmailSender.Templates.Views.Emails.PessoaCadastradaComSucesso;
 
-namespace EmailSender.Domain
+namespace EmailSender.API.Domain
 {
     public class EmailService : IEmailService
     {

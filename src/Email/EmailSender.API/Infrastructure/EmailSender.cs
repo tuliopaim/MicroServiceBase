@@ -2,7 +2,7 @@
 using EmailSender.Templates.Views.Emails;
 using FluentEmail.Core;
 
-namespace EmailSender.Infrastructure;
+namespace EmailSender.API.Infrastructure;
 
 public class EmailSender : IEmailSender
 {

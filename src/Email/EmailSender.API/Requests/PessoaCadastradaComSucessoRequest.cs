@@ -1,4 +1,4 @@
-﻿namespace EmailSender.Requests
+﻿namespace EmailSender.API.Requests
 {
     public class PessoaCadastradaComSucessoRequest
     {

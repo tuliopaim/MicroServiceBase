@@ -62,7 +62,7 @@ services:
     image: email-sender:latest
     build:
         context: ../src
-        dockerfile: ./Email/EmailSender/Dockerfile
+        dockerfile: ./Email/EmailSender.API/Dockerfile
     restart: always
     ports: 
         - 5030:5030    

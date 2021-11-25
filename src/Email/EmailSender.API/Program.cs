@@ -1,6 +1,6 @@
 using Core.API;
-using EmailSender.Domain;
-using EmailSender.Infrastructure;
+using EmailSender.API.Domain;
+using EmailSender.API.Infrastructure;
 using EmailSender.Templates;
 using FluentEmail.MailKitSmtp;
 
@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<IEmailSender, EmailSender.Infrastructure.EmailSender>();
+builder.Services.AddScoped<IEmailSender, EmailSender.API.Infrastructure.EmailSender>();
 
 builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 

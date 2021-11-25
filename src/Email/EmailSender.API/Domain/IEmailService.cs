@@ -1,5 +1,4 @@
-﻿
-namespace EmailSender.Domain
+﻿namespace EmailSender.API.Domain
 {
     public interface IEmailService
     {

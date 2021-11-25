@@ -1,9 +1,9 @@
 ﻿using Core.API;
-using EmailSender.Domain;
-using EmailSender.Requests;
+using EmailSender.API.Domain;
+using EmailSender.API.Requests;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmailSender.Controllers;
+namespace EmailSender.API.Controllers;
 
 public class EmailController : BaseController
 {

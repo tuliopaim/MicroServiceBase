@@ -1,6 +1,6 @@
 ﻿using EmailSender.Templates.Views.Emails;
 
-namespace EmailSender.Infrastructure
+namespace EmailSender.API.Infrastructure
 {
     public interface IEmailSender
     {

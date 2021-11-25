@@ -1,6 +1,5 @@
 ﻿using Core.Application.Queries;
 using Microsoft.EntityFrameworkCore;
-using MSBase.Core.Application.Queries;
 
 namespace Core.Application
 {

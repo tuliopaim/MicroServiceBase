@@ -1,5 +1,4 @@
 using Core.API;
-using MSBase.Core.API;
 
 var builder = WebApplication.CreateBuilder(args);
 

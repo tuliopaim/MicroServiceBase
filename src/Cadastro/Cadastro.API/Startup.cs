@@ -5,7 +5,6 @@ using Cadastro.Infrastructure.Repositories;
 using Core.API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MSBase.Core.API;
 
 namespace Cadastro.API
 {

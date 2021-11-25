@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
-using MSBase.Core.Infrastructure.Auditoria;
 
 namespace Core.Infrastructure.Auditoria
 {

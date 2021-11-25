@@ -2,7 +2,6 @@ using Auditoria.API.Infrasctructure;
 using Core.API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MSBase.Core.API;
 
 namespace Auditoria.API;
 

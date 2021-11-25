@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Application.Queries
+﻿namespace Core.Application.Queries
 {
     public class PagedQueryResult<TResultItem> : QueryResult where TResultItem : IPagedQueryResultItem
     {

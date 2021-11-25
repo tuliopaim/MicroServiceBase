@@ -1,5 +1,5 @@
 ﻿using Cadastro.Domain.Repositories;
-using MSBase.Core.Application.Commands;
+using Core.Application.Commands;
 
 namespace Cadastro.Application.Commands.EditarPessoaCommand
 {

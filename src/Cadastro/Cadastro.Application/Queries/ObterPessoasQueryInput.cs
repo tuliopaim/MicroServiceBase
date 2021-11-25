@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.Application.Queries;
+﻿using Core.Application.Queries;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cadastro.Application.Queries
 {

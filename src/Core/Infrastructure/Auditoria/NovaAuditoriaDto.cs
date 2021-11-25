@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace MSBase.Core.Infrastructure.Auditoria
+namespace Core.Infrastructure.Auditoria
 {
     public class NovaAuditoriaDto
     {

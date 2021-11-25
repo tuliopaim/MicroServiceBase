@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using Confluent.Kafka;
 
-namespace MSBase.Core.Infrastructure.Kafka
+namespace Core.Infrastructure.Kafka
 {
     public static class KafkaExtensions
     {

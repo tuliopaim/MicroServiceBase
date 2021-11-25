@@ -1,6 +1,6 @@
 ﻿using Cadastro.Domain.Repositories;
-using MSBase.Core.Application;
-using MSBase.Core.Application.Queries;
+using Core.Application;
+using Core.Application.Queries;
 
 namespace Cadastro.Application.Queries
 {

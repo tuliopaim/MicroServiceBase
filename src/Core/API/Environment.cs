@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.API
+﻿namespace Core.API
 {
     public class Environment : IEnvironment
     {

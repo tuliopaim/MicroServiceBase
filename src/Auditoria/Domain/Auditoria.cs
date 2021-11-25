@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MSBase.Core.Domain;
+﻿using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auditoria.API.Domain
 {

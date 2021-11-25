@@ -1,7 +1,7 @@
-﻿using MediatR;
-using MSBase.Core.Application.Mediator;
+﻿using Core.Application.Mediator;
+using MediatR;
 
-namespace MSBase.Core.Application.Events
+namespace Core.Application.Events
 {
     public interface IEventHandler<in TEventInput> : INotificationHandler<TEventInput> where TEventInput : EventInput
     {

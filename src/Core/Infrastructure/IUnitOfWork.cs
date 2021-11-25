@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Infrastructure
+﻿namespace Core.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {

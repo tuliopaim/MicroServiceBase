@@ -1,8 +1,8 @@
 ﻿using Cadastro.Application.Events.PessoaCriadaEvent;
 using Cadastro.Domain.Entities;
 using Cadastro.Domain.Repositories;
-using MSBase.Core.Application.Commands;
-using MSBase.Core.Application.Mediator;
+using Core.Application.Commands;
+using Core.Application.Mediator;
 
 namespace Cadastro.Application.Commands.NovaPessoaCommand
 {

@@ -1,6 +1,6 @@
-﻿using MSBase.Core.Application.Events;
-using MSBase.Core.Infrastructure.Kafka;
-using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
+﻿using Core.Application.Events;
+using Core.Infrastructure.Kafka;
+using Core.Infrastructure.Kafka.KafkaMessageTypes;
 
 namespace Cadastro.Application.Events.PessoaCriadaEvent
 {
@@ -15,7 +15,7 @@ namespace Cadastro.Application.Events.PessoaCriadaEvent
 
         public async Task Handle(PessoaCriadaEventInput @event, CancellationToken cancellationToken)
         {
-            await _broker.PublishAsync(KafkaTopics.NovaPessoa, PessoaEventTypes.PessoaCriada, @event, cancellationToken);
+            await _broker.PublishAsync(KafkaTopics.NovaPessoa, PessoaMessageTypes.PessoaCriada, @event, cancellationToken);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using MSBase.Core.Infrastructure.Kafka;
+﻿using Core.Infrastructure.Kafka;
 
-namespace MSBase.Core.Infrastructure.Auditoria
+namespace Core.Infrastructure.Auditoria
 {
     public class AuditoriaEvent : IKafkaEvent
     {

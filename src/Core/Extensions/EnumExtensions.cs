@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
 
-namespace MSBase.Core.Extensions
+namespace Core.Extensions
 {
     public static class EnumExtensions
     {
@@ -23,7 +23,7 @@ namespace MSBase.Core.Extensions
 
                 break;
             }
-            
+
             return description;
         }
     }

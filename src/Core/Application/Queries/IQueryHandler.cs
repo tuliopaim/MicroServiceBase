@@ -1,7 +1,7 @@
-﻿using MediatR;
-using MSBase.Core.Application.Mediator;
+﻿using Core.Application.Mediator;
+using MediatR;
 
-namespace MSBase.Core.Application.Queries
+namespace Core.Application.Queries
 {
     public interface IQueryHandler<in TQueryInput, TQueryResult> : IMediatorHandler<TQueryInput, TQueryResult>
         where TQueryInput : IRequest<TQueryResult>, IMediatorInput<TQueryResult>

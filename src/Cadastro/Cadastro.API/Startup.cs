@@ -2,6 +2,7 @@ using Cadastro.Application;
 using Cadastro.Domain.Repositories;
 using Cadastro.Infrastructure.Context;
 using Cadastro.Infrastructure.Repositories;
+using Core.API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using MSBase.Core.API;

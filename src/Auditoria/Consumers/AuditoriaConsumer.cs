@@ -1,11 +1,11 @@
 ﻿using System.Text.Json;
 using Auditoria.API.Application.NovaAuditoriaCommand;
 using Confluent.Kafka;
-using MSBase.Core.API;
-using MSBase.Core.Application.Mediator;
-using MSBase.Core.Infrastructure.Auditoria;
-using MSBase.Core.Infrastructure.Kafka;
-using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
+using Core.API;
+using Core.Application.Mediator;
+using Core.Infrastructure.Auditoria;
+using Core.Infrastructure.Kafka;
+using Core.Infrastructure.Kafka.KafkaMessageTypes;
 
 namespace Auditoria.API.Consumers
 {
@@ -24,7 +24,7 @@ namespace Auditoria.API.Consumers
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                var message = _consumer.GetMessage<AuditoriaEventTypes>(cancellationToken);
+                var message = _consumer.GetMessage<AuditoriaMessageTypes>(cancellationToken);
 
                 using var scope = _serviceProvider.CreateScope();
 

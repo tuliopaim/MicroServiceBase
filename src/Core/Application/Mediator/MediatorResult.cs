@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Application.Mediator
+﻿namespace Core.Application.Mediator
 {
     public class MediatorResult : IMediatorResult
     {

@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.API.Hateoas
+﻿namespace Core.API.Hateoas
 {
     public class HLink
     {

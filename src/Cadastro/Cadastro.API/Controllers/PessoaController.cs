@@ -2,10 +2,10 @@
 using Cadastro.Application.Commands.EditarPessoaCommand;
 using Cadastro.Application.Commands.NovaPessoaCommand;
 using Cadastro.Application.Queries;
+using Core.API;
+using Core.API.Hateoas;
+using Core.Application.Mediator;
 using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.API;
-using MSBase.Core.API.Hateoas;
-using MSBase.Core.Application.Mediator;
 
 namespace Cadastro.API.Controllers
 {

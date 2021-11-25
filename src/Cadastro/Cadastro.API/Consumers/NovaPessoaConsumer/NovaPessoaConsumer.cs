@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
-using MSBase.Core.API;
-using MSBase.Core.Infrastructure.Kafka;
-using MSBase.Core.Infrastructure.Kafka.KafkaEventTypes;
+using Core.API;
+using Core.Infrastructure.Kafka;
+using Core.Infrastructure.Kafka.KafkaMessageTypes;
 
 namespace Cadastro.API.Consumers.NovaPessoaConsumer
 {
@@ -20,11 +20,11 @@ namespace Cadastro.API.Consumers.NovaPessoaConsumer
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                var message = _consumer.GetMessage<PessoaEventTypes>(cancellationToken);
+                var message = _consumer.GetMessage<PessoaMessageTypes>(cancellationToken);
 
                 var handleTask = message.EventType switch
                 {
-                    PessoaEventTypes.PessoaCriada => HandlePessoaCriada(message),
+                    PessoaMessageTypes.PessoaCriada => HandlePessoaCriada(message),
                     _ => Task.CompletedTask
                 };
 
@@ -32,9 +32,9 @@ namespace Cadastro.API.Consumers.NovaPessoaConsumer
             }
         }
 
-        private Task HandlePessoaCriada(PlatformMessage<PessoaEventTypes> platformMessage)
+        private Task HandlePessoaCriada(PlatformMessage<PessoaMessageTypes> platformMessage)
         {
-            var @event = platformMessage.GetEvent<NovaPessoaConsumerInput, PessoaEventTypes>();
+            var @event = platformMessage.GetEvent<NovaPessoaConsumerInput, PessoaMessageTypes>();
             
             _logger.LogDebug("{ConsumerInputType} - Recebido.", nameof(NovaPessoaConsumerInput));
 

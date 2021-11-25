@@ -3,7 +3,7 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace MSBase.Core.API
+namespace Core.API
 {
     [ExcludeFromCodeCoverage]
     public class RunConsumersService : BackgroundService
@@ -12,7 +12,7 @@ namespace MSBase.Core.API
         private readonly List<Type> _consumersHandlersTypes;
 
         public RunConsumersService(
-            IServiceProvider serviceProvider, 
+            IServiceProvider serviceProvider,
             CoreSettings settings)
         {
             _serviceProvider = serviceProvider;
@@ -27,10 +27,10 @@ namespace MSBase.Core.API
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            if(!_consumersHandlersTypes.Any()) return;
+            if (!_consumersHandlersTypes.Any()) return;
 
             using var scope = _serviceProvider.CreateScope();
-            
+
             var eventConsumersTasks = new Dictionary<IConsumerHandler, Task>();
 
             RunAllConsumers(stoppingToken, eventConsumersTasks, scope);
@@ -46,20 +46,20 @@ namespace MSBase.Core.API
             }
         }
         private void RunAllConsumers(CancellationToken stoppingToken,
-            Dictionary<IConsumerHandler, Task> eventConsumersTasks, 
+            Dictionary<IConsumerHandler, Task> eventConsumersTasks,
             IServiceScope serviceScope)
         {
             foreach (var consumerType in _consumersHandlersTypes)
             {
                 var consumerHandler = (IConsumerHandler)serviceScope.ServiceProvider.GetService(consumerType);
 
-                eventConsumersTasks.Add(consumerHandler!, 
+                eventConsumersTasks.Add(consumerHandler!,
                     Task.Run(async () => await consumerHandler.Handle(stoppingToken), stoppingToken));
             }
         }
 
         private static void RunFaultedConsumer(
-            CancellationToken stoppingToken, 
+            CancellationToken stoppingToken,
             Dictionary<IConsumerHandler, Task> eventConsumersTasks,
             Task faultedTask)
         {

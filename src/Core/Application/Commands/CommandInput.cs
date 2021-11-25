@@ -1,6 +1,6 @@
-﻿using MSBase.Core.Application.Mediator;
+﻿using Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Commands
+namespace Core.Application.Commands
 {
     public class CommandInput<TCommandResult> : MediatorInput<TCommandResult> where TCommandResult : CommandResult
     {

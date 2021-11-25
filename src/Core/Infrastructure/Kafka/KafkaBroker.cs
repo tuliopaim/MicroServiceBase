@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Text.Json;
 using Confluent.Kafka;
-using MSBase.Core.API;
+using Core.API;
 
-namespace MSBase.Core.Infrastructure.Kafka
+namespace Core.Infrastructure.Kafka
 {
     public class KafkaBroker : IKafkaBroker
     {

@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using MSBase.Core.Application.Events;
+﻿using Core.Application.Events;
+using FluentValidation;
 
 namespace Cadastro.Application.Events.PessoaCriadaEvent
 {

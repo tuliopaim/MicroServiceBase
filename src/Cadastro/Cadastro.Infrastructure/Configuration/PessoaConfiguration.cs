@@ -1,7 +1,7 @@
 ﻿using Cadastro.Domain.Entities;
+using Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MSBase.Core.Infrastructure;
 
 namespace Cadastro.Infrastructure.Configuration
 {

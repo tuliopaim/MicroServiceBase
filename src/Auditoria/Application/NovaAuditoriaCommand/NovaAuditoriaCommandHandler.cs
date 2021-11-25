@@ -1,6 +1,6 @@
 ﻿using Auditoria.API.Domain;
 using Auditoria.API.Infrasctructure;
-using MSBase.Core.Application.Commands;
+using Core.Application.Commands;
 
 namespace Auditoria.API.Application.NovaAuditoriaCommand
 {

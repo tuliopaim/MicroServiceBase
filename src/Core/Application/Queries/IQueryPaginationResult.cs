@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MSBase.Core.Application.Queries
+namespace Core.Application.Queries
 {
     public interface IQueryPaginationResult
     {

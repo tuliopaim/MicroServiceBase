@@ -1,4 +1,4 @@
-﻿using MSBase.Core.Domain;
+﻿using Core.Domain;
 
 namespace Cadastro.Domain.Entities
 {

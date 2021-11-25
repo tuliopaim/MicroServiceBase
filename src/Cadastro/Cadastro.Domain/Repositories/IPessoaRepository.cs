@@ -1,5 +1,5 @@
 ﻿using Cadastro.Domain.Entities;
-using MSBase.Core.Infrastructure;
+using Core.Infrastructure;
 
 namespace Cadastro.Domain.Repositories
 {

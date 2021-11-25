@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Application.Queries;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using MSBase.Core.Application.Queries;
 
-namespace MSBase.Core.API.Hateoas
+namespace Core.API.Hateoas
 {
     public class HateoasHelper : IHateoasHelper
     {
@@ -14,14 +14,14 @@ namespace MSBase.Core.API.Hateoas
             _accessor = accessor;
             _generator = generator;
         }
-        
+
         public HLink CreateHLink(HttpMethod httpMethod, string relName, string actionName, object queryParams)
         {
             var link = _generator.GetUriByName(
                 _accessor.HttpContext,
                 actionName,
                 queryParams);
-            
+
             if (link is null)
             {
                 throw new ArgumentException(
@@ -40,7 +40,7 @@ namespace MSBase.Core.API.Hateoas
 
         public HLink CreateGetHLink(string relName, string actionName, object queryParams) =>
             CreateHLink(HttpMethod.Get, relName, actionName, queryParams);
-        
+
         public HLink CreateFirstHLink(string actionName, object queryParams) =>
              CreateGetHLink("_first", actionName, queryParams);
 
@@ -55,9 +55,9 @@ namespace MSBase.Core.API.Hateoas
 
         public HLink CreateLastHLink(string actionName, object queryParams) =>
             CreateGetHLink("_last", actionName, queryParams);
-        
+
         public IEnumerable<HLink> CreatePaginatedHLinks<TQueryItem>(
-            string actionName, 
+            string actionName,
             PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
             IQueryPaginationResult paginationResult)
             where TQueryItem : IPagedQueryResultItem
@@ -65,7 +65,7 @@ namespace MSBase.Core.API.Hateoas
             var links = new List<HLink>();
 
             AddFirstPaginatedLink(actionName, queryInput, paginationResult, links);
-            AddPrevPaginatedLink(actionName, queryInput, paginationResult, links);  
+            AddPrevPaginatedLink(actionName, queryInput, paginationResult, links);
             AddSelfPaginatedLink(actionName, queryInput, paginationResult, links);
             AddNextPaginatedLink(actionName, queryInput, paginationResult, links);
             AddLastPaginatedLink(actionName, queryInput, paginationResult, links);
@@ -74,9 +74,9 @@ namespace MSBase.Core.API.Hateoas
         }
 
         private void AddFirstPaginatedLink<TQueryItem>(
-            string actionName, 
+            string actionName,
             PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-            IQueryPaginationResult paginationResult, 
+            IQueryPaginationResult paginationResult,
             ICollection<HLink> links) where TQueryItem : IPagedQueryResultItem
         {
             queryInput.PageNumber = paginationResult.FirstPage;
@@ -85,10 +85,10 @@ namespace MSBase.Core.API.Hateoas
         }
 
         private void AddPrevPaginatedLink<TQueryItem>(
-            string actionName, 
+            string actionName,
             PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-            IQueryPaginationResult paginationResult, 
-            ICollection<HLink> links) 
+            IQueryPaginationResult paginationResult,
+            ICollection<HLink> links)
             where TQueryItem : IPagedQueryResultItem
         {
             if (!paginationResult.HasPrevPage) return;
@@ -97,13 +97,13 @@ namespace MSBase.Core.API.Hateoas
 
             links.Add(CreatePrevHLink(actionName, queryInput));
         }
-        
-        
+
+
         private void AddSelfPaginatedLink<TQueryItem>(
-            string actionName, 
+            string actionName,
             PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-            IQueryPaginationResult paginationResult, 
-            ICollection<HLink> links) 
+            IQueryPaginationResult paginationResult,
+            ICollection<HLink> links)
             where TQueryItem : IPagedQueryResultItem
         {
             queryInput.PageNumber = paginationResult.Number;
@@ -112,9 +112,9 @@ namespace MSBase.Core.API.Hateoas
         }
 
         private void AddNextPaginatedLink<TQueryItem>(
-            string actionName, 
+            string actionName,
             PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-            IQueryPaginationResult paginationResult, 
+            IQueryPaginationResult paginationResult,
             ICollection<HLink> links)
             where TQueryItem : IPagedQueryResultItem
         {
@@ -125,12 +125,12 @@ namespace MSBase.Core.API.Hateoas
             links.Add(CreateNextHLink(actionName, queryInput));
         }
 
-        
+
         private void AddLastPaginatedLink<TQueryItem>(
-            string actionName, 
+            string actionName,
             PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-            IQueryPaginationResult paginationResult, 
-            ICollection<HLink> links) 
+            IQueryPaginationResult paginationResult,
+            ICollection<HLink> links)
             where TQueryItem : IPagedQueryResultItem
         {
             queryInput.PageNumber = paginationResult.LastPage;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace MSBase.Core.API
+namespace Core.API
 {
     public class CoreSettings
     {
@@ -24,7 +24,7 @@ namespace MSBase.Core.API
         /// Nome do assembly do projeto de aplicação, utilizado para injetar as dependências
         /// </summary>
         public Type TipoDaCamadaDeApplication { get; set; }
-                
+
         /// <summary>
         /// Configurar o Exception Pipeline Behavior, para tratar exceptions que ocorram no Handler
         /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Infrastructure.Kafka
+﻿namespace Core.Infrastructure.Kafka
 {
     public class PlatformMessage<TEventType>
     {

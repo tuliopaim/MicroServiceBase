@@ -1,4 +1,4 @@
-﻿using MSBase.Core.Infrastructure.Kafka;
+﻿using Core.Infrastructure.Kafka;
 
 namespace Cadastro.API.Consumers.NovaPessoaConsumer
 {

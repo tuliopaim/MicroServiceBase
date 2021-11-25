@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
-using MSBase.Core.Domain;
+using MSBase.Core.Infrastructure.Auditoria;
 
-namespace MSBase.Core.Infrastructure.Auditoria
+namespace Core.Infrastructure.Auditoria
 {
     public static class AuditoriaExtensions
     {

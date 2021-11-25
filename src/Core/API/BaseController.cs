@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.Application.Mediator;
+﻿using Core.Application.Mediator;
+using Microsoft.AspNetCore.Mvc;
 
-namespace MSBase.Core.API
+namespace Core.API
 {
     [ApiController]
     public class BaseController : ControllerBase

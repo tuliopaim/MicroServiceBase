@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MSBase.Core.Domain;
+﻿using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
-namespace MSBase.Core.Infrastructure
+namespace Core.Infrastructure
 {
     public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : Entity
     {
@@ -13,7 +13,7 @@ namespace MSBase.Core.Infrastructure
         }
 
         public IUnitOfWork UnitOfWork => _context;
-                
+
         public IQueryable<TEntity> Get() => _context.Set<TEntity>().AsQueryable();
 
         public IQueryable<TEntity> GetAsNoTracking() => Get().AsNoTrackingWithIdentityResolution();

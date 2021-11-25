@@ -5,16 +5,18 @@ namespace Core.Infrastructure.Kafka
 {
     public static class KafkaExtensions
     {
-        public static PlatformMessage<TEventType> GetMessage<TEventType>(
+        public static PlatformMessage<TMessageType> GetMessage<TMessageType>(
             this IConsumer<string, string> consumer,
             CancellationToken cancellationToken)
         {
             var consumerResult = consumer.Consume(cancellationToken);
 
-            return JsonSerializer.Deserialize<PlatformMessage<TEventType>>(consumerResult.Message.Value);
+            return JsonSerializer.Deserialize<PlatformMessage<TMessageType>>(consumerResult.Message.Value);
         }
 
-        public static TEvent GetEvent<TEvent, TEventType>(this PlatformMessage<TEventType> platformMessage)
-            => JsonSerializer.Deserialize<TEvent>(platformMessage.Data);
+        public static TMessage GetMessage<TMessage, TMessageType>(this PlatformMessage<TMessageType> platformMessage)
+        {
+            return JsonSerializer.Deserialize<TMessage>(platformMessage.Data);
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace Core.Infrastructure
             return linhasAfetadas;
         }
 
-        private async Task PublicarAuditoria(AuditoriaEvent auditoriaEvent, CancellationToken cancellationToken)
+        private async Task PublicarAuditoria(AuditoriaMessage auditoriaEvent, CancellationToken cancellationToken)
         {
             await _kafkaBroker.PublishAsync(KafkaTopics.NovaAuditoria, AuditoriaMessageTypes.NovaAuditoria, auditoriaEvent, cancellationToken);
         }

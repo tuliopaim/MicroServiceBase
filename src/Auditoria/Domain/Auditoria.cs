@@ -5,10 +5,6 @@ namespace Auditoria.API.Domain
 {
     public class Auditoria : AuditableEntity, IAuditoria
     {
-        public Auditoria()
-        {
-        }
-        
         public EntityState TipoAuditoria { get; init; }
 
         public Guid? IdEntidade { get; init; }

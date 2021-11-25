@@ -32,19 +32,19 @@ namespace Core.Infrastructure.Kafka
             };
         }
 
-        public async Task<Guid> PublishAsync<TEvent, TEventType>(
+        public async Task<Guid> PublishAsync<TMessage, TMessageType>(
             KafkaTopics topic,
-            TEventType eventType,
-            TEvent @event,
-            CancellationToken cancellationToken) where TEvent : class, IKafkaEvent
+            TMessageType messageType,
+            TMessage message,
+            CancellationToken cancellationToken) where TMessage : class, IKafkaMessage
         {
             var messageId = Guid.NewGuid();
-            var message = new PlatformMessage<TEventType>(eventType, JsonSerializer.Serialize(@event));
+            var plataformMessage = new PlatformMessage<TMessageType>(messageType, JsonSerializer.Serialize(message));
 
             await _producer.ProduceAsync(topic.ToString(), new Message<string, string>
             {
                 Key = messageId.ToString(),
-                Value = JsonSerializer.Serialize(message)
+                Value = JsonSerializer.Serialize(plataformMessage)
             }, cancellationToken);
 
             return messageId;

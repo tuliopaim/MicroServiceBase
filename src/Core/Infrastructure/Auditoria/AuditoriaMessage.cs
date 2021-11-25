@@ -2,9 +2,9 @@
 
 namespace Core.Infrastructure.Auditoria
 {
-    public class AuditoriaEvent : IKafkaEvent
+    public class AuditoriaMessage : IKafkaMessage
     {
-        public AuditoriaEvent(IEnumerable<NovaAuditoriaDto> auditorias)
+        public AuditoriaMessage(IEnumerable<NovaAuditoriaDto> auditorias)
         {
             Auditorias = auditorias ?? new List<NovaAuditoriaDto>();
         }

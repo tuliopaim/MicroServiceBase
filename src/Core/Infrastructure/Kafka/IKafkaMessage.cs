@@ -1,6 +1,6 @@
 ﻿namespace Core.Infrastructure.Kafka
 {
-    public interface IKafkaEvent
+    public interface IKafkaMessage
     {
     }
 }

@@ -6,11 +6,11 @@ namespace Core.Infrastructure.Kafka
     {
         IConsumer<string, string> GetConsumer(IEnumerable<KafkaTopics> topics);
         IConsumer<string, string> GetConsumer(KafkaTopics topic);
-        Task<Guid> PublishAsync<TEvent, TEventType>(
+        Task<Guid> PublishAsync<TMessage, TMessageType>(
             KafkaTopics topic,
-            TEventType eventType,
-            TEvent @event,
+            TMessageType messageType,
+            TMessage message,
             CancellationToken cancellationToken)
-            where TEvent : class, IKafkaEvent;
+            where TMessage : class, IKafkaMessage;
     }
 }

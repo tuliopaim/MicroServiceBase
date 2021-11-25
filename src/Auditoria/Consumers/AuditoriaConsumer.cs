@@ -24,21 +24,21 @@ namespace Auditoria.API.Consumers
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                var message = _consumer.GetMessage<AuditoriaMessageTypes>(cancellationToken);
+                var platformMessage = _consumer.GetMessage<AuditoriaMessageTypes>(cancellationToken);
 
                 using var scope = _serviceProvider.CreateScope();
 
                 var mediator = scope.ServiceProvider.GetService<IMediator>();
 
-                var @event = JsonSerializer.Deserialize<AuditoriaEvent>(message.Data);
+                var message = JsonSerializer.Deserialize<AuditoriaMessage>(platformMessage.Data);
 
-                var command = MapearParaCommand(@event);
+                var command = MapearParaCommand(message);
                 
                 var result = await mediator!.Send(command, cancellationToken);
             }
         }
 
-        private static NovaAuditoriaCommandInput MapearParaCommand(AuditoriaEvent @event)
+        private static NovaAuditoriaCommandInput MapearParaCommand(AuditoriaMessage @event)
         {
             return new NovaAuditoriaCommandInput
             {

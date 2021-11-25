@@ -13,6 +13,10 @@ namespace Cadastro.Infrastructure.Configuration
                 .HasColumnType("VARCHAR(200)")
                 .IsRequired();
 
+            builder.Property(x => x.Email)
+                .HasColumnType("VARCHAR(100)")
+                .IsRequired();
+
             builder.Property(x => x.Idade).IsRequired();
 
             base.Configure(builder);

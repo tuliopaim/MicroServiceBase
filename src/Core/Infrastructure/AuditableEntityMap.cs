@@ -11,10 +11,12 @@ namespace Core.Infrastructure
             builder
                 .Property(x => x.DataCriacao)
                 .HasColumnName("DataCriacao")
+                .HasColumnType("date")
                 .IsRequired();
 
             builder
                 .Property(x => x.DataAlteracao)
+                .HasColumnType("date")
                 .HasColumnName("DataAlteracao");
 
             base.Configure(builder);

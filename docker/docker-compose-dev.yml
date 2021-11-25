@@ -2,7 +2,7 @@ version: '3.8'
 
 services:  
   postgres:
-    container_name: msbase-postgres
+    container_name: msbase-postgres-dev
     image: postgres:latest
     hostname: localhost
     ports:
@@ -11,7 +11,7 @@ services:
         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   zookeeper:
-    container_name: msbase-zookeeper
+    container_name: msbase-zookeeper-dev
     image: confluentinc/cp-zookeeper:latest
     networks: 
       - net
@@ -22,7 +22,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
   
   kafka:
-    container_name: msbase-kafka
+    container_name: msbase-kafka-dev
     image: confluentinc/cp-kafka:latest
     networks: 
       - net
@@ -40,7 +40,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   elasticsearch:
-    container_name: msbase-elasticsearch
+    container_name: msbase-elasticsearch-dev
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.2
     environment:
       - cluster.name=docker-cluster
@@ -55,7 +55,7 @@ services:
       - "9200:9200"
 
   kibana:
-    container_name: msbase-kibana
+    container_name: msbase-kibana-dev
     image: docker.elastic.co/kibana/kibana:7.14.2
     ports:
       - "5601:5601"

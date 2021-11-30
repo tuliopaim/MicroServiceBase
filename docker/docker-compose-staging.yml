@@ -63,7 +63,6 @@ services:
     build:
         context: ../src
         dockerfile: ./Email/EmailSender.API/Dockerfile
-    restart: always
     ports: 
         - 5030:5030    
     environment:

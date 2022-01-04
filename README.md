@@ -1,3 +1,67 @@
-# CQRS
-CQRS 3-layered solution with a CQRS.Core project that can be used by another applications, in a disttributed/micro-service archtecture cenario.
-With support to Mediatr and Kafka consumers/producers
+# MicroServiceBase
+
+Um repositório para estudo/teste de microsserviços com .NET
+
+## Ambiente
+
+* Postgres
+* Kafka + Zookeeper
+* ElasticSearch + Kibana
+
+
+Na raiz da solução:
+
+```console
+$ cd docker
+$ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
+```
+
+## Roadmap
+
+### Arquitetura / Repositorio
+
+- [ ]  README
+  - [x] Ambiente
+  - [x] Organizar Roadmap
+  - [ ] Documentação Arquitetura
+  - [ ] Documentação Core
+  - [ ] Documentação Aditoria
+  - [ ] Documentação Cadastro
+  - [ ] Documentação Email
+- [ ] Separar DBs por Service
+  
+### Core
+
+- [x]  EntidadeBase / EntidadeAuditavel
+- [x]  Suporte a Hateoas
+- [x]  Mediator / CQRS
+    - [x]  Command, Query, Event
+    - [x]  ValidationPipeline
+    - [x]  ExceptionPipeline
+    - [x]  LogPipeline
+- [x]  Kafka
+    - [x]  KafkaBroker com facilitadores
+    - [x]  BackgroundService disparando Consumers Kafka
+- [x]  EF Core
+    - [x]  DbContextBase
+    - [x]  Repositorios Genéricos
+    - [x]  Paginação
+- [ ]  Log
+    - [x]  Serilog
+    - [x]  ConsoleSink
+    - [ ]  EllasticSearchSink
+
+### Services
+
+- [x]  Microsserviço de Auditoria
+  - [x] Extração de Auditoria no DbContextBase
+  - [x] Implementar
+- [ ]  Microsserviço de Email
+  - [X] Envio de email
+  - [ ] Persistência
+  - [ ] Retry
+- [ ]  Microsservico de Identidade
+- [ ]  Autenticação/Autorização em endpoints
+- [ ]  Gateway
+  - [ ] Definir estratégia de Gateway
+  - [ ] Implementar

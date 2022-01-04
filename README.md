@@ -22,13 +22,14 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 - [ ]  README
   - [x] Ambiente
   - [x] Organizar Roadmap
-  - [ ] Documentação Arquitetura
-  - [ ] Documentação Core
-  - [ ] Documentação Aditoria
-  - [ ] Documentação Cadastro
-  - [ ] Documentação Email
-- [ ] Separar DBs por Service
-- [ ] Separar Services em Repositórios
+  - [ ] Documentações ([#11](https://github.com/tuliopaim/MicroServiceBase/issues/11))
+     - [ ] Arquitetura
+     - [ ] Core
+     - [ ] Aditoria
+     - [ ] Cadastro
+     - [ ] Email
+- [ ] Separar DBs por Service ([#12](https://github.com/tuliopaim/MicroServiceBase/issues/12))
+- [ ] Separar Services em Repositórios ([#13](https://github.com/tuliopaim/MicroServiceBase/issues/13))
   - [ ] Repositório Pai com Docker e Docs
   - [ ] Services em Submodules
   
@@ -52,19 +53,19 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 - [ ]  Log
     - [x]  Serilog
     - [x]  ConsoleSink
-    - [ ]  EllasticSearchSink
+    - [ ]  EllasticSearchSink ([#6](https://github.com/tuliopaim/MicroServiceBase/issues/6))
 
 ### Services
 
 - [x]  Microsserviço de Auditoria
   - [x] Extração de Auditoria no DbContextBase
   - [x] Implementar
-- [ ]  Microsserviço de Email
+- [ ]  Microsserviço de Email ([#7](https://github.com/tuliopaim/MicroServiceBase/issues/7))
   - [X] Envio de email
   - [ ] Persistência
   - [ ] Retry
-- [ ]  Microsservico de Identidade
-- [ ]  Autenticação/Autorização em endpoints
-- [ ]  Gateway
+- [ ]  Microsservico de Identidade ([#8](https://github.com/tuliopaim/MicroServiceBase/issues/8))
+- [ ]  Autenticação/Autorização em endpoints ([#9](https://github.com/tuliopaim/MicroServiceBase/issues/9))
+- [ ]  Gateway ([#10](https://github.com/tuliopaim/MicroServiceBase/issues/10))
   - [ ] Definir estratégia de Gateway
   - [ ] Implementar

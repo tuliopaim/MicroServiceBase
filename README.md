@@ -45,7 +45,7 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 - [ ]  Kafka
     - [x]  KafkaBroker com facilitadores
     - [x]  BackgroundService disparando Consumers Kafka
-    - [ ]  Criar tópicos no statup da aplicação
+    - [ ]  Criar tópicos no statup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
 - [x]  EF Core
     - [x]  DbContextBase
     - [x]  Repositorios Genéricos

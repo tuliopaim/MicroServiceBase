@@ -33,6 +33,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Templates", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.API", "src\Email\EmailSender.API\EmailSender.API.csproj", "{07A3E483-9217-4D40-95D3-572064D7B0B2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9B26D68-0EDF-4D8E-ADAA-858623151EF0}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{14D13C3F-C6E2-4389-984D-FBA1D0730C75}"
+	ProjectSection(SolutionItems) = preProject
+		docker\.env.dev = docker\.env.dev
+		docker\docker-compose-dev.yml = docker\docker-compose-dev.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +104,7 @@ Global
 		{E323BAD9-E0F1-40F5-B9E8-3AE456CCC56F} = {25964BD5-F49D-4B2B-B893-9402AB759FF3}
 		{0C92CD44-2D21-4693-B436-7CA740C1BA24} = {E323BAD9-E0F1-40F5-B9E8-3AE456CCC56F}
 		{07A3E483-9217-4D40-95D3-572064D7B0B2} = {E323BAD9-E0F1-40F5-B9E8-3AE456CCC56F}
+		{14D13C3F-C6E2-4389-984D-FBA1D0730C75} = {B9B26D68-0EDF-4D8E-ADAA-858623151EF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDEE870D-C5D7-435F-9030-2026EABC6EA8}

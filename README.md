@@ -8,7 +8,6 @@ Um repositório para estudo/teste de microsserviços com .NET
 * Kafka + Zookeeper
 * ElasticSearch + Kibana
 
-
 Na raiz da solução:
 
 ```console
@@ -29,6 +28,9 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
   - [ ] Documentação Cadastro
   - [ ] Documentação Email
 - [ ] Separar DBs por Service
+- [ ] Separar Services em Repositórios
+  - [ ] Repositório Pai com Docker e Docs
+  - [ ] Services em Submodules
   
 ### Core
 
@@ -39,9 +41,10 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
     - [x]  ValidationPipeline
     - [x]  ExceptionPipeline
     - [x]  LogPipeline
-- [x]  Kafka
+- [ ]  Kafka
     - [x]  KafkaBroker com facilitadores
     - [x]  BackgroundService disparando Consumers Kafka
+    - [ ]  Criar tópicos no statup da aplicação
 - [x]  EF Core
     - [x]  DbContextBase
     - [x]  Repositorios Genéricos

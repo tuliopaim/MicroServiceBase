@@ -50,10 +50,10 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
     - [x]  DbContextBase
     - [x]  Repositorios Genéricos
     - [x]  Paginação
-- [ ]  Log
+- [x]  Log
     - [x]  Serilog
     - [x]  ConsoleSink
-    - [ ]  EllasticSearchSink ([#6](https://github.com/tuliopaim/MicroServiceBase/issues/6))
+    - [x]  EllasticSearchSink ([#6](https://github.com/tuliopaim/MicroServiceBase/issues/6))
 
 ### Services
 

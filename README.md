@@ -42,10 +42,10 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
     - [x]  ValidationPipeline
     - [x]  ExceptionPipeline
     - [x]  LogPipeline
-- [ ]  Kafka
+- [x]  Kafka
     - [x]  KafkaBroker com facilitadores
     - [x]  BackgroundService disparando Consumers Kafka
-    - [ ]  Criar tópicos no statup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
+    - [x]  Criar tópicos no statup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
 - [x]  EF Core
     - [x]  DbContextBase
     - [x]  Repositorios Genéricos

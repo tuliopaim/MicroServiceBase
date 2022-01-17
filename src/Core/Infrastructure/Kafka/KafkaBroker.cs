@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using Confluent.Kafka;
+using Confluent.Kafka.Admin;
 using Core.API;
 
 namespace Core.Infrastructure.Kafka
@@ -18,6 +19,8 @@ namespace Core.Infrastructure.Kafka
             var bootstrapServers = environment["Kafka:BootstrapServers"];
             var groupId = environment["Kafka:GroupId"];
 
+            CreateTopics(bootstrapServers);
+
             _producer = new ProducerBuilder<string, string>(new ProducerConfig
             {
                 BootstrapServers = bootstrapServers,
@@ -30,6 +33,25 @@ namespace Core.Infrastructure.Kafka
                 GroupId = groupId,
                 AutoOffsetReset = AutoOffsetReset.Latest
             };
+        }
+
+        private void CreateTopics(string bootstrapServers)
+        {
+            using var adminClient = new AdminClientBuilder(new AdminClientConfig { BootstrapServers = bootstrapServers }).Build();
+
+            foreach (var kafkaTopic in Enum.GetValues(typeof(KafkaTopics)).Cast<KafkaTopics>())
+            {
+                try
+                {
+                    adminClient.CreateTopicsAsync(new TopicSpecification[]
+                    {
+                        new TopicSpecification { Name = kafkaTopic.ToString(), ReplicationFactor = 1, NumPartitions = 1}
+                    }).Wait();
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
 
         public async Task<Guid> PublishAsync<TMessage, TMessageType>(

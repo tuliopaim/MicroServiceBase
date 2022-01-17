@@ -57,9 +57,10 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 
 ### Services
 
-- [x]  Microsserviço de Auditoria
+- [ ]  Microsserviço de Auditoria
   - [x] Extração de Auditoria no DbContextBase
   - [x] Implementar
+  - [ ] Queries ([#15](https://github.com/tuliopaim/MicroServiceBase/issues/15))
 - [ ]  Microsserviço de Email ([#7](https://github.com/tuliopaim/MicroServiceBase/issues/7))
   - [X] Envio de email
   - [ ] Persistência

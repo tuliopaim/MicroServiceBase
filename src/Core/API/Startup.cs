@@ -46,6 +46,7 @@ namespace Core.API
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(settings.Configuration)
                 .Enrich.FromLogContext()
+                .Enrich.WithEnvironmentName()
                 .CreateLogger();
 
             services.AddLogging(x => x.AddSerilog());

@@ -54,6 +54,7 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
     - [x]  Serilog
     - [x]  ConsoleSink
     - [x]  EllasticSearchSink ([#6](https://github.com/tuliopaim/MicroServiceBase/issues/6))
+- [x] Refatorar "Environment" para utilizar IConfiguration 
 
 ### Services
 

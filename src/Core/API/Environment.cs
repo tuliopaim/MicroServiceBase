@@ -1,24 +1,25 @@
-﻿namespace Core.API
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+
+namespace Core.API
 {
     public class Environment : IEnvironment
     {
-        private readonly Dictionary<string, string> _parameters;
+        private readonly IConfiguration _configuration;
 
         private const string DevelopmentEnvironmentName = "Development";
 
-        public Environment(string name, Dictionary<string, string> parameters)
+        public Environment(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
-            Name = name.Trim();
-            _parameters = parameters;
+            _configuration = configuration;
+            Name = hostEnvironment.EnvironmentName;
         }
-
+        
         public string Name { get; }
 
-        public string this[string key] => _parameters.ContainsKey(key) ? _parameters[key] : string.Empty;
+        public string this[string key] => _configuration[key];
 
-        public bool IsDevelopment()
-        {
-            return string.Equals(Name.Trim(), DevelopmentEnvironmentName, StringComparison.CurrentCultureIgnoreCase);
-        }
+        public bool IsDevelopment =>
+            string.Equals(Name.Trim(), DevelopmentEnvironmentName, StringComparison.CurrentCultureIgnoreCase);
     }
 }

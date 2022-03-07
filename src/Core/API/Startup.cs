@@ -161,21 +161,7 @@ namespace Core.API
 
             if (settings.ConfigureIEnvironment)
             {
-                if (settings.HostEnvironment == null)
-                    throw new ArgumentException(nameof(settings.HostEnvironment));
-
-                if (settings.Configuration == null)
-                    throw new ArgumentException(nameof(settings.Configuration));
-
-                var environmentName = settings.HostEnvironment.EnvironmentName;
-
-                var parameters = settings
-                    .Configuration
-                    .AsEnumerable()
-                    .ToDictionary(x => x.Key, x => x.Value);
-
-                var environment = new Environment(environmentName, parameters);
-                services.AddSingleton<IEnvironment>(environment);
+                services.AddSingleton<IEnvironment, Environment>();
             }
 
             return services;

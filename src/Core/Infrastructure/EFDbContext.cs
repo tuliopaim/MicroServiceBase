@@ -70,8 +70,6 @@ namespace Core.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (_environment == null) return;
-
             var connectionString = _environment[ConnectionStringKey];
 
             optionsBuilder.UseNpgsql(connectionString, opt => opt.EnableRetryOnFailure());

@@ -1,21 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CQRS.Infrastructure.Migrations
+#nullable disable
+
+namespace Cadastro.Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "CQRS");
+                name: "Cadastros");
 
             migrationBuilder.CreateTable(
                 name: "Pessoa",
-                schema: "CQRS",
+                schema: "Cadastros",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(200)", nullable: false),
+                    Email = table.Column<string>(type: "VARCHAR(100)", nullable: false),
                     Idade = table.Column<byte>(type: "smallint", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     DataAlteracao = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
@@ -30,7 +34,7 @@ namespace CQRS.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Pessoa",
-                schema: "CQRS");
+                schema: "Cadastros");
         }
     }
 }

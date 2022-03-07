@@ -9,18 +9,18 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CQRS.Infrastructure.Migrations
+namespace Cadastro.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211125175511_AdicionaEmailAlteraDate")]
-    partial class AdicionaEmailAlteraDate
+    [Migration("20220307204216_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("CQRS")
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasDefaultSchema("Cadastros")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -32,11 +32,11 @@ namespace CQRS.Infrastructure.Migrations
                         .HasColumnName("Id");
 
                     b.Property<DateTime?>("DataAlteracao")
-                        .HasColumnType("date")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("DataAlteracao");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("date")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("DataCriacao");
 
                     b.Property<string>("Email")
@@ -52,7 +52,7 @@ namespace CQRS.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoa", "CQRS");
+                    b.ToTable("Pessoa", "Cadastros");
                 });
 #pragma warning restore 612, 618
         }

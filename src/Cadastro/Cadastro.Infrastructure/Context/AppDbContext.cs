@@ -19,7 +19,7 @@ namespace Cadastro.Infrastructure.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("CQRS");
+            modelBuilder.HasDefaultSchema("Cadastros");
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

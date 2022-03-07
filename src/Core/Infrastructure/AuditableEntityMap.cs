@@ -11,13 +11,13 @@ namespace Core.Infrastructure
             builder
                 .Property(x => x.DataCriacao)
                 .HasColumnName("DataCriacao")
-                .HasColumnType("date")
+                .HasColumnType("timestamp without time zone")
                 .IsRequired();
 
             builder
                 .Property(x => x.DataAlteracao)
-                .HasColumnType("date")
-                .HasColumnName("DataAlteracao");
+                .HasColumnName("DataAlteracao")
+                .HasColumnType("timestamp without time zone");
 
             base.Configure(builder);
         }

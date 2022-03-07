@@ -7,22 +7,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace AuditoriaAPI.Migrations
+#nullable disable
+
+namespace Auditoria.API.Migrations
 {
     [DbContext(typeof(AuditoriaDbContext))]
-    [Migration("20211020230819_Initial")]
-    partial class Initial
+    [Migration("20220307204733_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("Auditoria")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.11")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.Auditoria", b =>
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Auditoria.API.Domain.Auditoria", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
@@ -53,10 +56,10 @@ namespace AuditoriaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Auditoria");
+                    b.ToTable("Auditoria", "Auditoria");
                 });
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.AuditoriaPropriedade", b =>
+            modelBuilder.Entity("Auditoria.API.Domain.AuditoriaPropriedade", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
@@ -85,23 +88,21 @@ namespace AuditoriaAPI.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.Property<string>("ValorAntigo")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ValorNovo")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuditoriaId");
 
-                    b.ToTable("AuditoriaPropriedade");
+                    b.ToTable("AuditoriaPropriedade", "Auditoria");
                 });
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.AuditoriaPropriedade", b =>
+            modelBuilder.Entity("Auditoria.API.Domain.AuditoriaPropriedade", b =>
                 {
-                    b.HasOne("AuditoriaAPI.Domain.Auditoria", "Auditoria")
+                    b.HasOne("Auditoria.API.Domain.Auditoria", "Auditoria")
                         .WithMany("Propriedades")
                         .HasForeignKey("AuditoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -110,7 +111,7 @@ namespace AuditoriaAPI.Migrations
                     b.Navigation("Auditoria");
                 });
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.Auditoria", b =>
+            modelBuilder.Entity("Auditoria.API.Domain.Auditoria", b =>
                 {
                     b.Navigation("Propriedades");
                 });

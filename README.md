@@ -45,15 +45,22 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 - [x]  Kafka
     - [x]  KafkaBroker com facilitadores
     - [x]  BackgroundService disparando Consumers Kafka
-    - [x]  Criar tópicos no statup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
+    - [x]  Criar tópicos no startup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
+    - [ ]  Remover estrutura Kafka ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
+- [ ]  RabbitMQ ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
+    - [ ]  Estrutura rabbit
+    - [ ]  Projeto apartado "Core.RabbitMq"
+    - [ ]  Utilizar em serviços
 - [x]  EF Core
     - [x]  DbContextBase
     - [x]  Repositorios Genéricos
     - [x]  Paginação
+    - [x]  Corrigir tipo de colunas DataCriacao/DataAlteracao ([#18](https://github.com/tuliopaim/MicroServiceBase/issues/18))
 - [x]  Log
     - [x]  Serilog
     - [x]  ConsoleSink
     - [x]  EllasticSearchSink ([#6](https://github.com/tuliopaim/MicroServiceBase/issues/6))
+- [x] Refatorar "Environment" para utilizar IConfiguration ([#19](https://github.com/tuliopaim/MicroServiceBase/issues/19))
 
 ### Services
 

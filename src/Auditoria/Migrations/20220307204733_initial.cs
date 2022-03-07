@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AuditoriaAPI.Migrations
+#nullable disable
+
+namespace Auditoria.API.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,12 +36,12 @@ namespace AuditoriaAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    AuditoriaId = table.Column<Guid>(type: "uuid", nullable: false),
                     NomeDaPropriedade = table.Column<string>(type: "varchar(200)", nullable: false),
                     NomeDaColuna = table.Column<string>(type: "varchar(200)", nullable: false),
-                    ValorAntigo = table.Column<string>(type: "text", nullable: false),
-                    ValorNovo = table.Column<string>(type: "text", nullable: false),
+                    ValorAntigo = table.Column<string>(type: "text", nullable: true),
+                    ValorNovo = table.Column<string>(type: "text", nullable: true),
                     EhChavePrimaria = table.Column<bool>(type: "boolean", nullable: false),
+                    AuditoriaId = table.Column<Guid>(type: "uuid", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     DataAlteracao = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },

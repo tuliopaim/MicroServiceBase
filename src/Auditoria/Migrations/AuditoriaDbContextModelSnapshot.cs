@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace AuditoriaAPI.Migrations
+#nullable disable
+
+namespace Auditoria.API.Migrations
 {
     [DbContext(typeof(AuditoriaDbContext))]
     partial class AuditoriaDbContextModelSnapshot : ModelSnapshot
@@ -16,11 +18,12 @@ namespace AuditoriaAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("Auditoria")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.11")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.Auditoria", b =>
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Auditoria.API.Domain.Auditoria", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
@@ -51,10 +54,10 @@ namespace AuditoriaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Auditoria");
+                    b.ToTable("Auditoria", "Auditoria");
                 });
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.AuditoriaPropriedade", b =>
+            modelBuilder.Entity("Auditoria.API.Domain.AuditoriaPropriedade", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
@@ -92,12 +95,12 @@ namespace AuditoriaAPI.Migrations
 
                     b.HasIndex("AuditoriaId");
 
-                    b.ToTable("AuditoriaPropriedade");
+                    b.ToTable("AuditoriaPropriedade", "Auditoria");
                 });
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.AuditoriaPropriedade", b =>
+            modelBuilder.Entity("Auditoria.API.Domain.AuditoriaPropriedade", b =>
                 {
-                    b.HasOne("AuditoriaAPI.Domain.Auditoria", "Auditoria")
+                    b.HasOne("Auditoria.API.Domain.Auditoria", "Auditoria")
                         .WithMany("Propriedades")
                         .HasForeignKey("AuditoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -106,7 +109,7 @@ namespace AuditoriaAPI.Migrations
                     b.Navigation("Auditoria");
                 });
 
-            modelBuilder.Entity("AuditoriaAPI.Domain.Auditoria", b =>
+            modelBuilder.Entity("Auditoria.API.Domain.Auditoria", b =>
                 {
                     b.Navigation("Propriedades");
                 });

@@ -1,18 +1,18 @@
 # MicroServiceBase
 
-Um repositório para estudo/teste de microsserviços com .NET
+Um repositÃ³rio para estudo/teste de microsserviÃ§os com .NET
 
 ## Ambiente
 
-* Postgres
-* Kafka + Zookeeper
+* Postgres Auditoria
+* Postgres Cadastro
+* RabbitMQ
 * ElasticSearch + Kibana
 
-Na raiz da solução:
+Na raiz da soluÃ§Ã£o:
 
 ```console
-$ cd docker
-$ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
+$ docker-compose -f docker-compose.env.yml up -d
 ```
 
 ## Roadmap
@@ -22,15 +22,15 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 - [ ]  README
   - [x] Ambiente
   - [x] Organizar Roadmap
-  - [ ] Documentações ([#11](https://github.com/tuliopaim/MicroServiceBase/issues/11))
+  - [ ] DocumentaÃ§Ãµes ([#11](https://github.com/tuliopaim/MicroServiceBase/issues/11))
      - [ ] Arquitetura
      - [ ] Core
      - [ ] Aditoria
      - [ ] Cadastro
      - [ ] Email
 - [x] Separar DBs por Service ([#12](https://github.com/tuliopaim/MicroServiceBase/issues/12))
-- [ ] Separar Services em Repositórios ([#13](https://github.com/tuliopaim/MicroServiceBase/issues/13))
-  - [ ] Repositório Pai com Docker e Docs
+- [ ] Separar Services em RepositÃ³rios ([#13](https://github.com/tuliopaim/MicroServiceBase/issues/13))
+  - [ ] RepositÃ³rio Pai com Docker e Docs
   - [ ] Services em Submodules
   
 ### Core
@@ -42,19 +42,14 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
     - [x]  ValidationPipeline
     - [x]  ExceptionPipeline
     - [x]  LogPipeline
-- [x]  Kafka
-    - [x]  KafkaBroker com facilitadores
-    - [x]  BackgroundService disparando Consumers Kafka
-    - [x]  Criar tópicos no startup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
-    - [x]  Remover estrutura Kafka ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
 - [x]  RabbitMQ ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
     - [x]  Estrutura rabbit
-    - [x]  Lógica de retry
-    - [x]  Utilizar em serviços
+    - [x]  LÃ³gica de retry
+    - [x]  Utilizar em serviÃ§os
 - [x]  EF Core
     - [x]  DbContextBase
-    - [x]  Repositorios Genéricos
-    - [x]  Paginação
+    - [x]  Repositorios GenÃ©ricos
+    - [x]  PaginaÃ§Ã£o
     - [x]  Corrigir tipo de colunas DataCriacao/DataAlteracao ([#18](https://github.com/tuliopaim/MicroServiceBase/issues/18))
 - [x]  Log
     - [x]  Serilog
@@ -64,16 +59,16 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 
 ### Services
 
-- [ ]  Microsserviço de Auditoria
-  - [x] Extração de Auditoria no DbContextBase
+- [ ]  MicrosserviÃ§o de Auditoria
+  - [x] ExtraÃ§Ã£o de Auditoria no DbContextBase
   - [x] Implementar
   - [ ] Queries ([#15](https://github.com/tuliopaim/MicroServiceBase/issues/15))
-- [ ]  Microsserviço de Email ([#7](https://github.com/tuliopaim/MicroServiceBase/issues/7))
+- [ ]  MicrosserviÃ§o de Email ([#7](https://github.com/tuliopaim/MicroServiceBase/issues/7))
   - [X] Envio de email
-  - [ ] Persistência
+  - [ ] PersistÃªncia
   - [ ] Retry
 - [ ]  Microsservico de Identidade ([#8](https://github.com/tuliopaim/MicroServiceBase/issues/8))
-- [ ]  Autenticação/Autorização em endpoints ([#9](https://github.com/tuliopaim/MicroServiceBase/issues/9))
+- [ ]  AutenticaÃ§Ã£o/AutorizaÃ§Ã£o em endpoints ([#9](https://github.com/tuliopaim/MicroServiceBase/issues/9))
 - [ ]  Gateway ([#10](https://github.com/tuliopaim/MicroServiceBase/issues/10))
-  - [ ] Definir estratégia de Gateway
+  - [ ] Definir estratÃ©gia de Gateway
   - [ ] Implementar

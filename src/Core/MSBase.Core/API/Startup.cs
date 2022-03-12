@@ -13,7 +13,7 @@ namespace MSBase.Core.API;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Add core support
+    /// Minimal core support
     /// </summary>
     /// <param name="services"></param>
     /// <param name="configuration"></param>
@@ -32,7 +32,7 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Minimal core support
+    /// Full core support
     /// </summary>
     /// <param name="services"></param>
     /// <param name="configuration"></param>

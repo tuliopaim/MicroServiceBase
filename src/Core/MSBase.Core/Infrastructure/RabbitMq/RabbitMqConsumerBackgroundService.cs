@@ -7,14 +7,14 @@ using RabbitMQ.Client.Events;
 
 namespace MSBase.Core.Infrastructure.RabbitMq;
 
-public abstract class RabbitMqConsumer : BackgroundService
+public abstract class RabbitMqConsumerBackgroundService : BackgroundService
 {
-    private readonly ILogger<RabbitMqConsumer> _logger;
+    private readonly ILogger<RabbitMqConsumerBackgroundService> _logger;
     private readonly string _queueName;
 
-    protected RabbitMqConsumer(
+    protected RabbitMqConsumerBackgroundService(
         RabbitMqConnection rabbitConnection,
-        ILogger<RabbitMqConsumer> logger,
+        ILogger<RabbitMqConsumerBackgroundService> logger,
         string queueName)
     {
         ArgumentNullException.ThrowIfNull(queueName, nameof(queueName));
@@ -32,9 +32,10 @@ public abstract class RabbitMqConsumer : BackgroundService
     protected int MaxRetryCount { get; set; } = 5;
 
     protected IModel Channel { get; set; }
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogDebug("{BackgroundService} started", nameof(RabbitMqConsumer));
+        _logger.LogDebug("{BackgroundService} started", nameof(RabbitMqConsumerBackgroundService));
 
         DeclareQueues();
 
@@ -45,7 +46,7 @@ public abstract class RabbitMqConsumer : BackgroundService
             await Task.Delay(1000, stoppingToken);
         }
 
-        _logger.LogDebug("{BackgroundService} finished", nameof(RabbitMqConsumer));
+        _logger.LogDebug("{BackgroundService} finished", nameof(RabbitMqConsumerBackgroundService));
     }
 
     private void DeclareQueues()
@@ -74,29 +75,31 @@ public abstract class RabbitMqConsumer : BackgroundService
         Channel.BasicConsume(_queueName, false, consumer);
     }
 
-    private async Task MessageReceived(object sender, BasicDeliverEventArgs rabbitEverntArgs)
+    private async Task MessageReceived(object sender, BasicDeliverEventArgs rabbitEventArgs)
     {
         try
         {
-            var message = rabbitEverntArgs.GetRabbitMessage();
+            var message = rabbitEventArgs.GetRabbitMessage();
 
             _logger.LogInformation("{MessageType} received on {ConsumerType}", message.MessageType.ToString(), GetType().Name);
 
-            var result = await HandleMessage(rabbitEverntArgs, message);
+            var result = await HandleMessage(rabbitEventArgs, message);
 
             if (!result)
             {
-                OnError(rabbitEverntArgs);
+                OnError(rabbitEventArgs);
                 return;
             }
 
-            Channel.BasicAck(rabbitEverntArgs.DeliveryTag, false);
+            Channel.BasicAck(rabbitEventArgs.DeliveryTag, false);
         }
         catch (Exception ex)
         {
-            OnException(rabbitEverntArgs, ex);
+            OnException(rabbitEventArgs, ex);
         }
     }
+
+    protected abstract Task<bool> HandleMessage(BasicDeliverEventArgs rabbitEventArgs, RabbitMessage message);
 
     /// <summary>
     /// Nacks if x-retry-count >= MaxRetryCount, requeue if not
@@ -138,8 +141,6 @@ public abstract class RabbitMqConsumer : BackgroundService
             propriedades,
             rabbitEventArgs.Body);
     }
-
-    protected abstract Task<bool> HandleMessage(BasicDeliverEventArgs rabbitEverntArgs, RabbitMessage message);
 
     public override void Dispose()
     {

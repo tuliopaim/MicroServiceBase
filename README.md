@@ -28,7 +28,7 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
      - [ ] Aditoria
      - [ ] Cadastro
      - [ ] Email
-- [ ] Separar DBs por Service ([#12](https://github.com/tuliopaim/MicroServiceBase/issues/12))
+- [x] Separar DBs por Service ([#12](https://github.com/tuliopaim/MicroServiceBase/issues/12))
 - [ ] Separar Services em Repositórios ([#13](https://github.com/tuliopaim/MicroServiceBase/issues/13))
   - [ ] Repositório Pai com Docker e Docs
   - [ ] Services em Submodules

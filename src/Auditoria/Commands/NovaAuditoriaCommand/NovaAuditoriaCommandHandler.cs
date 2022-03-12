@@ -2,7 +2,7 @@
 using Auditoria.API.Infrasctructure;
 using Core.Application.Commands;
 
-namespace Auditoria.API.Application.NovaAuditoriaCommand
+namespace Auditoria.API.Commands.NovaAuditoriaCommand
 {
     public class NovaAuditoriaCommandHandler : ICommandHandler<NovaAuditoriaCommandInput, NovaAuditoriaCommandResult>
     {

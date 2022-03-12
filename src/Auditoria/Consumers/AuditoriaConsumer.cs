@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using Auditoria.API.Application.NovaAuditoriaCommand;
+using Auditoria.API.Commands.NovaAuditoriaCommand;
 using Confluent.Kafka;
 using Core.API;
 using Core.Application.Mediator;

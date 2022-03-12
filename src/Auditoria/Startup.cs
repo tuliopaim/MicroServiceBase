@@ -1,62 +1,36 @@
 using Auditoria.API.Infrasctructure;
 using Core.API;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
-namespace Auditoria.API;
+var builder = WebApplication.CreateBuilder(args);
 
-public class Startup
+builder.Services.AddDbContext<AuditoriaDbContext>();
+builder.Services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
 {
-    private readonly IHostEnvironment _hostEnvironment;
-    public readonly IConfiguration _configuration;
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auditoria.API", Version = "v1" });
+});
 
-    public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
-    {
-        _configuration = configuration;
-        _hostEnvironment = hostEnvironment;
-    }
+builder.Services.RegistrarCore(new CoreSettings
+{
+    Configuration = builder.Configuration,
+    HostEnvironment = builder.Environment,
+    TipoDaCamadaDeApplication = typeof(Startup),
+    TipoDoStartup = typeof(Startup),
+});
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.RegistrarCore(new CoreSettings
-        {
-            Configuration = _configuration,
-            HostEnvironment = _hostEnvironment,
-            TipoDaCamadaDeApplication = typeof(Startup),
-            TipoDoStartup = typeof(Startup),
-        });
+var app = builder.Build();
 
-        services.AddDbContext<AuditoriaDbContext>();
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auditoria.API v1"));
 
-        services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
+app.UseHttpsRedirection();
 
-        services.AddControllers();
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auditoria.API", Version = "v1" });
-        });
-    }
+app.UseAuthorization();
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AuditoriaDbContext dbContext)
-    {
-        if (env.IsDevelopment())
-        {
-            dbContext.Database.Migrate();
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auditoria.API v1"));
-        }
+app.MapControllers();
 
-        app.UseHttpsRedirection();
-
-        app.UseRouting();
-
-        app.UseAuthorization();
-
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
-    }
-}
-
+app.Run();

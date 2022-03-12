@@ -1,67 +1,33 @@
-using Cadastro.Application;
-using Cadastro.Domain.Repositories;
-using Cadastro.Infrastructure.Context;
-using Cadastro.Infrastructure.Repositories;
+using Cadastro.API.Infrastructure.Context;
+using Cadastro.API.Infrastructure.Repositories;
 using Core.API;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 
-namespace Cadastro.API
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.RegistrarCore(new CoreSettings
 {
-    public class Startup
-    {
-        private readonly IWebHostEnvironment _environment;
+    Configuration = builder.Configuration,
+    HostEnvironment = builder.Environment,
+    TipoDaCamadaDeApplication = typeof(Startup),
+    TipoDoStartup = typeof(Startup)
+});
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
-        {
-            _environment = environment;
-            Configuration = configuration;
-        }
+var app = builder.Build();
 
-        public IConfiguration Configuration { get; }
-        
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.RegistrarCore(new CoreSettings
-            {
-                HostEnvironment = _environment,
-                Configuration = Configuration,
-                TipoDaCamadaDeApplication = typeof(IApplicationAssemblyMarker),
-                TipoDoStartup = typeof(Startup)
-            });
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cadatro.API v1"));
 
-            services.AddDbContext<AppDbContext>();
+app.UseHttpsRedirection();
 
-            services.AddScoped<IPessoaRepository, PessoaRepository>();
+app.UseAuthorization();
 
-            services.AddControllers();
+app.MapControllers();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cadastro.API", Version = "v1" });
-            });
-        }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext dbContext)
-        {
-            if (env.IsDevelopment())
-            {
-                dbContext.Database.Migrate();                
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cadatro.API v1"));
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
-    }
-}
+app.Run();

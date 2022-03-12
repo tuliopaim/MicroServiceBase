@@ -1,7 +1,7 @@
-﻿using Cadastro.API.Requests;
-using Cadastro.Application.Commands.EditarPessoaCommand;
-using Cadastro.Application.Commands.NovaPessoaCommand;
-using Cadastro.Application.Queries;
+﻿using Cadastro.API.Commands.EditarPessoaCommand;
+using Cadastro.API.Commands.NovaPessoaCommand;
+using Cadastro.API.Queries.ObterPessoasQuery;
+using Cadastro.API.Requests;
 using Core.API;
 using Core.API.Hateoas;
 using Core.Application.Mediator;

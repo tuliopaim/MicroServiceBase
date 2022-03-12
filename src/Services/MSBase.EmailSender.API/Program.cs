@@ -29,12 +29,8 @@ builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
         UseSsl = false,
     });
 
-builder.Services.RegistrarCore(new CoreSettings
-{
-    Configuration = builder.Configuration,
-    TipoDaCamadaDeApplication = typeof(Program),
-    TipoDoStartup = typeof(Program),
-});
+
+builder.Services.AddCore(builder.Configuration, typeof(EmailService).Assembly);
 
 var app = builder.Build();
 

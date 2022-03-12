@@ -1,3 +1,4 @@
+using MSBase.Cadastro.API.Commands.NovaPessoaCommand;
 using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Context;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
@@ -12,12 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.RegistrarCore(new CoreSettings
-{
-    Configuration = builder.Configuration,
-    TipoDaCamadaDeApplication = typeof(Pessoa),
-    TipoDoStartup = typeof(Pessoa)
-});
+builder.Services.AddCore(builder.Configuration, typeof(NovaPessoaCommandHandler).Assembly);
 
 var app = builder.Build();
 

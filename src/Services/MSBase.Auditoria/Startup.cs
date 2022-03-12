@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
+using MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
 using MSBase.Auditoria.API.Consumers;
-using MSBase.Auditoria.API.Domain;
 using MSBase.Auditoria.API.Infrasctructure;
 using MSBase.Core.API;
 
@@ -16,12 +16,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuditoriaEntidade.API", Version = "v1" });
 });
 
-builder.Services.RegistrarCore(new CoreSettings
-{
-    Configuration = builder.Configuration,
-    TipoDaCamadaDeApplication = typeof(AuditoriaEntidade),
-    TipoDoStartup = typeof(AuditoriaEntidade),
-});
+builder.Services.AddCore(builder.Configuration, typeof(NovaAuditoriaCommandHandler).Assembly);
 
 builder.Services.AddHostedService<AuditoriaConsumerBackgroundService>();
 

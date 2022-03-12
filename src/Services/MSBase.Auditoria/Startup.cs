@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using MSBase.Auditoria.API.Consumers;
 using MSBase.Auditoria.API.Domain;
 using MSBase.Auditoria.API.Infrasctructure;
 using MSBase.Core.API;
@@ -21,6 +22,8 @@ builder.Services.RegistrarCore(new CoreSettings
     TipoDaCamadaDeApplication = typeof(AuditoriaEntidade),
     TipoDoStartup = typeof(AuditoriaEntidade),
 });
+
+builder.Services.AddHostedService<AuditoriaConsumerBackgroundService>();
 
 var app = builder.Build();
 

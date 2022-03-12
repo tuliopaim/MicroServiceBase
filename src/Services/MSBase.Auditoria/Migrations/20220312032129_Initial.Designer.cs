@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MSBase.Auditoria.API.Migrations
 {
     [DbContext(typeof(AuditoriaDbContext))]
-    [Migration("20220312025030_initial")]
-    partial class initial
+    [Migration("20220312032129_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

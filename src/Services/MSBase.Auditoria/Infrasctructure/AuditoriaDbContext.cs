@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MSBase.Auditoria.API.Domain;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
-using MSBase.Core.Infrastructure.Kafka;
 
 namespace MSBase.Auditoria.API.Infrasctructure
 {

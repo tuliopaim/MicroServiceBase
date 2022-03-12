@@ -1,8 +1,6 @@
-﻿using MSBase.Core.Infrastructure.Kafka;
+﻿namespace MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
 
-namespace MSBase.Core.Infrastructure.Email;
-
-public abstract class EmailMessageBase : IKafkaMessage
+public abstract class EmailMessageBase
 {
     protected EmailMessageBase(string destinatario)
     {

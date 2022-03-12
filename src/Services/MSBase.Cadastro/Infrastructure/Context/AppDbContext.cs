@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MSBase.Cadastro.API.Entities;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
-using MSBase.Core.Infrastructure.Kafka;
 
 namespace MSBase.Cadastro.API.Infrastructure.Context
 {

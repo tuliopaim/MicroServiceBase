@@ -3,9 +3,8 @@ using Confluent.Kafka;
 using MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
 using MSBase.Core.API;
 using MSBase.Core.Application.Mediator;
-using MSBase.Core.Infrastructure.Auditoria;
-using MSBase.Core.Infrastructure.Kafka;
 using MSBase.Core.Infrastructure.Kafka.KafkaMessageTypes;
+using MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria;
 
 namespace MSBase.Auditoria.API.Consumers
 {

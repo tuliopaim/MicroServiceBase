@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MSBase.Core.Domain;
+using MSBase.Core.Extensions;
+using MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria;
 
-namespace MSBase.Core.Infrastructure.Auditoria
+namespace MSBase.Core.Extensions
 {
     public static class AuditoriaExtensions
     {

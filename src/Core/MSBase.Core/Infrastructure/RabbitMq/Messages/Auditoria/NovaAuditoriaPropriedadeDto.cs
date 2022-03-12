@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Infrastructure.Auditoria
+﻿namespace MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria
 {
     public class NovaAuditoriaPropriedadeDto
     {

@@ -1,8 +1,6 @@
-﻿using MSBase.Core.Infrastructure.Kafka;
-
-namespace MSBase.Core.Infrastructure.Auditoria
+﻿namespace MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria
 {
-    public class AuditoriaMessage : IKafkaMessage
+    public class AuditoriaMessage
     {
         public AuditoriaMessage(IEnumerable<NovaAuditoriaDto> auditorias)
         {

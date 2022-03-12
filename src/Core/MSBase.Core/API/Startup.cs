@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using MSBase.Core.API.Hateoas;
 using MSBase.Core.Application.Mediator.Pipeline;
-using MSBase.Core.Infrastructure.Kafka;
 using Serilog;
 
 namespace MSBase.Core.API

@@ -1,9 +1,8 @@
 ﻿using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
 using MSBase.Core.Application.Commands;
-using MSBase.Core.Infrastructure.Email;
-using MSBase.Core.Infrastructure.Kafka;
 using MSBase.Core.Infrastructure.Kafka.KafkaMessageTypes;
+using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
 
 namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand
 {

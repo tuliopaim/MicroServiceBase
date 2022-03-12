@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MSBase.Core.API;
-using MSBase.Core.Infrastructure.Auditoria;
-using MSBase.Core.Infrastructure.Kafka;
+using MSBase.Core.Extensions;
 using MSBase.Core.Infrastructure.Kafka.KafkaMessageTypes;
+using MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria;
 
 namespace MSBase.Core.Infrastructure
 {

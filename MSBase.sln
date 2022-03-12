@@ -29,6 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSBase.EmailSender.API", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSBase.EmailSender.Templates", "src\Services\MSBase.EmailSender.Templates\MSBase.EmailSender.Templates.csproj", "{DCD79DE9-6F54-46CC-8B54-8A73FAA6F370}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{2B9D146D-B852-4DA9-BE5E-61A56784A7DB}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.env.yml = docker-compose.env.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +73,7 @@ Global
 		{4F3FAC74-4AB1-4E19-8035-C76F445A28D0} = {6A42CE0C-BC26-42B6-8A86-DD6D2AE81DA2}
 		{8AD59045-2BF2-4E8A-BEF4-95FA9D770B7B} = {E323BAD9-E0F1-40F5-B9E8-3AE456CCC56F}
 		{DCD79DE9-6F54-46CC-8B54-8A73FAA6F370} = {E323BAD9-E0F1-40F5-B9E8-3AE456CCC56F}
+		{2B9D146D-B852-4DA9-BE5E-61A56784A7DB} = {B9B26D68-0EDF-4D8E-ADAA-858623151EF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDEE870D-C5D7-435F-9030-2026EABC6EA8}

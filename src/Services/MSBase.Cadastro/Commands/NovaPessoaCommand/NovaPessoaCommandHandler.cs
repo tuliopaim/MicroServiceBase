@@ -1,6 +1,7 @@
 ﻿using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
 using MSBase.Core.Application.Commands;
+using MSBase.Core.Infrastructure.RabbitMq;
 using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
 
 namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand;
@@ -8,12 +9,12 @@ namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand;
 public class NovaPessoaCommandHandler : ICommandHandler<NovaPessoaCommandInput, NovaPessoaCommandResult>
 {
     private readonly IPessoaRepository _pessoaRepository;
-    private readonly IKafkaBroker _broker;
+    private readonly RabbitMqProducer _rabbitMqProducer;
 
-    public NovaPessoaCommandHandler(IPessoaRepository pessoaRepository, IKafkaBroker kafkaBroker)
+    public NovaPessoaCommandHandler(IPessoaRepository pessoaRepository, RabbitMqProducer rabbitMqProducer)
     {
         _pessoaRepository = pessoaRepository;
-        _broker = kafkaBroker;
+        _rabbitMqProducer = rabbitMqProducer;
     }
 
     public async Task<NovaPessoaCommandResult> Handle(NovaPessoaCommandInput command, CancellationToken cancellationToken)
@@ -24,12 +25,10 @@ public class NovaPessoaCommandHandler : ICommandHandler<NovaPessoaCommandInput, 
 
         await _pessoaRepository.UnitOfWork.CommitAsync(cancellationToken);
 
-        await _broker.PublishAsync(
-            KafkaTopics.NovoEmail,
-            EmailMessageTypes.EmailPessoaCadastradaComSucesso,
-            new EmailPessoaCadastradaComSucessoMessage(pessoa.Email, pessoa.Nome),
-            cancellationToken);
+        var emailMessage = new EmailPessoaCadastradaComSucessoMessage(pessoa.Email, pessoa.Nome);
 
+        _rabbitMqProducer.Publish(emailMessage, RoutingKeys.NovoEmail);
+        
         return new NovaPessoaCommandResult(pessoa.Id);
     }
 }

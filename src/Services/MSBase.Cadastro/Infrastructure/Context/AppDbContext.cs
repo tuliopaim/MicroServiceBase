@@ -3,12 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using MSBase.Cadastro.API.Entities;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
+using MSBase.Core.Infrastructure.RabbitMq;
 
 namespace MSBase.Cadastro.API.Infrastructure.Context;
 
 public class AppDbContext : EfDbContext
 {
-    public AppDbContext(IEnvironment enviroment, IKafkaBroker kafkaBroker) : base(enviroment, kafkaBroker)
+    public AppDbContext(IEnvironment environment, RabbitMqProducer rabbitMqProducer) : base(environment, rabbitMqProducer)
     {
     }
 

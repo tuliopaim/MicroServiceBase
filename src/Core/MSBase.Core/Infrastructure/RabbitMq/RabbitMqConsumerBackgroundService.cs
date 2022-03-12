@@ -128,13 +128,13 @@ public abstract class RabbitMqConsumerBackgroundService : BackgroundService
 
     private void RepublicarSeNecessario(BasicDeliverEventArgs rabbitEventArgs)
     {
-        var retryCount = rabbitEventArgs.GetRetryCount();
+        var retryCount = rabbitEventArgs.BasicProperties.GetRetryCount();
 
         if (retryCount is null || retryCount >= MaxRetryCount) return;
 
-        var propriedades = Channel.CreateBasicProperties();
+        var propriedades = rabbitEventArgs.BasicProperties;
         propriedades.Persistent = true;
-        propriedades.SetRetryCountHeader(retryCount!.Value + 1);
+        propriedades.IncrementRetryCountHeader();
 
         Channel.BasicPublish("",
             rabbitEventArgs.RoutingKey,

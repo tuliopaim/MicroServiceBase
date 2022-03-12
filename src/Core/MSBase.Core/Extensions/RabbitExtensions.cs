@@ -19,26 +19,35 @@ public static class RabbitExtensions
         return JsonConvert.DeserializeObject<T>(rabbitMessage.SerializedMessage);
     }
     
-    public static int? GetRetryCount(this BasicDeliverEventArgs rabbitEventArgs)
-    {
-        if (rabbitEventArgs.BasicProperties.Headers is null) return null;
-
-        return rabbitEventArgs.BasicProperties.Headers.TryGetValue("x-retry-count", out var retryCountObj)
-            ? (int)retryCountObj
-            : null;
-    }
-
     public static T GetDeserializedMessage<T>(this RabbitMessage rabbitMessage)
     {
         return JsonConvert.DeserializeObject<T>(rabbitMessage.SerializedMessage);
     }
+    
+    public static int? GetRetryCount(this IBasicProperties properties)
+    {
+        if (properties.Headers is null) return null;
 
-    public static IBasicProperties SetRetryCountHeader(this IBasicProperties properties, int retryCount = 0)
+        return properties.Headers.TryGetValue("x-retry-count", out var retryCountObj)
+            ? (int)retryCountObj
+            : null;
+    }
+
+    public static IBasicProperties CreateRetryCountHeader(this IBasicProperties properties)
     {
         properties.Headers = new Dictionary<string, object>
         {
-            {"x-retry-count", retryCount}
+            {"x-retry-count", 0}
         };
+
+        return properties;
+    }
+
+    public static IBasicProperties IncrementRetryCountHeader(this IBasicProperties properties)
+    {
+        var retryCount = properties.GetRetryCount();
+
+        properties.Headers["x-retry-count"] = ++retryCount;
 
         return properties;
     }

@@ -28,10 +28,10 @@ public class RabbitMqProducer
 
         var messageBase = new RabbitMessage(serializedMessage, messageType);
 
-        return PublishMessage(JsonConvert.SerializeObject(messageBase), messageType, routingKey);
+        return PublishMessage(JsonConvert.SerializeObject(messageBase), routingKey);
     }
 
-    private bool PublishMessage(string serializedMessage, MessageType messageType, string routingKey)
+    private bool PublishMessage(string serializedMessage, string routingKey)
     {
         try
         {
@@ -41,7 +41,7 @@ public class RabbitMqProducer
 
             var propriedades = _channel.CreateBasicProperties();
             propriedades.Persistent = true;
-            propriedades.SetRetryCountHeader();
+            propriedades.CreateRetryCountHeader();
 
             _channel.BasicPublish("",
                 routingKey,

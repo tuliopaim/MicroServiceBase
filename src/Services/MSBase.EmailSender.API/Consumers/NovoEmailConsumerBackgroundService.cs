@@ -15,7 +15,7 @@ public class NovoEmailConsumerBackgroundService : RabbitMqConsumerBackgroundServ
     public NovoEmailConsumerBackgroundService(
         RabbitMqConnection rabbitMqConnection,
         ILogger<NovoEmailConsumerBackgroundService> logger,
-        IServiceProvider serviceProvider) : base(rabbitMqConnection, logger, RoutingKeys.NovaAuditoria)
+        IServiceProvider serviceProvider) : base(rabbitMqConnection, logger, RoutingKeys.NovoEmail)
     {
         _serviceProvider = serviceProvider;
         _logger = logger;

@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MSBase.Core.Application.Queries;
 
-namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery
+namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
+
+public class ObterPessoasQueryInput : PagedQueryInput<PagedQueryResult<ObterPessoasQueryResultItem>>
 {
-    public class ObterPessoasQueryInput : PagedQueryInput<PagedQueryResult<ObterPessoasQueryResultItem>>
-    {
-        [FromQuery]
-        public int Idade { get; set; }
-    }
+    [FromQuery]
+    public int Idade { get; set; }
 }

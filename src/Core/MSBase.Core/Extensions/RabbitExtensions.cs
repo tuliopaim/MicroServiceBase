@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 using MSBase.Core.Infrastructure.RabbitMq.Messages;
 using Newtonsoft.Json;
 using RabbitMQ.Client;

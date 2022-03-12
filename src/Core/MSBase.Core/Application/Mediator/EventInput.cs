@@ -1,8 +1,7 @@
 ﻿using MediatR;
 
-namespace MSBase.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator;
+
+public class EventInput : INotification
 {
-    public class EventInput : INotification
-    {
-    }
 }

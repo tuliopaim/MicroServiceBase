@@ -30,7 +30,6 @@ builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
 builder.Services.RegistrarCore(new CoreSettings
 {
     Configuration = builder.Configuration,
-    HostEnvironment = builder.Environment,
     TipoDaCamadaDeApplication = typeof(Program),
     TipoDoStartup = typeof(Program),
 });

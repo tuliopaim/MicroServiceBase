@@ -1,10 +1,9 @@
 ﻿using MSBase.Cadastro.API.Entities;
 using MSBase.Core.Infrastructure;
 
-namespace MSBase.Cadastro.API.Infrastructure.Repositories
+namespace MSBase.Cadastro.API.Infrastructure.Repositories;
+
+public interface IPessoaRepository : IGenericRepository<Pessoa>
 {
-    public interface IPessoaRepository : IGenericRepository<Pessoa>
-    {
-        Task<Pessoa> ObterPorId(Guid id);
-    }
+    Task<Pessoa> ObterPorId(Guid id);
 }

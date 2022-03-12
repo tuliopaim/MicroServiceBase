@@ -22,13 +22,13 @@ public class RabbitMqProducer
 
     private IConnection Conexao => _rabbitConexao.Connection;
 
-    public bool Publish<TMessage>(TMessage message, string queueName)
+    public bool Publish<TMessage>(TMessage message, string routingKey)
     {
         var serializedMessage = JsonConvert.SerializeObject(message);
 
         var messageBase = new RabbitMessage(serializedMessage, typeof(TMessage));
 
-        return PublishMessage(JsonConvert.SerializeObject(messageBase), queueName);
+        return PublishMessage(JsonConvert.SerializeObject(messageBase), routingKey);
     }
 
     private bool PublishMessage(string serializedMessage, string routingKey)

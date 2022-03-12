@@ -1,11 +1,10 @@
-﻿namespace MSBase.Core.Application.Mediator
+﻿namespace MSBase.Core.Application.Mediator;
+
+public interface IMediatorResult
 {
-    public interface IMediatorResult
-    {
-        IEnumerable<string> Errors { get; }
+    IEnumerable<string> Errors { get; }
 
-        IMediatorResult AddError(string error);
+    IMediatorResult AddError(string error);
 
-        bool IsValid();
-    }
+    bool IsValid();
 }

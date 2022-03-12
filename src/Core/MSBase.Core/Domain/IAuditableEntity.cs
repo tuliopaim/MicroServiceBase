@@ -1,9 +1,8 @@
-﻿namespace MSBase.Core.Domain
+﻿namespace MSBase.Core.Domain;
+
+public interface IAuditableEntity
 {
-    public interface IAuditableEntity
-    {
-        Guid Id { get; }
-        DateTime DataCriacao { get; }
-        DateTime? DataAlteracao { get; }
-    }
+    Guid Id { get; }
+    DateTime DataCriacao { get; }
+    DateTime? DataAlteracao { get; }
 }

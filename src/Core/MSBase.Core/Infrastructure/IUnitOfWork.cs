@@ -1,7 +1,6 @@
-﻿namespace MSBase.Core.Infrastructure
+﻿namespace MSBase.Core.Infrastructure;
+
+public interface IUnitOfWork : IDisposable
 {
-    public interface IUnitOfWork : IDisposable
-    {
-        Task<int> CommitAsync(CancellationToken cancellationToken = default);
-    }
+    Task<int> CommitAsync(CancellationToken cancellationToken = default);
 }

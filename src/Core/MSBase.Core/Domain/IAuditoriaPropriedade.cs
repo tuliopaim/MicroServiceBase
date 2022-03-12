@@ -1,6 +1,5 @@
-﻿namespace MSBase.Core.Domain
+﻿namespace MSBase.Core.Domain;
+
+public interface IAuditoriaPropriedade
 {
-    public interface IAuditoriaPropriedade
-    {
-    }
 }

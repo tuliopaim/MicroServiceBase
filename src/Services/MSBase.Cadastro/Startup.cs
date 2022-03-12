@@ -15,7 +15,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegistrarCore(new CoreSettings
 {
     Configuration = builder.Configuration,
-    HostEnvironment = builder.Environment,
     TipoDaCamadaDeApplication = typeof(Pessoa),
     TipoDoStartup = typeof(Pessoa)
 });

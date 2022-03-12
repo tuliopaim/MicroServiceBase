@@ -1,8 +1,7 @@
 ﻿using MSBase.Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Events
+namespace MSBase.Core.Application.Events;
+
+public class EventInputValidator<TEventInput> : MediatorInputValidator<TEventInput> where TEventInput : EventInput
 {
-    public class EventInputValidator<TEventInput> : MediatorInputValidator<TEventInput> where TEventInput : EventInput
-    {
-    }
 }

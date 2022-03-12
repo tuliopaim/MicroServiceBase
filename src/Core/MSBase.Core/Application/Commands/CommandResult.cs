@@ -1,13 +1,12 @@
 ﻿using MSBase.Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Commands
+namespace MSBase.Core.Application.Commands;
+
+public class CommandResult : MediatorResult
 {
-    public class CommandResult : MediatorResult
+    public override CommandResult AddError(string error)
     {
-        public override CommandResult AddError(string error)
-        {
-            base.AddError(error);
-            return this;
-        }
+        base.AddError(error);
+        return this;
     }
 }

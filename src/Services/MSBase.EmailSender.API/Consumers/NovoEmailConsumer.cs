@@ -1,7 +1,4 @@
-﻿using Confluent.Kafka;
-using MSBase.Core.API;
-using MSBase.Core.Infrastructure.Kafka.KafkaMessageTypes;
-using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
+﻿using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
 using MSBase.EmailSender.API.Domain;
 
 namespace MSBase.EmailSender.API.Consumers;

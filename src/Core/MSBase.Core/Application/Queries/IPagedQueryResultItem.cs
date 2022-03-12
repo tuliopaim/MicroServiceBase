@@ -1,7 +1,6 @@
-﻿namespace MSBase.Core.Application.Queries
-{
-    public interface IPagedQueryResultItem
-    {
+﻿namespace MSBase.Core.Application.Queries;
 
-    }
+public interface IPagedQueryResultItem
+{
+
 }

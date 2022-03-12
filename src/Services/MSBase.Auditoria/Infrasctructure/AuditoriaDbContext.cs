@@ -4,24 +4,23 @@ using MSBase.Auditoria.API.Domain;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
 
-namespace MSBase.Auditoria.API.Infrasctructure
+namespace MSBase.Auditoria.API.Infrasctructure;
+
+public class AuditoriaDbContext : EfDbContext
 {
-    public class AuditoriaDbContext : EfDbContext
+    public AuditoriaDbContext(IEnvironment environment, IKafkaBroker kafkaBroker) : base(environment, kafkaBroker)
     {
-        public AuditoriaDbContext(IEnvironment environment, IKafkaBroker kafkaBroker) : base(environment, kafkaBroker)
-        {
-        }
+    }
 
-        public DbSet<AuditoriaEntidade> Auditoria { get; set; }
-        public DbSet<AuditoriaPropriedade> AuditoriaPropriedades { get; set; }
+    public DbSet<AuditoriaEntidade> Auditoria { get; set; }
+    public DbSet<AuditoriaPropriedade> AuditoriaPropriedades { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("AuditoriaEntidade");
+        modelBuilder.HasDefaultSchema("AuditoriaEntidade");
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

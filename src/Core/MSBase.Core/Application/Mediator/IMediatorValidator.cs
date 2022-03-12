@@ -1,6 +1,5 @@
-﻿namespace MSBase.Core.Application.Mediator
+﻿namespace MSBase.Core.Application.Mediator;
+
+public interface IMediatorValidator
 {
-    public interface IMediatorValidator
-    {
-    }
 }

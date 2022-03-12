@@ -1,8 +1,7 @@
 ﻿using FluentValidation;
 
-namespace MSBase.Core.Application.Mediator
+namespace MSBase.Core.Application.Mediator;
+
+public class MediatorInputValidator<TMediatorInput> : AbstractValidator<TMediatorInput>
 {
-    public class MediatorInputValidator<TMediatorInput> : AbstractValidator<TMediatorInput>
-    {
-    }
 }

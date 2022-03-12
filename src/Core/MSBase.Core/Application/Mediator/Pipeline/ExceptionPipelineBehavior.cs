@@ -2,43 +2,42 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace MSBase.Core.Application.Mediator.Pipeline
+namespace MSBase.Core.Application.Mediator.Pipeline;
+
+public class ExceptionPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IMediatorInput<TResponse>
+    where TResponse : IMediatorResult
 {
-    public class ExceptionPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IMediatorInput<TResponse>
-        where TResponse : IMediatorResult
+    private readonly ILogger<ExceptionPipelineBehavior<TRequest, TResponse>> _logger;
+
+    public ExceptionPipelineBehavior(ILogger<ExceptionPipelineBehavior<TRequest, TResponse>> logger)
     {
-        private readonly ILogger<ExceptionPipelineBehavior<TRequest, TResponse>> _logger;
+        _logger = logger;
+    }
 
-        public ExceptionPipelineBehavior(ILogger<ExceptionPipelineBehavior<TRequest, TResponse>> logger)
+    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    {
+        try
         {
-            _logger = logger;
+            return await next();
         }
-
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        catch (Exception ex)
         {
-            try
-            {
-                return await next();
-            }
-            catch (Exception ex)
-            {
-                return ExceptionTratada(ex);
-            }
+            return ExceptionTratada(ex);
         }
+    }
 
-        private TResponse ExceptionTratada(Exception ex)
-        {
-            _logger.LogError(ex, "{RequestType} - Exception captured!", typeof(TRequest).Name);
+    private TResponse ExceptionTratada(Exception ex)
+    {
+        _logger.LogError(ex, "{RequestType} - Exception captured!", typeof(TRequest).Name);
 
-            var result = new MediatorResult();
+        var result = new MediatorResult();
 
-            result.AddError("Ocorreu um erro!");
+        result.AddError("Ocorreu um erro!");
 
-            var resultSerializado = JsonConvert.SerializeObject(result);
-            var resultTipado = JsonConvert.DeserializeObject<TResponse>(resultSerializado);
+        var resultSerializado = JsonConvert.SerializeObject(result);
+        var resultTipado = JsonConvert.DeserializeObject<TResponse>(resultSerializado);
 
-            return resultTipado;
-        }
+        return resultTipado;
     }
 }

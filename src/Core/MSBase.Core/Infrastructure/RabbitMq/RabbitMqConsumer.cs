@@ -101,10 +101,12 @@ public abstract class RabbitMqConsumer : BackgroundService
     /// <summary>
     /// Nacks if x-retry-count >= MaxRetryCount, requeue if not
     /// </summary>
-    /// <param name="rabbitEverntArgs"></param>
-    protected virtual void OnError(BasicDeliverEventArgs rabbitEverntArgs)
+    /// <param name="rabbitEventArgs"></param>
+    protected virtual void OnError(BasicDeliverEventArgs rabbitEventArgs)
     {
-        Channel.BasicNack(rabbitEverntArgs.DeliveryTag, false, false);
+        RepublicarSeNecessario(rabbitEventArgs);
+
+        Channel.BasicNack(rabbitEventArgs.DeliveryTag, false, false);
     }
 
     /// <summary>
@@ -116,21 +118,25 @@ public abstract class RabbitMqConsumer : BackgroundService
     {
         _logger.LogError(ex, "Exception captured on {ConsumerType}", GetType().Name);
 
-        var retryCount = rabbitEventArgs.GetRetryCount();
-
-        if (retryCount < MaxRetryCount)
-        {
-            var propriedades = Channel.CreateBasicProperties();
-            propriedades.Persistent = true;
-            propriedades.SetRetryCountHeader();
-
-            Channel.BasicPublish("",
-                rabbitEventArgs.RoutingKey,
-                propriedades,
-                rabbitEventArgs.Body);
-        }
+        RepublicarSeNecessario(rabbitEventArgs);
 
         Channel.BasicNack(rabbitEventArgs.DeliveryTag, false, false);
+    }
+
+    private void RepublicarSeNecessario(BasicDeliverEventArgs rabbitEventArgs)
+    {
+        var retryCount = rabbitEventArgs.GetRetryCount();
+
+        if (retryCount >= MaxRetryCount) return;
+
+        var propriedades = Channel.CreateBasicProperties();
+        propriedades.Persistent = true;
+        propriedades.SetRetryCountHeader();
+
+        Channel.BasicPublish("",
+            rabbitEventArgs.RoutingKey,
+            propriedades,
+            rabbitEventArgs.Body);
     }
 
     protected abstract Task<bool> HandleMessage(BasicDeliverEventArgs rabbitEverntArgs, RabbitMessage message);

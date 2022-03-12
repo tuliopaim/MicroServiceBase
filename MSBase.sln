@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Email", "Email", "{E323BAD9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9B26D68-0EDF-4D8E-ADAA-858623151EF0}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.env.yml = docker-compose.env.yml
 		README.md = README.md
 	EndProjectSection
 EndProject

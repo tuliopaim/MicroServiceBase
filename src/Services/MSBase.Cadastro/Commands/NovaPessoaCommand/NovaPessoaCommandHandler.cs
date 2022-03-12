@@ -2,6 +2,7 @@
 using MSBase.Cadastro.API.Infrastructure.Repositories;
 using MSBase.Core.Application.Commands;
 using MSBase.Core.Infrastructure.RabbitMq;
+using MSBase.Core.Infrastructure.RabbitMq.Messages;
 using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
 
 namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand;
@@ -27,7 +28,7 @@ public class NovaPessoaCommandHandler : ICommandHandler<NovaPessoaCommandInput, 
 
         var emailMessage = new EmailPessoaCadastradaComSucessoMessage(pessoa.Email, pessoa.Nome);
 
-        _rabbitMqProducer.Publish(emailMessage, RoutingKeys.NovoEmail);
+        _rabbitMqProducer.Publish(emailMessage, MessageType.EmailPessoaCadastradaComSucesso, RoutingKeys.NovoEmail);
         
         return new NovaPessoaCommandResult(pessoa.Id);
     }

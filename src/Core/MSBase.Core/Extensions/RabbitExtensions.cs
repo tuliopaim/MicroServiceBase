@@ -10,8 +10,7 @@ public static class RabbitExtensions
 {
     public static RabbitMessage GetRabbitMessage(this BasicDeliverEventArgs rabbitEventArgs)
     {
-        var body = rabbitEventArgs.Body.ToArray();
-        return JsonConvert.DeserializeObject<RabbitMessage>(Encoding.UTF8.GetString(body));
+        return JsonConvert.DeserializeObject<RabbitMessage>(Encoding.UTF8.GetString(rabbitEventArgs.Body.Span));
     }
         
     public static T GetDeserializedMessage<T>(this BasicDeliverEventArgs rabbitEventArgs)
@@ -19,15 +18,11 @@ public static class RabbitExtensions
         var rabbitMessage = rabbitEventArgs.GetRabbitMessage();
         return JsonConvert.DeserializeObject<T>(rabbitMessage.SerializedMessage);
     }
-
-    public static object GetDeserializedMessage(this BasicDeliverEventArgs rabbitEventArgs)
-    {
-        var rabbitMessage = rabbitEventArgs.GetRabbitMessage();
-        return JsonConvert.DeserializeObject(rabbitMessage.SerializedMessage, rabbitMessage.MessageType);
-    }
-
+    
     public static int? GetRetryCount(this BasicDeliverEventArgs rabbitEventArgs)
     {
+        if (rabbitEventArgs.BasicProperties.Headers is null) return null;
+
         return rabbitEventArgs.BasicProperties.Headers.TryGetValue("x-retry-count", out var retryCountObj)
             ? (int)retryCountObj
             : null;
@@ -38,11 +33,11 @@ public static class RabbitExtensions
         return JsonConvert.DeserializeObject<T>(rabbitMessage.SerializedMessage);
     }
 
-    public static IBasicProperties SetRetryCountHeader(this IBasicProperties properties)
+    public static IBasicProperties SetRetryCountHeader(this IBasicProperties properties, int retryCount = 0)
     {
         properties.Headers = new Dictionary<string, object>
         {
-            {"x-retry-count", 0}
+            {"x-retry-count", retryCount}
         };
 
         return properties;

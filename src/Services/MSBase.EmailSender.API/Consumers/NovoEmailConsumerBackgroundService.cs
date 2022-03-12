@@ -20,24 +20,24 @@ public class NovoEmailConsumerBackgroundService : RabbitMqConsumerBackgroundServ
         _serviceProvider = serviceProvider;
         _logger = logger;
     }
-
     
     protected override async Task<bool> HandleMessage(BasicDeliverEventArgs rabbitEventArgs, RabbitMessage message)
     {
-        var mensagem = rabbitEventArgs.GetDeserializedMessage();
+        var mensagem = rabbitEventArgs.GetRabbitMessage();
 
-        var task = mensagem switch
+        var task = mensagem.MessageType switch
         {
-            EmailPessoaCadastradaComSucessoMessage pessoaCadastradaComSucessoMessage =>
-                HandlePessoaCadastradaComSucesso(pessoaCadastradaComSucessoMessage),
+            MessageType.EmailPessoaCadastradaComSucesso => HandlePessoaCadastradaComSucesso(mensagem),
             _ => Task.FromResult(true)
         };
         
         return await task;
     }
     
-    private async Task<bool> HandlePessoaCadastradaComSucesso(EmailPessoaCadastradaComSucessoMessage mensagem)
+    private async Task<bool> HandlePessoaCadastradaComSucesso(RabbitMessage rabbitMessage)
     {
+        var mensagem = rabbitMessage.GetDeserializedMessage<EmailPessoaCadastradaComSucessoMessage>();
+
         using var scope = _serviceProvider.CreateScope();
         var emailService = scope.ServiceProvider.GetService<IEmailService>();
 

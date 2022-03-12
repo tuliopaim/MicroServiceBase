@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MSBase.Core.API;
 using MSBase.Core.Extensions;
 using MSBase.Core.Infrastructure.RabbitMq;
+using MSBase.Core.Infrastructure.RabbitMq.Messages;
 
 namespace MSBase.Core.Infrastructure;
 
@@ -56,7 +57,7 @@ public class EfDbContext : DbContext, IUnitOfWork
 
         if (linhasAfetadas > 0 && auditoriaEvent.Auditorias.Any())
         {
-            _rabbitMqProducer.Publish(auditoriaEvent, RoutingKeys.NovaAuditoria);
+            _rabbitMqProducer.Publish(auditoriaEvent, MessageType.NovaAuditoria, RoutingKeys.NovaAuditoria);
         }
 
         return linhasAfetadas;

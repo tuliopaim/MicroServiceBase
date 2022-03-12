@@ -130,11 +130,11 @@ public abstract class RabbitMqConsumerBackgroundService : BackgroundService
     {
         var retryCount = rabbitEventArgs.GetRetryCount();
 
-        if (retryCount >= MaxRetryCount) return;
+        if (retryCount is null || retryCount >= MaxRetryCount) return;
 
         var propriedades = Channel.CreateBasicProperties();
         propriedades.Persistent = true;
-        propriedades.SetRetryCountHeader();
+        propriedades.SetRetryCountHeader(retryCount!.Value + 1);
 
         Channel.BasicPublish("",
             rabbitEventArgs.RoutingKey,

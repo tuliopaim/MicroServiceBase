@@ -4,12 +4,12 @@ public class RabbitMessage
 {
     public RabbitMessage(
         string serializedMessage, 
-        Type messageType)
+        MessageType messageType)
     {
         SerializedMessage = serializedMessage;
         MessageType = messageType;
     }
 
     public string SerializedMessage { get; private set; }
-    public Type MessageType { get; private set; }
+    public MessageType MessageType { get; private set; }
 }

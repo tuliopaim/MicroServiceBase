@@ -3,7 +3,7 @@ using MSBase.Core.Domain;
 
 namespace MSBase.Auditoria.API.Domain
 {
-    public class Auditoria : AuditableEntity, IAuditoria
+    public class AuditoriaEntidade : AuditableEntity, IAuditoria
     {
         public EntityState TipoAuditoria { get; init; }
 

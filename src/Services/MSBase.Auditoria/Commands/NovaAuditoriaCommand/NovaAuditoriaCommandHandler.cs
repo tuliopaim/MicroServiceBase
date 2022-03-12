@@ -17,7 +17,7 @@ namespace MSBase.Auditoria.API.Commands.NovaAuditoriaCommand
         {
             foreach (var auditoriaCommand in command.Auditorias)
             {
-                var auditoria = new Domain.Auditoria
+                var auditoria = new AuditoriaEntidade
                 {
                     IdEntidade = auditoriaCommand.IdEntidade,
                     NomeEntidade = auditoriaCommand.NomeEntidade,

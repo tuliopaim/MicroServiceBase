@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MSBase.Auditoria.API.Domain;
 using MSBase.Core.Infrastructure;
 
 namespace MSBase.Auditoria.API.Infrasctructure.Configs
 {
-    public class AuditoriaConfig : AuditableEntityMap<Domain.Auditoria>
+    public class AuditoriaEntidadeConfig : AuditableEntityMap<AuditoriaEntidade>
     {
-        public override void Configure(EntityTypeBuilder<Domain.Auditoria> builder)
+        public override void Configure(EntityTypeBuilder<AuditoriaEntidade> builder)
         {
             base.Configure(builder);
 
@@ -24,7 +25,7 @@ namespace MSBase.Auditoria.API.Infrasctructure.Configs
                 .IsRequired();
 
             builder.HasMany(x => x.Propriedades)
-                .WithOne(p => p.Auditoria)
+                .WithOne(p => p.AuditoriaEntidade)
                 .HasForeignKey(p => p.AuditoriaId);
         }
     }

@@ -15,6 +15,6 @@ namespace MSBase.Auditoria.API.Domain
         public bool EhChavePrimaria { get; init; }
 
         public Guid AuditoriaId { get; private set; }
-        public virtual Auditoria Auditoria { get; private set; }
+        public virtual AuditoriaEntidade AuditoriaEntidade { get; private set; }
     }
 }

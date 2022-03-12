@@ -2,7 +2,7 @@
 
 namespace MSBase.Auditoria.API.Infrasctructure
 {
-    public interface IAuditoriaRepository : IGenericRepository<Domain.Auditoria>
+    public interface IAuditoriaRepository : IGenericRepository<Domain.AuditoriaEntidade>
     {
 
     }

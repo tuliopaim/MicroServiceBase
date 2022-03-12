@@ -3,18 +3,18 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Auditoria.API.Migrations
+namespace MSBase.Auditoria.API.Migrations
 {
     public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "Auditoria");
+                name: "AuditoriaEntidade");
 
             migrationBuilder.CreateTable(
-                name: "Auditoria",
-                schema: "Auditoria",
+                name: "AuditoriaEntidade",
+                schema: "AuditoriaEntidade",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -27,12 +27,12 @@ namespace Auditoria.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Auditoria", x => x.Id);
+                    table.PrimaryKey("PK_AuditoriaEntidade", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AuditoriaPropriedade",
-                schema: "Auditoria",
+                schema: "AuditoriaEntidade",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -49,17 +49,17 @@ namespace Auditoria.API.Migrations
                 {
                     table.PrimaryKey("PK_AuditoriaPropriedade", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AuditoriaPropriedade_Auditoria_AuditoriaId",
+                        name: "FK_AuditoriaPropriedade_AuditoriaEntidade_AuditoriaId",
                         column: x => x.AuditoriaId,
-                        principalSchema: "Auditoria",
-                        principalTable: "Auditoria",
+                        principalSchema: "AuditoriaEntidade",
+                        principalTable: "AuditoriaEntidade",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AuditoriaPropriedade_AuditoriaId",
-                schema: "Auditoria",
+                schema: "AuditoriaEntidade",
                 table: "AuditoriaPropriedade",
                 column: "AuditoriaId");
         }
@@ -68,11 +68,11 @@ namespace Auditoria.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AuditoriaPropriedade",
-                schema: "Auditoria");
+                schema: "AuditoriaEntidade");
 
             migrationBuilder.DropTable(
-                name: "Auditoria",
-                schema: "Auditoria");
+                name: "AuditoriaEntidade",
+                schema: "AuditoriaEntidade");
         }
     }
 }

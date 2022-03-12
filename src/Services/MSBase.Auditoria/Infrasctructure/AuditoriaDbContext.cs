@@ -13,14 +13,14 @@ namespace MSBase.Auditoria.API.Infrasctructure
         {
         }
 
-        public DbSet<Domain.Auditoria> Auditoria { get; set; }
+        public DbSet<AuditoriaEntidade> Auditoria { get; set; }
         public DbSet<AuditoriaPropriedade> AuditoriaPropriedades { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("Auditoria");
+            modelBuilder.HasDefaultSchema("AuditoriaEntidade");
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

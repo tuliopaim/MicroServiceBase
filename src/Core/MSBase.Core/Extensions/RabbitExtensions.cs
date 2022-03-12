@@ -13,11 +13,17 @@ public static class RabbitExtensions
         var body = rabbitEventArgs.Body.ToArray();
         return JsonConvert.DeserializeObject<RabbitMessage>(Encoding.UTF8.GetString(body));
     }
-
+        
     public static T GetDeserializedMessage<T>(this BasicDeliverEventArgs rabbitEventArgs)
     {
         var rabbitMessage = rabbitEventArgs.GetRabbitMessage();
         return JsonConvert.DeserializeObject<T>(rabbitMessage.SerializedMessage);
+    }
+
+    public static object GetDeserializedMessage(this BasicDeliverEventArgs rabbitEventArgs)
+    {
+        var rabbitMessage = rabbitEventArgs.GetRabbitMessage();
+        return JsonConvert.DeserializeObject(rabbitMessage.SerializedMessage, rabbitMessage.MessageType);
     }
 
     public static int? GetRetryCount(this BasicDeliverEventArgs rabbitEventArgs)

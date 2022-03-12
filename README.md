@@ -46,11 +46,11 @@ $ docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
     - [x]  KafkaBroker com facilitadores
     - [x]  BackgroundService disparando Consumers Kafka
     - [x]  Criar tópicos no startup da aplicação ([#14](https://github.com/tuliopaim/MicroServiceBase/issues/14))
-    - [ ]  Remover estrutura Kafka ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
-- [ ]  RabbitMQ ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
-    - [ ]  Estrutura rabbit
-    - [ ]  Projeto apartado "Core.RabbitMq"
-    - [ ]  Utilizar em serviços
+    - [x]  Remover estrutura Kafka ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
+- [x]  RabbitMQ ([#17](https://github.com/tuliopaim/MicroServiceBase/issues/17))
+    - [x]  Estrutura rabbit
+    - [x]  Lógica de retry
+    - [x]  Utilizar em serviços
 - [x]  EF Core
     - [x]  DbContextBase
     - [x]  Repositorios Genéricos

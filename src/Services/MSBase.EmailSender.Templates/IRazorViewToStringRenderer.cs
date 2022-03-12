@@ -1,7 +1,6 @@
-﻿namespace MSBase.EmailSender.Templates
+﻿namespace MSBase.EmailSender.Templates;
+
+public interface IRazorViewToStringRenderer
 {
-    public interface IRazorViewToStringRenderer
-    {
-        Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model);
-    }
+    Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model);
 }

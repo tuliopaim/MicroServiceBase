@@ -1,8 +1,7 @@
-﻿namespace MSBase.Cadastro.API.Requests
+﻿namespace MSBase.Cadastro.API.Requests;
+
+public class EditarPessoaRequest
 {
-    public class EditarPessoaRequest
-    {
-        public Guid PessoaId { get; set; }
-        public byte NovaIdade { get; set; }
-    }
+    public Guid PessoaId { get; set; }
+    public byte NovaIdade { get; set; }
 }

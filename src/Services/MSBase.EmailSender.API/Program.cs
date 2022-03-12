@@ -1,5 +1,6 @@
 using FluentEmail.MailKitSmtp;
 using MSBase.Core.API;
+using MSBase.EmailSender.API.Consumers;
 using MSBase.EmailSender.API.Domain;
 using MSBase.EmailSender.API.Infrastructure;
 using MSBase.EmailSender.Templates;
@@ -15,6 +16,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
+builder.Services.AddHostedService<NovoEmailConsumerBackgroundService>();
 
 builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
     .AddMailKitSender(new SmtpClientOptions
@@ -30,7 +32,6 @@ builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
 builder.Services.RegistrarCore(new CoreSettings
 {
     Configuration = builder.Configuration,
-    HostEnvironment = builder.Environment,
     TipoDaCamadaDeApplication = typeof(Program),
     TipoDoStartup = typeof(Program),
 });

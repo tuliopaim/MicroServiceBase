@@ -1,7 +1,6 @@
-﻿namespace MSBase.EmailSender.API.Domain
+﻿namespace MSBase.EmailSender.API.Domain;
+
+public interface IEmailService
 {
-    public interface IEmailService
-    {
-        Task<bool> EnviarEmailPessoaCadastradaComSucesso(string nome, string email);
-    }
+    Task<bool> EnviarEmailPessoaCadastradaComSucesso(string nome, string email);
 }

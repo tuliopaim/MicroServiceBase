@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Infrastructure.Email;
+﻿namespace MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
 
 public class EmailPessoaCadastradaComSucessoMessage : EmailMessageBase
 {

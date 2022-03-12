@@ -1,10 +1,9 @@
 ﻿using MSBase.Core.API.Hateoas;
 using MSBase.Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Queries
+namespace MSBase.Core.Application.Queries;
+
+public class QueryResult : MediatorResult
 {
-    public class QueryResult : MediatorResult
-    {
-        public IEnumerable<HLink> Links { get; set; }
-    }
+    public IEnumerable<HLink> Links { get; set; }
 }

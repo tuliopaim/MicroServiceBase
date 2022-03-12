@@ -1,18 +1,17 @@
 ﻿using FluentValidation;
 using MSBase.Core.Application.Commands;
 
-namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand
-{
-    public class NovaPessoaCommandValidator : CommandInputValidator<NovaPessoaCommandInput>
-    {
-        public NovaPessoaCommandValidator()
-        {
-            RuleFor(x => x.Nome)
-                .NotEmpty()
-                .MaximumLength(40);
+namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand;
 
-            RuleFor(x => x.Idade)
-                .GreaterThanOrEqualTo((byte)18);
-        }
+public class NovaPessoaCommandValidator : CommandInputValidator<NovaPessoaCommandInput>
+{
+    public NovaPessoaCommandValidator()
+    {
+        RuleFor(x => x.Nome)
+            .NotEmpty()
+            .MaximumLength(40);
+
+        RuleFor(x => x.Idade)
+            .GreaterThanOrEqualTo((byte)18);
     }
 }

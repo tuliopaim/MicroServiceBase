@@ -2,35 +2,34 @@
 using MSBase.Core.Application;
 using MSBase.Core.Application.Queries;
 
-namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery
+namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
+
+public class ObterPessoasQueryHandler : IQueryHandler<ObterPessoasQueryInput, PagedQueryResult<ObterPessoasQueryResultItem>>
 {
-    public class ObterPessoasQueryHandler : IQueryHandler<ObterPessoasQueryInput, PagedQueryResult<ObterPessoasQueryResultItem>>
+    private readonly IPessoaRepository _pessoaRepository;
+
+    public ObterPessoasQueryHandler(IPessoaRepository pessoaRepository)
     {
-        private readonly IPessoaRepository _pessoaRepository;
+        _pessoaRepository = pessoaRepository;
+    }
 
-        public ObterPessoasQueryHandler(IPessoaRepository pessoaRepository)
+    public async Task<PagedQueryResult<ObterPessoasQueryResultItem>> Handle(ObterPessoasQueryInput query, CancellationToken cancellationToken)
+    {
+        var pessoasQuery = _pessoaRepository.GetAsNoTracking();
+
+        if (query.Idade != default)
         {
-            _pessoaRepository = pessoaRepository;
+            pessoasQuery = pessoasQuery.Where(p => p.Idade == query.Idade);
         }
 
-        public async Task<PagedQueryResult<ObterPessoasQueryResultItem>> Handle(ObterPessoasQueryInput query, CancellationToken cancellationToken)
+        var resultQuery = pessoasQuery.Select(p => new ObterPessoasQueryResultItem
         {
-            var pessoasQuery = _pessoaRepository.GetAsNoTracking();
+            Id = p.Id,
+            Nome = p.Nome,
+            Idade = p.Idade,
+            DataCriacao = p.DataCriacao,
+        });
 
-            if (query.Idade != default)
-            {
-                pessoasQuery = pessoasQuery.Where(p => p.Idade == query.Idade);
-            }
-
-            var resultQuery = pessoasQuery.Select(p => new ObterPessoasQueryResultItem
-            {
-                Id = p.Id,
-                Nome = p.Nome,
-                Idade = p.Idade,
-                DataCriacao = p.DataCriacao,
-            });
-
-            return await resultQuery.PaginateAsync(query.PageNumber, query.PageSize, cancellationToken);
-        }
+        return await resultQuery.PaginateAsync(query.PageNumber, query.PageSize, cancellationToken);
     }
 }

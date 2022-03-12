@@ -1,8 +1,7 @@
 ﻿using MSBase.Core.Application.Mediator;
 
-namespace MSBase.Core.Application.Commands
+namespace MSBase.Core.Application.Commands;
+
+public class CommandInputValidator<TCommandInput> : MediatorInputValidator<TCommandInput>
 {
-    public class CommandInputValidator<TCommandInput> : MediatorInputValidator<TCommandInput>
-    {
-    }
 }

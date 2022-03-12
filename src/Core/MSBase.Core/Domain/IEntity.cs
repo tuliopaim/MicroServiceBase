@@ -1,7 +1,6 @@
-﻿namespace MSBase.Core.Domain
+﻿namespace MSBase.Core.Domain;
+
+public interface IEntity
 {
-    public interface IEntity
-    {
-        Guid Id { get; }
-    }
+    Guid Id { get; }
 }

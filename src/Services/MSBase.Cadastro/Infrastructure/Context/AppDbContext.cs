@@ -3,25 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using MSBase.Cadastro.API.Entities;
 using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
-using MSBase.Core.Infrastructure.Kafka;
+using MSBase.Core.Infrastructure.RabbitMq;
 
-namespace MSBase.Cadastro.API.Infrastructure.Context
+namespace MSBase.Cadastro.API.Infrastructure.Context;
+
+public class AppDbContext : EfDbContext
 {
-    public class AppDbContext : EfDbContext
+    public AppDbContext(IEnvironment environment, RabbitMqProducer rabbitMqProducer) : base(environment, rabbitMqProducer)
     {
-        public AppDbContext(IEnvironment enviroment, IKafkaBroker kafkaBroker) : base(enviroment, kafkaBroker)
-        {
-        }
+    }
 
-        public DbSet<Pessoa> Pessoas { get; set; }
+    public DbSet<Pessoa> Pessoas { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("Cadastros");
+        modelBuilder.HasDefaultSchema("Cadastros");
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

@@ -1,4 +1,6 @@
 using Microsoft.OpenApi.Models;
+using MSBase.Auditoria.API.Consumers;
+using MSBase.Auditoria.API.Domain;
 using MSBase.Auditoria.API.Infrasctructure;
 using MSBase.Core.API;
 
@@ -17,10 +19,11 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.RegistrarCore(new CoreSettings
 {
     Configuration = builder.Configuration,
-    HostEnvironment = builder.Environment,
-    TipoDaCamadaDeApplication = typeof(MSBase.Auditoria.API.Domain.AuditoriaEntidade),
-    TipoDoStartup = typeof(MSBase.Auditoria.API.Domain.AuditoriaEntidade),
+    TipoDaCamadaDeApplication = typeof(AuditoriaEntidade),
+    TipoDoStartup = typeof(AuditoriaEntidade),
 });
+
+builder.Services.AddHostedService<AuditoriaConsumerBackgroundService>();
 
 var app = builder.Build();
 

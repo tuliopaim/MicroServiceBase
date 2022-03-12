@@ -1,9 +1,8 @@
-﻿namespace MSBase.Core.API
+﻿namespace MSBase.Core.API;
+
+public interface IEnvironment
 {
-    public interface IEnvironment
-    {
-        string this[string key] { get; }
-        string Name { get; }
-        bool IsDevelopment { get; }
-    }
+    string this[string key] { get; }
+    string Name { get; }
+    bool IsDevelopment { get; }
 }

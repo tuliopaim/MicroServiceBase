@@ -1,9 +1,8 @@
 ﻿using MSBase.EmailSender.Templates.Views.Emails;
 
-namespace MSBase.EmailSender.API.Infrastructure
+namespace MSBase.EmailSender.API.Infrastructure;
+
+public interface IEmailSender
 {
-    public interface IEmailSender
-    {
-        Task<bool> SendEmail<T>(T model) where T : EmailBaseViewModel;
-    }
+    Task<bool> SendEmail<T>(T model) where T : EmailBaseViewModel;
 }

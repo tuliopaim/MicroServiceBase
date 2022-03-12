@@ -1,22 +1,21 @@
-﻿namespace MSBase.Core.Domain
+﻿namespace MSBase.Core.Domain;
+
+public abstract class Entity : IEntity
 {
-    public abstract class Entity : IEntity
+    protected Entity()
     {
-        protected Entity()
-        {
-            Id = Guid.NewGuid();
-        }
+        Id = Guid.NewGuid();
+    }
 
-        protected Entity(Guid id)
-        {
-            Id = id;
-        }
+    protected Entity(Guid id)
+    {
+        Id = id;
+    }
 
-        public Guid Id { get; }
+    public Guid Id { get; }
 
-        public override string ToString()
-        {
-            return Id.ToString();
-        }
+    public override string ToString()
+    {
+        return Id.ToString();
     }
 }

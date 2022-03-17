@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.Application.Mediator;
+using MSBase.Core.Cqrs.Mediator;
 
 namespace MSBase.Core.API;
 
 [ApiController]
 public class BaseController : ControllerBase
 {
-    protected IActionResult HandleMediatorResult(IMediatorResult mediatorResult)
+    protected IActionResult HandleResult(IMediatorResult mediatorResult)
     {
         if (mediatorResult is null)
         {

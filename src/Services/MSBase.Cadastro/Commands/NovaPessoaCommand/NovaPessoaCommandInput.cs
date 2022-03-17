@@ -1,4 +1,4 @@
-﻿using MSBase.Core.Application.Commands;
+﻿using MSBase.Core.Cqrs.Commands;
 
 namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand;
 

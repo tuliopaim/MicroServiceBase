@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using MSBase.Core.Infrastructure.RabbitMq.Messages;
+using MSBase.Core.RabbitMq.Messages;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;

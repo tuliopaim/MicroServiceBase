@@ -7,6 +7,7 @@ public class CoreConfiguration
 {
     public CoreConfiguration(IConfiguration configuration)
     {
+        ArgumentNullException.ThrowIfNull(configuration);
         Configuration = configuration;
     }
 

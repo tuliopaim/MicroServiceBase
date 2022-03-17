@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.Application.Queries;
+using MSBase.Core.Cqrs.Queries;
 
 namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
 

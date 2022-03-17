@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 using MSBase.Core.Domain;
-using MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria;
+using MSBase.Core.RabbitMq.Messages.Auditoria;
 
 namespace MSBase.Core.Extensions;
 

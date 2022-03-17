@@ -1,7 +1,7 @@
 ﻿using MSBase.Core.Extensions;
-using MSBase.Core.Infrastructure.RabbitMq;
-using MSBase.Core.Infrastructure.RabbitMq.Messages;
-using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
+using MSBase.Core.RabbitMq;
+using MSBase.Core.RabbitMq.Messages;
+using MSBase.Core.RabbitMq.Messages.Email;
 using MSBase.EmailSender.API.Domain;
 using RabbitMQ.Client.Events;
 

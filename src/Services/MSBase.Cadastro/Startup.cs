@@ -3,6 +3,7 @@ using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Context;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
 using MSBase.Core.API;
+using MSBase.Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

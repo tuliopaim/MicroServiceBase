@@ -1,9 +1,9 @@
 ﻿using MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
-using MSBase.Core.Application.Mediator;
+using MSBase.Core.Cqrs.Mediator;
 using MSBase.Core.Extensions;
-using MSBase.Core.Infrastructure.RabbitMq;
-using MSBase.Core.Infrastructure.RabbitMq.Messages;
-using MSBase.Core.Infrastructure.RabbitMq.Messages.Auditoria;
+using MSBase.Core.RabbitMq;
+using MSBase.Core.RabbitMq.Messages;
+using MSBase.Core.RabbitMq.Messages.Auditoria;
 using RabbitMQ.Client.Events;
 
 namespace MSBase.Auditoria.API.Consumers;

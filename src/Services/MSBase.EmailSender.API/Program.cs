@@ -1,5 +1,6 @@
 using FluentEmail.MailKitSmtp;
 using MSBase.Core.API;
+using MSBase.Core.Extensions;
 using MSBase.EmailSender.API.Consumers;
 using MSBase.EmailSender.API.Domain;
 using MSBase.EmailSender.API.Infrastructure;

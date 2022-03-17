@@ -1,9 +1,9 @@
 ﻿using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
-using MSBase.Core.Application.Commands;
-using MSBase.Core.Infrastructure.RabbitMq;
-using MSBase.Core.Infrastructure.RabbitMq.Messages;
-using MSBase.Core.Infrastructure.RabbitMq.Messages.Email;
+using MSBase.Core.Cqrs.Commands;
+using MSBase.Core.RabbitMq;
+using MSBase.Core.RabbitMq.Messages;
+using MSBase.Core.RabbitMq.Messages.Email;
 
 namespace MSBase.Cadastro.API.Commands.NovaPessoaCommand;
 

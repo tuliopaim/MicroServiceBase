@@ -1,6 +1,6 @@
 ﻿using MSBase.Cadastro.API.Infrastructure.Repositories;
-using MSBase.Core.Application;
-using MSBase.Core.Application.Queries;
+using MSBase.Core.Cqrs.Queries;
+using MSBase.Core.Extensions;
 
 namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
 

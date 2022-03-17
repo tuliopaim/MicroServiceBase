@@ -4,8 +4,8 @@ using MSBase.Cadastro.API.Commands.NovaPessoaCommand;
 using MSBase.Cadastro.API.Queries.ObterPessoasQuery;
 using MSBase.Cadastro.API.Requests;
 using MSBase.Core.API;
-using MSBase.Core.API.Hateoas;
-using MSBase.Core.Application.Mediator;
+using MSBase.Core.Cqrs.Mediator;
+using MSBase.Core.Hateoas;
 
 namespace MSBase.Cadastro.API.Controllers;
 
@@ -28,12 +28,12 @@ public class PessoaController : BaseController
     {
         var result = await _mediator.Send(input, cancellationToken);
 
-        result.Links = _heateoasHelper.CreatePaginatedHLinks(
+        result.Links = _heateoasHelper.CreatePaginatedHateoasLinks(
             nameof(ObterPessoas),
             input,
             result.Pagination);
 
-        return HandleMediatorResult(result);
+        return HandleResult(result);
     }
 
     [HttpPost]
@@ -43,7 +43,7 @@ public class PessoaController : BaseController
 
         var result = await _mediator.Send(command, cancellationToken);
 
-        return HandleMediatorResult(result);
+        return HandleResult(result);
     }
 
     [HttpPut]
@@ -53,6 +53,6 @@ public class PessoaController : BaseController
 
         var result = await _mediator.Send(command, cancellationToken);
 
-        return HandleMediatorResult(result);
+        return HandleResult(result);
     }
 }

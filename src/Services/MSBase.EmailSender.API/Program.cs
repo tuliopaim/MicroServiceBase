@@ -8,17 +8,19 @@ using MSBase.EmailSender.Templates;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
-builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services
+    .AddCore(builder.Configuration)
+    .AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>()
+    .AddScoped<IEmailService, EmailService>()
+    .AddScoped<IEmailSender, EmailSender>()
+    .AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>()
+    .AddHostedService<NovoEmailConsumerBackgroundService>()
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen();
 
-builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
-builder.Services.AddHostedService<NovoEmailConsumerBackgroundService>();
-
-builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
+builder.Services
+    .AddFluentEmail("msbase@gmail.com", "MSBase")
     .AddMailKitSender(new SmtpClientOptions
     {
         User = "084d75abdb31df",
@@ -28,8 +30,6 @@ builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
         RequiresAuthentication = true,
         UseSsl = false,
     });
-
-builder.Services.AddCore(builder.Configuration);
 
 var app = builder.Build();
 

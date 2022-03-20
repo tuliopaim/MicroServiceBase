@@ -5,17 +5,16 @@ using MSBase.Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>();
-builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
-
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCore(builder.Configuration, config =>
-{
-    config.WithCqrs(typeof(NovaPessoaCommandHandler).Assembly);
-});
+builder.Services
+    .AddCore(builder.Configuration, config =>
+    {
+        config.WithCqrs(typeof(NovaPessoaCommandHandler).Assembly);
+    })
+    .AddDbContext<AppDbContext>()
+    .AddScoped<IPessoaRepository, PessoaRepository>()
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen();
 
 var app = builder.Build();
 

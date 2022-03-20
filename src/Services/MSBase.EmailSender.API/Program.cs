@@ -1,5 +1,4 @@
 using FluentEmail.MailKitSmtp;
-using MSBase.Core.API;
 using MSBase.Core.Extensions;
 using MSBase.EmailSender.API.Consumers;
 using MSBase.EmailSender.API.Domain;
@@ -30,8 +29,7 @@ builder.Services.AddFluentEmail("msbase@gmail.com", "MSBase")
         UseSsl = false,
     });
 
-
-builder.Services.AddCore(builder.Configuration, typeof(EmailService).Assembly);
+builder.Services.AddCore(builder.Configuration);
 
 var app = builder.Build();
 

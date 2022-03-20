@@ -1,8 +1,6 @@
 using MSBase.Cadastro.API.Commands.NovaPessoaCommand;
-using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Context;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
-using MSBase.Core.API;
 using MSBase.Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCore(builder.Configuration, typeof(NovaPessoaCommandHandler).Assembly);
+builder.Services.AddCore(builder.Configuration, config =>
+{
+    config.WithCqrs(typeof(NovaPessoaCommandHandler).Assembly);
+});
 
 var app = builder.Build();
 

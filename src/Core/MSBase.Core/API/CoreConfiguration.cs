@@ -11,49 +11,38 @@ public class CoreConfiguration
         Configuration = configuration;
     }
 
-    public CoreConfiguration(
-        IConfiguration configuration,
-        params Assembly[] cqrsAssemblies) : this(configuration)
-    {
-        ArgumentNullException.ThrowIfNull(cqrsAssemblies);
-
-        ConfigureCqrs = true;
-        ConfigureHateoasHelper = true;
-        ConfigureRabbitMq = true;
-        CqrsAssemblies = cqrsAssemblies;
-    }
-    
     public IConfiguration Configuration { get; }
     public bool ConfigureCqrs { get; private set; }
-    public bool ConfigureHateoasHelper { get; private set; }
-    public bool ConfigureRabbitMq { get; private set; }
+    public bool ConfigureHateoas { get; private set; } = true;
+    public bool ConfigureRabbitMq { get; private set; } = true;
     public Assembly[] CqrsAssemblies { get; private set; }
 
     /// <summary>
-    /// Enable Mediator/CQRS suport
+    /// Enable Mediator/CQRS support, with input validation, logging and exception pipelines built-in
     /// </summary>
-    public void EnableCqrsSupport(params Assembly[] cqrsAssemblies)
+    public void WithCqrs(params Assembly[] cqrsAssemblies)
     {
         ArgumentNullException.ThrowIfNull(cqrsAssemblies);
 
         ConfigureCqrs = true;
         CqrsAssemblies = cqrsAssemblies;
     }
-
+    
     /// <summary>
-    /// Enable injection of RabbitMqConnection and RabbitMqProducer 
+    /// Disable injection of RabbitMqConnection and RabbitMqProducer 
     /// </summary>
-    public void EnableRabbitMqSupport()
+    public void WithoutRabbitMq()
     {
-        ConfigureRabbitMq = true;
+        ConfigureRabbitMq = false;
     }
 
     /// <summary>
     /// Enable injection of IHateoasHelper
     /// </summary>
     ///
-    public void EnableHateoasSupport()
+    public void WithoutHateoasSupport()
     {
-        ConfigureHateoasHelper = true;
+        ConfigureHateoas = false;
     }
+
 }

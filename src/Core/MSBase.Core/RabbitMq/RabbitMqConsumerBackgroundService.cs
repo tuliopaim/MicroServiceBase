@@ -35,7 +35,7 @@ public abstract class RabbitMqConsumerBackgroundService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogDebug("{BackgroundService} started", nameof(RabbitMqConsumerBackgroundService));
+        _logger.LogDebug("Consuming from [{QueueName}]", _queueName);
 
         DeclareQueues();
 
@@ -46,7 +46,7 @@ public abstract class RabbitMqConsumerBackgroundService : BackgroundService
             await Task.Delay(1000, stoppingToken);
         }
 
-        _logger.LogDebug("{BackgroundService} finished", nameof(RabbitMqConsumerBackgroundService));
+        _logger.LogDebug("Finish consuming [{QueueName}]", _queueName);
     }
 
     private void DeclareQueues()

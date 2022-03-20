@@ -1,6 +1,4 @@
-﻿using MSBase.Core.Cqrs.Queries;
-
-namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
+﻿namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
 
 public class ObterPessoasQueryResultItem
 {

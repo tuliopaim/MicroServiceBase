@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,8 +8,6 @@ using MSBase.Core.Hateoas;
 using MSBase.Core.RabbitMq;
 using Serilog;
 using Environment = MSBase.Core.API.Environment;
-using IMediator = MSBase.Core.Cqrs.Mediator.IMediator;
-using Mediator = MSBase.Core.Cqrs.Mediator.Mediator;
 
 namespace MSBase.Core.Extensions;
 
@@ -32,39 +29,13 @@ public static class ServiceCollectionExtensions
 
         options?.Invoke(coreConfiguration);
         
-        return services.AddCore(coreConfiguration);
-    }
-
-    /// <summary>
-    /// Full core support
-    /// </summary>
-    /// <param name="services"></param>
-    /// <param name="configuration"></param>
-    /// <param name="cqrsAssemblies"></param>
-    /// <returns></returns>
-    public static IServiceCollection AddCore(
-        this IServiceCollection services,
-        IConfiguration configuration,
-        params Assembly[] cqrsAssemblies)
-    {
-        var coreConfiguration = new CoreConfiguration(configuration, cqrsAssemblies);
-        
-        return services.AddCore(coreConfiguration);
-    }
-
-    private static IServiceCollection AddCore(
-        this IServiceCollection services, 
-        CoreConfiguration coreConfiguration)
-    {
-        services
+        return services
             .AddLogging(coreConfiguration)
             .AddHttpContextAccessor()
             .AddEnvironment()
-            .AddHateoasHelper(coreConfiguration)
+            .AddHateoas(coreConfiguration)
             .AddCqrs(coreConfiguration)
             .AddRabbitMq(coreConfiguration);
-
-        return services;
     }
     
     private static IServiceCollection AddLogging(this IServiceCollection services, CoreConfiguration configuration)
@@ -87,9 +58,9 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    private static IServiceCollection AddHateoasHelper(this IServiceCollection services, CoreConfiguration configuration)
+    private static IServiceCollection AddHateoas(this IServiceCollection services, CoreConfiguration configuration)
     {
-        if (configuration.ConfigureHateoasHelper)
+        if (configuration.ConfigureHateoas)
         {
             services.AddScoped<IHateoasHelper, HateoasHelper>();
         }
@@ -106,7 +77,7 @@ public static class ServiceCollectionExtensions
             throw new MissingMemberException(nameof(CoreConfiguration), nameof(configuration.CqrsAssemblies));
         }
 
-        services.AddScoped<IMediator, Mediator>();
+        services.AddScoped<Cqrs.Mediator.IMediator, Cqrs.Mediator.Mediator>();
         services.AddMediatR(configuration.CqrsAssemblies);
 
         services

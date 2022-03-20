@@ -15,5 +15,5 @@ public interface IHateoasHelper
     IEnumerable<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult);
+        QueryPagination paginationResult);
 }

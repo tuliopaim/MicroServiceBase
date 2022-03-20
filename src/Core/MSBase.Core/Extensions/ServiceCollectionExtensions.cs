@@ -83,7 +83,7 @@ public static class ServiceCollectionExtensions
         services
             .AddExceptionPipelineBehavior()
             .AddLogPipelineBehavior()
-            .AddFailFastPipeline(configuration)
+            .AddFailFastPipeline()
             .AddValidators(configuration);
 
         return services;
@@ -103,7 +103,7 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    private static IServiceCollection AddFailFastPipeline(this IServiceCollection services, CoreConfiguration configuration)
+    private static IServiceCollection AddFailFastPipeline(this IServiceCollection services)
     {
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastPipelineBehavior<,>));
 

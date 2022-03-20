@@ -25,15 +25,15 @@ public static class PaginationExtension
 
         var result = new PagedQueryResult<TResultItem>
         {
-            Result = items,
-            Pagination = new QueryPaginationResult
+            Results = items,
+            Pagination = new QueryPagination
             {
-                Number = pageNumber,
-                Size = items.Count,
+                PageNumber = pageNumber,
+                PageSize = items.Count,
                 TotalElements = totalElements
             }
         };
 
-        return result;
+        return result;  
     }
 }

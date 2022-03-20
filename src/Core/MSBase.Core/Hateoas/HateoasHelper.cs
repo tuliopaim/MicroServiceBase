@@ -58,7 +58,7 @@ public class HateoasHelper : IHateoasHelper
     public IEnumerable<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult)
+        QueryPagination paginationResult)
     {
         var links = new List<HateoasLink>();
 
@@ -74,7 +74,7 @@ public class HateoasHelper : IHateoasHelper
     private void AddFirstPaginatedLink<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult,
+        QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
         queryInput.PageNumber = paginationResult.FirstPage;
@@ -85,7 +85,7 @@ public class HateoasHelper : IHateoasHelper
     private void AddPrevPaginatedLink<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult,
+        QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
         if (!paginationResult.HasPrevPage) return;
@@ -99,10 +99,10 @@ public class HateoasHelper : IHateoasHelper
     private void AddSelfPaginatedLink<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult,
+        QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
-        queryInput.PageNumber = paginationResult.Number;
+        queryInput.PageNumber = paginationResult.PageNumber;
 
         links.Add(CreateSelfHateoasLink(actionName, queryInput));
     }
@@ -110,7 +110,7 @@ public class HateoasHelper : IHateoasHelper
     private void AddNextPaginatedLink<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult,
+        QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
         if (!paginationResult.HasNextPage) return;
@@ -124,7 +124,7 @@ public class HateoasHelper : IHateoasHelper
     private void AddLastPaginatedLink<TQueryItem>(
         string actionName,
         PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
-        QueryPaginationResult paginationResult,
+        QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
         queryInput.PageNumber = paginationResult.LastPage;

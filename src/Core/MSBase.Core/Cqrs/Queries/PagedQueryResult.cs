@@ -1,7 +1,6 @@
 ﻿namespace MSBase.Core.Cqrs.Queries;
 
-public class PagedQueryResult<TResultItem> : QueryResult
+public class PagedQueryResult<TResult> : ListQueryResult<TResult>
 {
-    public IEnumerable<TResultItem> Result { get; set; }
-    public QueryPaginationResult Pagination { get; set; }
+    public QueryPagination Pagination { get; set; } = new();
 }

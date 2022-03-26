@@ -1,9 +1,10 @@
-﻿using MSBase.Core.Cqrs.Queries;
+﻿using EasyCqrs.Queries;
 
 namespace MSBase.Core.Hateoas;
 
 public interface IHateoasHelper
 {
+    HateoasLink CreateGetByIdHateoasLink(string actionName, Guid id);
     HateoasLink CreateFirstHateoasLink(string actionName, object queryParams);
     HateoasLink CreateGetHateoasLink(string linkName, string actionName, object queryParams);
     HateoasLink CreateHateoasLink(HttpMethod httpMethod, string linkName, string actionName, object queryParams);
@@ -11,9 +12,8 @@ public interface IHateoasHelper
     HateoasLink CreateNextHateoasLink(string actionName, object queryParams);
     HateoasLink CreatePrevHateoasLink(string actionName, object queryParams);
     HateoasLink CreateSelfHateoasLink(string actionName, object queryParams);
-
-    IEnumerable<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
+    List<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult);
 }

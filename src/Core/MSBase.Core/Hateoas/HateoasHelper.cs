@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EasyCqrs.Queries;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using MSBase.Core.Cqrs.Queries;
 
 namespace MSBase.Core.Hateoas;
 
@@ -15,10 +15,31 @@ public class HateoasHelper : IHateoasHelper
         _generator = generator;
     }
 
+    public HateoasLink CreateGetByIdHateoasLink(string actionName, Guid id) =>
+        CreateGetHateoasLink("get", actionName, id);
+
+    public HateoasLink CreateFirstHateoasLink(string actionName, object queryParams) =>
+        CreateGetHateoasLink("first", actionName, queryParams);
+
+    public HateoasLink CreatePrevHateoasLink(string actionName, object queryParams) =>
+        CreateGetHateoasLink("prev", actionName, queryParams);
+
+    public HateoasLink CreateSelfHateoasLink(string actionName, object queryParams) =>
+        CreateGetHateoasLink("self", actionName, queryParams);
+
+    public HateoasLink CreateNextHateoasLink(string actionName, object queryParams) =>
+        CreateGetHateoasLink("next", actionName, queryParams);
+
+    public HateoasLink CreateLastHateoasLink(string actionName, object queryParams) =>
+        CreateGetHateoasLink("last", actionName, queryParams);
+    
+    public HateoasLink CreateGetHateoasLink(string linkName, string actionName, object queryParams) =>
+        CreateHateoasLink(HttpMethod.Get, linkName, actionName, queryParams);
+
     public HateoasLink CreateHateoasLink(HttpMethod httpMethod, string linkName, string actionName, object queryParams)
     {
         ArgumentNullException.ThrowIfNull(_accessor.HttpContext);
-        
+
         var link = _generator.GetUriByName(
             _accessor.HttpContext,
             actionName,
@@ -36,28 +57,10 @@ public class HateoasHelper : IHateoasHelper
             Href = link
         };
     }
-
-    public HateoasLink CreateGetHateoasLink(string linkName, string actionName, object queryParams) =>
-        CreateHateoasLink(HttpMethod.Get, linkName, actionName, queryParams);
-
-    public HateoasLink CreateFirstHateoasLink(string actionName, object queryParams) =>
-        CreateGetHateoasLink("_first", actionName, queryParams);
-
-    public HateoasLink CreatePrevHateoasLink(string actionName, object queryParams) =>
-        CreateGetHateoasLink("_prev", actionName, queryParams);
-
-    public HateoasLink CreateSelfHateoasLink(string actionName, object queryParams) =>
-        CreateGetHateoasLink("_self", actionName, queryParams);
-
-    public HateoasLink CreateNextHateoasLink(string actionName, object queryParams) =>
-        CreateGetHateoasLink("_next", actionName, queryParams);
-
-    public HateoasLink CreateLastHateoasLink(string actionName, object queryParams) =>
-        CreateGetHateoasLink("_last", actionName, queryParams);
-
-    public IEnumerable<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
+    
+    public List<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult)
     {
         var links = new List<HateoasLink>();
@@ -73,7 +76,7 @@ public class HateoasHelper : IHateoasHelper
 
     private void AddFirstPaginatedLink<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
@@ -84,7 +87,7 @@ public class HateoasHelper : IHateoasHelper
 
     private void AddPrevPaginatedLink<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
@@ -98,7 +101,7 @@ public class HateoasHelper : IHateoasHelper
 
     private void AddSelfPaginatedLink<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
@@ -109,7 +112,7 @@ public class HateoasHelper : IHateoasHelper
 
     private void AddNextPaginatedLink<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {
@@ -119,11 +122,10 @@ public class HateoasHelper : IHateoasHelper
 
         links.Add(CreateNextHateoasLink(actionName, queryInput));
     }
-
-
+    
     private void AddLastPaginatedLink<TQueryItem>(
         string actionName,
-        PagedQueryInput<PagedQueryResult<TQueryItem>> queryInput,
+        PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
         QueryPagination paginationResult,
         ICollection<HateoasLink> links)
     {

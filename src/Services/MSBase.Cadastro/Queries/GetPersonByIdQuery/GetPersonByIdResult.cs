@@ -1,6 +1,6 @@
-﻿namespace MSBase.Cadastro.API.Queries.ObterPessoasQuery;
+﻿namespace MSBase.Cadastro.API.Queries.GetPersonByIdQuery;
 
-public class ObterPessoasQueryResultItem
+public class GetPersonByIdResult
 {
     public Guid Id { get; set; }
     public string Nome { get; set; }

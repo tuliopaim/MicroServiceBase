@@ -2,9 +2,9 @@
 
 namespace MSBase.Cadastro.API.Entities;
 
-public class Pessoa : AuditableEntity
+public class Person : AuditableEntity
 {
-    public Pessoa(string nome, string email, byte idade)
+    public Person(string nome, string email, byte idade)
     {
         Nome = nome;
         Email = email;

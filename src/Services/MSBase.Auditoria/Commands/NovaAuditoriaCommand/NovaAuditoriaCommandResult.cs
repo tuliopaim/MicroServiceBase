@@ -1,4 +1,4 @@
-﻿using MSBase.Core.Cqrs.Commands;
+﻿using EasyCqrs.Commands;
 
 namespace MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
 

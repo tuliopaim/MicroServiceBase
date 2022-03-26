@@ -3,7 +3,7 @@ using MSBase.Core.Infrastructure;
 
 namespace MSBase.Cadastro.API.Infrastructure.Repositories;
 
-public interface IPessoaRepository : IGenericRepository<Pessoa>
+public interface IPersonRepository : IGenericRepository<Person>
 {
-    Task<Pessoa> ObterPorId(Guid id);
+    Task<Person> GetById(Guid id);
 }

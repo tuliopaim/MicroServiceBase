@@ -5,16 +5,16 @@ using MSBase.Core.Infrastructure;
 
 namespace MSBase.Cadastro.API.Infrastructure.Repositories;
 
-public class PessoaRepository : GenericRepository<Pessoa>, IPessoaRepository
+public class PersonRepository : GenericRepository<Person>, IPersonRepository
 {
     private readonly AppDbContext _context;
 
-    public PessoaRepository(AppDbContext context) : base(context)
+    public PersonRepository(AppDbContext context) : base(context)
     {
         _context = context;
     }
 
-    public async Task<Pessoa> ObterPorId(Guid id)
+    public async Task<Person> GetById(Guid id)
     {
         return await Get().FirstOrDefaultAsync(x => x.Id == id);
     }

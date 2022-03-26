@@ -1,9 +1,7 @@
-﻿using FluentValidation;
-using MediatR;
+﻿using EasyCqrs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MSBase.Core.API;
-using MSBase.Core.Cqrs.Pipelines;
 using MSBase.Core.Hateoas;
 using MSBase.Core.RabbitMq;
 using Serilog;
@@ -31,10 +29,10 @@ public static class ServiceCollectionExtensions
         
         return services
             .AddLogging(coreConfiguration)
+            .AddCqrs(coreConfiguration.CqrsAssemblies)
             .AddHttpContextAccessor()
             .AddEnvironment()
             .AddHateoas(coreConfiguration)
-            .AddCqrs(coreConfiguration)
             .AddRabbitMq(coreConfiguration);
     }
     
@@ -67,59 +65,7 @@ public static class ServiceCollectionExtensions
         
         return services;
     }
-
-    private static IServiceCollection AddCqrs(this IServiceCollection services, CoreConfiguration configuration)
-    {
-        if (!configuration.ConfigureCqrs) return services;
-
-        if (configuration.CqrsAssemblies is not { Length: > 0 })
-        {
-            throw new MissingMemberException(nameof(CoreConfiguration), nameof(configuration.CqrsAssemblies));
-        }
-
-        services.AddScoped<Cqrs.Mediator.IMediator, Cqrs.Mediator.Mediator>();
-        services.AddMediatR(configuration.CqrsAssemblies);
-
-        services
-            .AddExceptionPipelineBehavior()
-            .AddLogPipelineBehavior()
-            .AddFailFastPipeline()
-            .AddValidators(configuration);
-
-        return services;
-    }
-
-    private static IServiceCollection AddExceptionPipelineBehavior(this IServiceCollection services)
-    {
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ExceptionPipelineBehavior<,>));
-
-        return services;
-    }
-
-    private static IServiceCollection AddLogPipelineBehavior(this IServiceCollection services)
-    {
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LogPipelineBehavior<,>));
-
-        return services;
-    }
-
-    private static IServiceCollection AddFailFastPipeline(this IServiceCollection services)
-    {
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(FailFastPipelineBehavior<,>));
-
-        return services;
-    }
-
-    private static IServiceCollection AddValidators(this IServiceCollection services, CoreConfiguration configuration)
-    {
-        foreach (var assemblyScanResult in AssemblyScanner.FindValidatorsInAssemblies(configuration.CqrsAssemblies))
-        {
-            services.AddScoped(assemblyScanResult.InterfaceType, assemblyScanResult.ValidatorType);
-        }
-
-        return services;
-    }
-
+    
     private static IServiceCollection AddRabbitMq(this IServiceCollection services, CoreConfiguration configuration)
     {
         if (!configuration.ConfigureRabbitMq) return services;

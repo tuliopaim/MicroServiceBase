@@ -1,14 +1,14 @@
 ﻿using EasyCqrs.Commands;
 using MSBase.Cadastro.API.Entities;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
-using MSBase.Core.Hateoas;
+using MSBase.Core.Queries;
 using MSBase.Core.RabbitMq;
 using MSBase.Core.RabbitMq.Messages;
 using MSBase.Core.RabbitMq.Messages.Email;
 
 namespace MSBase.Cadastro.API.Commands.NewPersonCommand;
 
-public class NewPersonCommandHandler : ICommandHandler<NewPersonCommandInput, CreatedCommandResult>
+public class NewPersonCommandHandler : ICommandHandler<NewPersonCommandInput, CreatedCommandWithLinkResult>
 {
     private readonly IPersonRepository _personRepository;
     private readonly RabbitMqProducer _rabbitMqProducer;
@@ -19,7 +19,7 @@ public class NewPersonCommandHandler : ICommandHandler<NewPersonCommandInput, Cr
         _rabbitMqProducer = rabbitMqProducer;
     }
 
-    public async Task<CreatedCommandResult> Handle(NewPersonCommandInput command, CancellationToken cancellationToken)
+    public async Task<CreatedCommandWithLinkResult> Handle(NewPersonCommandInput command, CancellationToken cancellationToken)
     {
         var pessoa = new Person(command.Nome, command.Email, command.Idade);
 
@@ -31,6 +31,6 @@ public class NewPersonCommandHandler : ICommandHandler<NewPersonCommandInput, Cr
 
         _rabbitMqProducer.Publish(emailMessage, MessageType.EmailPessoaCadastradaComSucesso, RoutingKeys.NovoEmail);
 
-        return new CreatedCommandResult { Id = pessoa.Id };
+        return new CreatedCommandWithLinkResult { Id = pessoa.Id };
     }
 }

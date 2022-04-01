@@ -1,9 +1,9 @@
 ﻿using EasyCqrs.Commands;
-using MSBase.Core.Hateoas;
+using MSBase.Core.Queries;
 
 namespace MSBase.Cadastro.API.Commands.NewPersonCommand;
 
-public class NewPersonCommandInput : CommandInput<CreatedCommandResult>
+public class NewPersonCommandInput : CommandInput<CreatedCommandWithLinkResult>
 {
     public NewPersonCommandInput(string nome, string email, byte idade)
     {

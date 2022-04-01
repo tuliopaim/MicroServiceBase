@@ -1,6 +1,6 @@
 ﻿using EasyCqrs.Queries;
 using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.Hateoas;
+using MSBase.Core.Queries;
 
 namespace MSBase.Cadastro.API.Queries.GetPeoplePaginatedQuery;
 

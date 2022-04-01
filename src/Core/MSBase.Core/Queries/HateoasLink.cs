@@ -1,4 +1,4 @@
-﻿namespace MSBase.Core.Hateoas;
+﻿namespace MSBase.Core.Queries;
 
 public class HateoasLink
 {

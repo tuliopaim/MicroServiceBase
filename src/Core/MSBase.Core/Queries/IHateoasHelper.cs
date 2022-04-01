@@ -1,6 +1,6 @@
 ﻿using EasyCqrs.Queries;
 
-namespace MSBase.Core.Hateoas;
+namespace MSBase.Core.Queries;
 
 public interface IHateoasHelper
 {

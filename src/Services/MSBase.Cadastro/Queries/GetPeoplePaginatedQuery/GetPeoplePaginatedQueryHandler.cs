@@ -1,7 +1,7 @@
 ﻿using EasyCqrs.Queries;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
 using MSBase.Core.Extensions;
-using MSBase.Core.Hateoas;
+using MSBase.Core.Queries;
 
 namespace MSBase.Cadastro.API.Queries.GetPeoplePaginatedQuery;
 

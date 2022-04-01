@@ -6,10 +6,11 @@ using MSBase.Cadastro.API.Queries.GetPeoplePaginatedQuery;
 using MSBase.Cadastro.API.Queries.GetPersonByIdQuery;
 using MSBase.Cadastro.API.Requests;
 using MSBase.Core.API;
-using MSBase.Core.Hateoas;
+using MSBase.Core.Queries;
 
 namespace MSBase.Cadastro.API.Controllers;
 
+[ApiController]
 [Route("/v1/person")]
 public class PersonController : BaseController
 {
@@ -29,14 +30,15 @@ public class PersonController : BaseController
     }
 
     [HttpGet(Name = nameof(GetPaginatedPeople))]
+    [Produces(typeof(HPaginatedQueryResult<GetPeoplePaginatedResult>))]
     public async Task<IActionResult> GetPaginatedPeople(
         [FromServices] IHateoasHelper heateoasHelper,
         [FromQuery] GetPeoplePaginatedQueryInput input, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(input, cancellationToken);
-        
+
         return HandlePaginatedResult(
-            input,  
+            input,
             result,
             nameof(GetPaginatedPeople),
             heateoasHelper);
@@ -44,20 +46,19 @@ public class PersonController : BaseController
 
     [HttpPost]
     public async Task<IActionResult> Create(
-        [FromServices] IHateoasHelper hateoasHelper,
-        [FromBody] NovaPessoaRequest request, 
+        [FromBody] NovaPessoaRequest request,
         CancellationToken cancellationToken)
     {
         var command = new NewPersonCommandInput(request.Nome, request.Email, request.Idade);
 
         var result = await _mediator.Send(command, cancellationToken);
 
-        return HandleCreatedResult(result, nameof(GetById), hateoasHelper);
+        return CreatedAtAction(nameof(GetById), new { result.Id }, result);
     }
 
     [HttpPut]
     public async Task<IActionResult> Edit([FromBody] EditarPessoaRequest request, CancellationToken cancellationToken)
-    {   
+    {
         var command = new EditPersonCommandInput(request.PessoaId, request.NovaIdade);
 
         var result = await _mediator.Send(command, cancellationToken);

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace MSBase.Core.Hateoas;
+namespace MSBase.Core.Queries;
 
 public class HateoasHelper : IHateoasHelper
 {
@@ -32,7 +32,7 @@ public class HateoasHelper : IHateoasHelper
 
     public HateoasLink CreateLastHateoasLink(string actionName, object queryParams) =>
         CreateGetHateoasLink("last", actionName, queryParams);
-    
+
     public HateoasLink CreateGetHateoasLink(string linkName, string actionName, object queryParams) =>
         CreateHateoasLink(HttpMethod.Get, linkName, actionName, queryParams);
 
@@ -57,7 +57,7 @@ public class HateoasHelper : IHateoasHelper
             Href = link
         };
     }
-    
+
     public List<HateoasLink> CreatePaginatedHateoasLinks<TQueryItem>(
         string actionName,
         PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
@@ -97,8 +97,7 @@ public class HateoasHelper : IHateoasHelper
 
         links.Add(CreatePrevHateoasLink(actionName, queryInput));
     }
-
-
+    
     private void AddSelfPaginatedLink<TQueryItem>(
         string actionName,
         PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,
@@ -122,7 +121,7 @@ public class HateoasHelper : IHateoasHelper
 
         links.Add(CreateNextHateoasLink(actionName, queryInput));
     }
-    
+
     private void AddLastPaginatedLink<TQueryItem>(
         string actionName,
         PaginatedQueryInput<HPaginatedQueryResult<TQueryItem>> queryInput,

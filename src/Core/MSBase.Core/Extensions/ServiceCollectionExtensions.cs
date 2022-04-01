@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MSBase.Core.API;
-using MSBase.Core.Hateoas;
+using MSBase.Core.Queries;
 using MSBase.Core.RabbitMq;
 using Serilog;
 using Environment = MSBase.Core.API.Environment;

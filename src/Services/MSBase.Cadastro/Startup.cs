@@ -1,4 +1,4 @@
-using MSBase.Cadastro.API.Commands.NovaPessoaCommand;
+using MSBase.Cadastro.API.Commands.NewPersonCommand;
 using MSBase.Cadastro.API.Infrastructure.Context;
 using MSBase.Cadastro.API.Infrastructure.Repositories;
 using MSBase.Core.Extensions;
@@ -9,10 +9,10 @@ builder.Services.AddControllers();
 builder.Services
     .AddCore(builder.Configuration, config =>
     {
-        config.WithCqrs(typeof(NovaPessoaCommandHandler).Assembly);
+        config.WithCqrs(typeof(NewPersonCommandHandler).Assembly);
     })
     .AddDbContext<AppDbContext>()
-    .AddScoped<IPessoaRepository, PessoaRepository>()
+    .AddScoped<IPersonRepository, PersonRepository>()
     .AddEndpointsApiExplorer()
     .AddSwaggerGen();
 

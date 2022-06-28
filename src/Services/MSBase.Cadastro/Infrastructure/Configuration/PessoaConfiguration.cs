@@ -5,9 +5,9 @@ using MSBase.Core.Infrastructure;
 
 namespace MSBase.Cadastro.API.Infrastructure.Configuration;
 
-public class PessoaConfiguration : AuditableEntityMap<Pessoa>
+public class PessoaConfiguration : AuditableEntityMap<Person>
 {
-    public override void Configure(EntityTypeBuilder<Pessoa> builder)
+    public override void Configure(EntityTypeBuilder<Person> builder)
     {
         builder.Property(x => x.Nome)
             .HasColumnType("VARCHAR(200)")

@@ -1,5 +1,5 @@
-﻿using MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
-using MSBase.Core.Cqrs.Mediator;
+﻿using MediatR;
+using MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
 using MSBase.Core.Extensions;
 using MSBase.Core.RabbitMq;
 using MSBase.Core.RabbitMq.Messages;
@@ -30,8 +30,8 @@ public class AuditoriaConsumerBackgroundService : RabbitMqConsumerBackgroundServ
         var command = MapearParaCommand(mensagem);
 
         var result = await mediator!.Send(command);
-        
-        return result.IsValid();
+
+        return result.IsValid;
     }
     
     private static NovaAuditoriaCommandInput MapearParaCommand(AuditoriaMessage mensagem)

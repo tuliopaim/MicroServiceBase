@@ -1,6 +1,6 @@
-﻿using MSBase.Auditoria.API.Domain;
+﻿using EasyCqrs.Commands;
+using MSBase.Auditoria.API.Domain;
 using MSBase.Auditoria.API.Infrasctructure;
-using MSBase.Core.Cqrs.Commands;
 
 namespace MSBase.Auditoria.API.Commands.NovaAuditoriaCommand;
 

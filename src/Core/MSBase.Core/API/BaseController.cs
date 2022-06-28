@@ -1,23 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MSBase.Core.Cqrs.Mediator;
+﻿using EasyCqrs.Mvc;
+using EasyCqrs.Queries;
+using Microsoft.AspNetCore.Mvc;
+using MSBase.Core.Queries;
 
 namespace MSBase.Core.API;
 
-[ApiController]
-public class BaseController : ControllerBase
+public class BaseController : CqrsController
 {
-    protected IActionResult HandleResult(IMediatorResult mediatorResult)
+    protected IActionResult HandlePaginatedResult<TQueryItem, TResult>(
+        QueryPaginatedInput<HPaginatedQueryResult<TQueryItem>> queryInput,
+        HPaginatedQueryResult<TResult> result,
+        string actionLink,
+        IHateoasHelper hateoasHelper)
     {
-        if (mediatorResult is null)
-        {
-            return NotFound();
-        }
+        result.Links = hateoasHelper.CreatePaginatedHateoasLinks(
+            actionLink, queryInput, result.Pagination);
 
-        if (!mediatorResult.IsValid())
-        {
-            return BadRequest(new { mediatorResult.Errors });
-        }
-
-        return Ok(mediatorResult);
+        return HandleResult(result);
     }
 }

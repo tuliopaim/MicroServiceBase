@@ -56,7 +56,7 @@ $ docker-compose -f docker-compose.env.yml up -d
     - [x]  ConsoleSink
     - [x]  EllasticSearchSink ([#6](https://github.com/tuliopaim/MicroServiceBase/issues/6))
 - [x] Refatorar "Environment" para utilizar IConfiguration ([#19](https://github.com/tuliopaim/MicroServiceBase/issues/19))
-- [ ] Remover Environment
+- [x] Remover Environment
 - [ ] Implementar IDateTimeProvider
 
 ### Services

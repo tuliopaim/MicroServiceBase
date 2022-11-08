@@ -2,7 +2,7 @@
 
 namespace MSBase.Cadastro.API.Commands.EditPersonCommand;
 
-public class EditPersonCommandInput : CommandInput<EditPersonCommandWithLinkResult>
+public class EditPersonCommandInput : CommandInput<EditPersonCommandResult>
 {
     public EditPersonCommandInput(Guid pessoaId, byte novaIdade)
     {

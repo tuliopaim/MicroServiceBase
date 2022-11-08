@@ -30,7 +30,6 @@ public class PersonController : BaseController
     }
 
     [HttpGet(Name = nameof(GetPaginatedPeople))]
-    [Produces(typeof(HPaginatedQueryResult<GetPeoplePaginatedResult>))]
     public async Task<IActionResult> GetPaginatedPeople(
         [FromServices] IHateoasHelper heateoasHelper,
         [FromQuery] GetPeopleQueryPaginatedInput input, CancellationToken cancellationToken)
@@ -53,7 +52,7 @@ public class PersonController : BaseController
 
         var result = await _mediator.Send(command, cancellationToken);
 
-        return CreatedAtAction(nameof(GetById), new { result.Id }, result);
+        return HandleCreateResult(result, nameof(GetById));
     }
 
     [HttpPut]

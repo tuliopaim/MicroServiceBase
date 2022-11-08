@@ -3,7 +3,7 @@ using MSBase.Cadastro.API.Infrastructure.Repositories;
 
 namespace MSBase.Cadastro.API.Commands.EditPersonCommand;
 
-public class EditPersonCommandHandler : ICommandHandler<EditPersonCommandInput, EditPersonCommandWithLinkResult>
+public class EditPersonCommandHandler : ICommandHandler<EditPersonCommandInput, EditPersonCommandResult>
 {
     private readonly IPersonRepository _personRepository;
 
@@ -13,13 +13,13 @@ public class EditPersonCommandHandler : ICommandHandler<EditPersonCommandInput, 
         _personRepository = personRepository;
     }
 
-    public async Task<EditPersonCommandWithLinkResult> Handle(EditPersonCommandInput command, CancellationToken cancellationToken)
+    public async Task<EditPersonCommandResult> Handle(EditPersonCommandInput command, CancellationToken cancellationToken)
     {
         var pessoa = await _personRepository.GetById(command.PessoaId);
 
         if (pessoa is null)
         {
-            var result = new EditPersonCommandWithLinkResult();
+            var result = new EditPersonCommandResult();
             result.AddError("Person não encontrada");
 
             return null;
@@ -29,6 +29,6 @@ public class EditPersonCommandHandler : ICommandHandler<EditPersonCommandInput, 
 
         await _personRepository.UnitOfWork.CommitAsync(cancellationToken);
 
-        return new EditPersonCommandWithLinkResult();
+        return new EditPersonCommandResult();
     }
 }

@@ -5,7 +5,6 @@ using MSBase.Core.API;
 using MSBase.Core.Queries;
 using MSBase.Core.RabbitMq;
 using Serilog;
-using Environment = MSBase.Core.API.Environment;
 
 namespace MSBase.Core.Extensions;
 
@@ -26,14 +25,17 @@ public static class ServiceCollectionExtensions
         var coreConfiguration = new CoreConfiguration(configuration);
 
         options?.Invoke(coreConfiguration);
-        
+
+        if (coreConfiguration.CqrsAssemblies is { Length: > 0 })
+        {
+            services.AddCqrs(coreConfiguration.CqrsAssemblies);
+        }
+
         return services
             .AddLogging(coreConfiguration)
-            .AddCqrs(coreConfiguration.CqrsAssemblies)
             .AddHttpContextAccessor()
-            .AddEnvironment()
             .AddHateoas(coreConfiguration)
-            .AddRabbitMq(coreConfiguration);
+            .AddRabbitMq(coreConfiguration, configuration);
     }
     
     private static IServiceCollection AddLogging(this IServiceCollection services, CoreConfiguration configuration)
@@ -49,13 +51,6 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    private static IServiceCollection AddEnvironment(this IServiceCollection services)
-    {
-        services.AddSingleton<IEnvironment, Environment>();
-
-        return services;
-    }
-
     private static IServiceCollection AddHateoas(this IServiceCollection services, CoreConfiguration configuration)
     {
         if (configuration.ConfigureHateoas)
@@ -66,12 +61,16 @@ public static class ServiceCollectionExtensions
         return services;
     }
     
-    private static IServiceCollection AddRabbitMq(this IServiceCollection services, CoreConfiguration configuration)
+    private static IServiceCollection AddRabbitMq(
+        this IServiceCollection services,
+        CoreConfiguration coreConfiguration,
+        IConfiguration configuration)
     {
-        if (!configuration.ConfigureRabbitMq) return services;
+        if (!coreConfiguration.ConfigureRabbitMq) return services;
 
         services.AddSingleton<RabbitMqConnection>();
         services.AddScoped<RabbitMqProducer>();
+        services.Configure<RabbitMqSettings>(configuration.GetSection(nameof(RabbitMqSettings)));
 
         return services;
     }

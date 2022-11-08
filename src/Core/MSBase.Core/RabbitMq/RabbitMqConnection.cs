@@ -1,50 +1,34 @@
-﻿using MSBase.Core.API;
+﻿using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
 namespace MSBase.Core.RabbitMq;
 
 public class RabbitMqConnection
 {
-    private readonly IEnvironment _environment;
-    private IConnection _conexao;
+    private readonly RabbitMqSettings _rabbitSettings;
+    private readonly Lazy<IConnection> _lazyConnection;
 
-    public RabbitMqConnection(IEnvironment environment)
+    public RabbitMqConnection(IOptions<RabbitMqSettings> rabbitSettings)
     {
-        _environment = environment;
-        
-        CriarConexao();
+        _lazyConnection = new(CriarConexao);
+        _rabbitSettings = rabbitSettings.Value;
     }
 
-    public IConnection Connection => ExisteConexao() ? _conexao : null;
+    public IConnection Connection => _lazyConnection.Value;
 
-    private void CriarConexao()
+    private IConnection CriarConexao()
     {
-        var hostName = _environment["RabbitMqSettings:HostName"];
-        var port = _environment["RabbitMqSettings:Port"];
-        var userName = _environment["RabbitMqSettings:UserName"];
-        var password = _environment["RabbitMqSettings:Password"];
-
-        var factory = new ConnectionFactory
+        IConnectionFactory factory = new ConnectionFactory
         {
-            HostName = hostName,
-            Port = Convert.ToInt32(port),
-            UserName = userName,
-            Password = password,
+            HostName = _rabbitSettings.HostName,
+            Port = _rabbitSettings.Port,
+            UserName = _rabbitSettings.UserName,
+            Password = _rabbitSettings.Password,
             DispatchConsumersAsync = true,
+            ConsumerDispatchConcurrency = 1,
+            UseBackgroundThreadsForIO = false
         };
 
-        _conexao = factory.CreateConnection();
-    }
-
-    private bool ExisteConexao()
-    {
-        if (_conexao != null)
-        {
-            return true;
-        }
-
-        CriarConexao();
-
-        return _conexao != null;
+        return factory.CreateConnection();
     }
 }

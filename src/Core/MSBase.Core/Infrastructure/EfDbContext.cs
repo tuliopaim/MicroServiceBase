@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 using MSBase.Core.API;
 using MSBase.Core.Domain;
 using MSBase.Core.Extensions;
@@ -10,15 +11,15 @@ namespace MSBase.Core.Infrastructure;
 
 public class EfDbContext : DbContext, IUnitOfWork
 {
-    private readonly IEnvironment _environment;
     private readonly RabbitMqProducer _rabbitMqProducer;
+    private readonly IConfiguration _configuration;
 
-    private const string ConnectionStringKey = "ConnectionStrings:DefaultConnection";
+    private const string _connectionStringKey = "ConnectionStrings:DefaultConnection";
 
-    public EfDbContext(IEnvironment environment, RabbitMqProducer rabbitMqProducer)
+    public EfDbContext(RabbitMqProducer rabbitMqProducer, IConfiguration configuration)
     {
-        _environment = environment;
         _rabbitMqProducer = rabbitMqProducer;
+        _configuration = configuration;
     }
 
     public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
@@ -66,7 +67,7 @@ public class EfDbContext : DbContext, IUnitOfWork
         
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var connectionString = _environment[ConnectionStringKey];
+        var connectionString = _configuration[_connectionStringKey];
 
         optionsBuilder.UseNpgsql(connectionString, opt => opt.EnableRetryOnFailure());
     }

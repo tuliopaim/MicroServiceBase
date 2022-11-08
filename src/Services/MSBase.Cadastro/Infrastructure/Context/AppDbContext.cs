@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using MSBase.Cadastro.API.Entities;
-using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
 using MSBase.Core.RabbitMq;
 
@@ -9,7 +8,8 @@ namespace MSBase.Cadastro.API.Infrastructure.Context;
 
 public class AppDbContext : EfDbContext
 {
-    public AppDbContext(IEnvironment environment, RabbitMqProducer rabbitMqProducer) : base(environment, rabbitMqProducer)
+    public AppDbContext(RabbitMqProducer rabbitMqProducer, IConfiguration configuration) 
+        : base(rabbitMqProducer, configuration)
     {
     }
 

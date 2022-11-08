@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using MSBase.Auditoria.API.Domain;
-using MSBase.Core.API;
 using MSBase.Core.Infrastructure;
 using MSBase.Core.RabbitMq;
 
@@ -9,7 +8,8 @@ namespace MSBase.Auditoria.API.Infrasctructure;
 
 public class AuditoriaDbContext : EfDbContext
 {
-    public AuditoriaDbContext(IEnvironment environment, RabbitMqProducer rabbitMqProducer) : base(environment, rabbitMqProducer)
+    public AuditoriaDbContext(RabbitMqProducer rabbitMqProducer, IConfiguration configuration)
+        : base(rabbitMqProducer, configuration)
     {
     }
 
